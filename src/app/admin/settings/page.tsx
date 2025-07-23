@@ -15,6 +15,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { updateTheme } from './actions';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
+import { Check } from 'lucide-react';
+
+const colorPalettes = [
+    { name: 'Default', primary: '#3F51B5', accent: '#9575CD' },
+    { name: 'Ocean', primary: '#009688', accent: '#00BCD4' },
+    { name: 'Sunset', primary: '#FF9800', accent: '#FFC107' },
+];
 
 export default function AdminSettingsPage() {
     const { toast } = useToast();
@@ -50,6 +58,11 @@ export default function AdminSettingsPage() {
             setIsSaving(false);
         }
     };
+    
+    const handlePaletteSelect = (palette: { primary: string, accent: string }) => {
+        setPrimaryColor(palette.primary);
+        setAccentColor(palette.accent);
+    };
 
     return (
         <div className="flex flex-col gap-4">
@@ -83,25 +96,58 @@ export default function AdminSettingsPage() {
                     <CardTitle>Theme Control</CardTitle>
                     <CardDescription>Customize the main colors of the website.</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-lg">
-                        <div className="space-y-2">
-                            <Label htmlFor="primary-color">Primary Color</Label>
-                            <Input 
-                                id="primary-color" 
-                                type="color" 
-                                value={primaryColor}
-                                onChange={(e) => setPrimaryColor(e.target.value)}
-                                className="h-12" />
+                <CardContent className="space-y-8">
+                    <div>
+                        <Label className="font-medium">Color Palettes</Label>
+                        <p className="text-sm text-muted-foreground mb-4">Select a predefined palette or choose your own colors below.</p>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            {colorPalettes.map((palette) => (
+                                <button
+                                    key={palette.name}
+                                    onClick={() => handlePaletteSelect(palette)}
+                                    className={cn(
+                                        "rounded-lg border-2 p-1 transition-all",
+                                        primaryColor === palette.primary && accentColor === palette.accent
+                                            ? 'border-primary'
+                                            : 'border-transparent hover:border-muted-foreground/50'
+                                    )}
+                                >
+                                    <div className="flex h-16 w-full items-center justify-center gap-1 rounded-md overflow-hidden relative">
+                                        <div className="h-full w-2/3" style={{ backgroundColor: palette.primary }} />
+                                        <div className="h-full w-1/3" style={{ backgroundColor: palette.accent }} />
+                                         {primaryColor === palette.primary && accentColor === palette.accent && (
+                                            <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
+                                                <Check className="h-8 w-8 text-primary-foreground" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <p className="text-center text-sm font-medium mt-2">{palette.name}</p>
+                                </button>
+                            ))}
                         </div>
-                         <div className="space-y-2">
-                            <Label htmlFor="accent-color">Accent Color</Label>
-                            <Input 
-                                id="accent-color" 
-                                type="color" 
-                                value={accentColor} 
-                                onChange={(e) => setAccentColor(e.target.value)}
-                                className="h-12" />
+                    </div>
+
+                    <div>
+                        <Label className="font-medium">Custom Colors</Label>
+                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-lg mt-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="primary-color">Primary Color</Label>
+                                <Input 
+                                    id="primary-color" 
+                                    type="color" 
+                                    value={primaryColor}
+                                    onChange={(e) => setPrimaryColor(e.target.value)}
+                                    className="h-12" />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="accent-color">Accent Color</Label>
+                                <Input 
+                                    id="accent-color" 
+                                    type="color" 
+                                    value={accentColor} 
+                                    onChange={(e) => setAccentColor(e.target.value)}
+                                    className="h-12" />
+                            </div>
                         </div>
                     </div>
                 </CardContent>
