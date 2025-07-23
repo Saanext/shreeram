@@ -19,21 +19,22 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Default', primary: '#3F51B5', accent: '#9575CD' },
-    { name: 'Ocean', primary: '#009688', accent: '#00BCD4' },
-    { name: 'Sunset', primary: '#FF9800', accent: '#FFC107' },
+    { name: 'Default', primary: '#6366f1', accent: '#818cf8', background: '#f8fafc' }, // Indigo
+    { name: 'Stone', primary: '#78716c', accent: '#a8a29e', background: '#fafaf9' }, // Stone
+    { name: 'Forest', primary: '#16a34a', accent: '#4ade80', background: '#f0fdf4' }, // Green
 ];
 
 export default function AdminSettingsPage() {
     const { toast } = useToast();
-    const [primaryColor, setPrimaryColor] = React.useState('#3F51B5');
-    const [accentColor, setAccentColor] = React.useState('#9575CD');
+    const [primaryColor, setPrimaryColor] = React.useState('#6366f1');
+    const [accentColor, setAccentColor] = React.useState('#818cf8');
+    const [backgroundColor, setBackgroundColor] = React.useState('#f8fafc');
     const [isSaving, setIsSaving] = React.useState(false);
 
     const handleThemeApply = async () => {
         setIsSaving(true);
         try {
-            const result = await updateTheme(primaryColor, accentColor);
+            const result = await updateTheme(primaryColor, accentColor, backgroundColor);
             if (result.success) {
                 toast({
                     title: 'Theme Updated',
@@ -59,9 +60,10 @@ export default function AdminSettingsPage() {
         }
     };
     
-    const handlePaletteSelect = (palette: { primary: string, accent: string }) => {
+    const handlePaletteSelect = (palette: { primary: string, accent: string, background: string }) => {
         setPrimaryColor(palette.primary);
         setAccentColor(palette.accent);
+        setBackgroundColor(palette.background);
     };
 
     return (
@@ -107,15 +109,15 @@ export default function AdminSettingsPage() {
                                     onClick={() => handlePaletteSelect(palette)}
                                     className={cn(
                                         "rounded-lg border-2 p-1 transition-all",
-                                        primaryColor === palette.primary && accentColor === palette.accent
+                                        primaryColor === palette.primary
                                             ? 'border-primary'
                                             : 'border-transparent hover:border-muted-foreground/50'
                                     )}
                                 >
-                                    <div className="flex h-16 w-full items-center justify-center gap-1 rounded-md overflow-hidden relative">
-                                        <div className="h-full w-2/3" style={{ backgroundColor: palette.primary }} />
-                                        <div className="h-full w-1/3" style={{ backgroundColor: palette.accent }} />
-                                         {primaryColor === palette.primary && accentColor === palette.accent && (
+                                    <div className="flex h-16 w-full items-center justify-center gap-1 rounded-md overflow-hidden relative" style={{backgroundColor: palette.background}}>
+                                        <div className="h-full w-2/3 rounded-sm" style={{ backgroundColor: palette.primary }} />
+                                        <div className="h-full w-1/3 rounded-sm" style={{ backgroundColor: palette.accent }} />
+                                         {primaryColor === palette.primary && (
                                             <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
                                                 <Check className="h-8 w-8 text-primary-foreground" />
                                             </div>
@@ -146,6 +148,15 @@ export default function AdminSettingsPage() {
                                     type="color" 
                                     value={accentColor} 
                                     onChange={(e) => setAccentColor(e.target.value)}
+                                    className="h-12" />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="background-color">Background Color</Label>
+                                <Input 
+                                    id="background-color" 
+                                    type="color" 
+                                    value={backgroundColor} 
+                                    onChange={(e) => setBackgroundColor(e.target.value)}
                                     className="h-12" />
                             </div>
                         </div>
