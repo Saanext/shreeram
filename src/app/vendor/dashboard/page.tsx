@@ -28,7 +28,7 @@ export default function VendorDashboardPage() {
     <>
        <h1 className="text-2xl font-headline font-bold">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-        <StatCard title="Total Revenue" value={`$${totalRevenue.toLocaleString()}`} icon={DollarSign} description="+15.2% from last month" />
+        <StatCard title="Total Revenue" value={`₹${totalRevenue.toLocaleString()}`} icon={DollarSign} description="+15.2% from last month" />
         <StatCard title="Active Products" value={`${vendorProducts.length}`} icon={Package} description="Total products you are selling" />
         <StatCard title="Total Orders" value={`+${vendorOrders.length}`} icon={ShoppingCart} description="+10% from last month" />
       </div>
@@ -56,7 +56,7 @@ export default function VendorDashboardPage() {
                   <TableCell>
                     <Badge variant={order.status === 'Delivered' ? 'default' : 'secondary'}>{order.status}</Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                    <TableCell>{new Date(order.date).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}

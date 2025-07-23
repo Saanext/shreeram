@@ -30,7 +30,7 @@ export default function AdminDashboardPage() {
     <>
        <h1 className="text-2xl font-headline font-bold">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-        <StatCard title="Total Revenue" value={`$${totalRevenue.toLocaleString()}`} icon={DollarSign} description="+20.1% from last month" />
+        <StatCard title="Total Revenue" value={`₹${totalRevenue.toLocaleString()}`} icon={DollarSign} description="+20.1% from last month" />
         <StatCard title="Total Users" value={`+${totalUsers}`} icon={Users} description="All registered users" />
         <StatCard title="Total Vendors" value={`+${totalVendors}`} icon={Package} description="All registered vendors" />
         <StatCard title="Total Orders" value={`+${totalOrders}`} icon={ShoppingCart} description="+19% from last month" />
@@ -62,7 +62,7 @@ export default function AdminDashboardPage() {
                   <TableCell>
                     <Badge variant={order.status === 'Delivered' ? 'default' : 'secondary'}>{order.status}</Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                    <TableCell>{new Date(order.date).toLocaleDateString()}</TableCell>
                 </TableRow>
               ))}

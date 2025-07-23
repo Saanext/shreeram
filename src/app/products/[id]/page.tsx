@@ -48,7 +48,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               {product.description}
             </p>
             <div className="flex items-baseline gap-4">
-              <span className="text-4xl font-bold text-primary">${product.price.toFixed(2)}</span>
+              <span className="text-4xl font-bold text-primary">₹{product.price.toFixed(2)}</span>
               <Badge variant={product.stock > 0 ? "default" : "destructive"}>
                 {product.stock > 0 ? `${product.stock} in Stock` : 'Out of Stock'}
               </Badge>

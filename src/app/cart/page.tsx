@@ -13,7 +13,7 @@ const cartItems = [
   { ...mockProducts[2], quantity: 2 },
 ];
 const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-const shipping = 10.00;
+const shipping = 100.00;
 const total = subtotal + shipping;
 
 export default function CartPage() {
@@ -36,12 +36,12 @@ export default function CartPage() {
                 />
                 <div className="flex-1">
                   <h3 className="font-semibold">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground">${item.price.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground">₹{item.price.toFixed(2)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <Input type="number" value={item.quantity} className="w-16 text-center" />
                 </div>
-                <p className="font-semibold w-24 text-right">${(item.price * item.quantity).toFixed(2)}</p>
+                <p className="font-semibold w-24 text-right">₹{(item.price * item.quantity).toFixed(2)}</p>
                 <Button variant="ghost" size="icon">
                   <Trash2 className="h-4 w-4 text-muted-foreground" />
                 </Button>
@@ -56,16 +56,16 @@ export default function CartPage() {
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span>${shipping.toFixed(2)}</span>
+                  <span>₹{shipping.toFixed(2)}</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
                 <Button asChild className="w-full" size="lg">
                   <Link href="/checkout">Proceed to Checkout</Link>

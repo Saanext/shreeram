@@ -34,7 +34,7 @@ export default function OrdersPage() {
                                 <TableCell>
                                     <Badge variant={order.status === 'Delivered' ? 'default' : order.status === 'Cancelled' ? 'destructive' : 'secondary'}>{order.status}</Badge>
                                 </TableCell>
-                                <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                                <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

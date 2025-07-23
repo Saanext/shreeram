@@ -31,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-muted-foreground text-sm mt-1 h-10 overflow-hidden">{product.description}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
-        <p className="text-xl font-bold text-primary">${product.price.toFixed(2)}</p>
+        <p className="text-xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
         <Button size="sm">
           <ShoppingCart className="mr-2 h-4 w-4" />
           Add to Cart

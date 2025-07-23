@@ -2,23 +2,23 @@ import type { User, Product, Order } from './types';
 
 export const mockUsers: User[] = [
   { id: 'usr_001', name: 'Admin User', email: 'admin@rolecraft.com', role: 'admin', status: 'active', createdAt: '2023-01-15' },
-  { id: 'usr_002', name: 'Vendor One', email: 'vendor1@example.com', role: 'vendor', status: 'active', createdAt: '2023-02-20' },
-  { id: 'usr_003', name: 'Vendor Two', email: 'vendor2@example.com', role: 'vendor', status: 'inactive', createdAt: '2023-03-10' },
-  { id: 'usr_004', name: 'Alice Johnson', email: 'alice@example.com', role: 'customer', status: 'active', createdAt: '2023-04-05' },
-  { id: 'usr_005', name: 'Bob Williams', email: 'bob@example.com', role: 'customer', status: 'active', createdAt: '2023-05-12' },
+  { id: 'usr_002', name: 'Fashionista Vendor', email: 'vendor1@example.com', role: 'vendor', status: 'active', createdAt: '2023-02-20' },
+  { id: 'usr_003', name: 'Threads & Co', email: 'vendor2@example.com', role: 'vendor', status: 'inactive', createdAt: '2023-03-10' },
+  { id: 'usr_004', name: 'Priya Sharma', email: 'priya@example.com', role: 'customer', status: 'active', createdAt: '2023-04-05' },
+  { id: 'usr_005', name: 'Rahul Kumar', email: 'rahul@example.com', role: 'customer', status: 'active', createdAt: '2023-05-12' },
 ];
 
 export const mockProducts: Product[] = [
-  { id: 'prod_001', name: 'Modern Desk Lamp', description: 'A sleek, minimalist desk lamp with adjustable brightness.', price: 75.00, category: 'Lighting', stock: 120, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_002', name: 'Ergonomic Office Chair', description: 'High-back ergonomic chair with lumbar support and adjustable armrests.', price: 250.50, category: 'Furniture', stock: 50, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_003', name: 'Wireless Mechanical Keyboard', description: 'A 75% layout mechanical keyboard with hot-swappable switches.', price: 120.00, category: 'Electronics', stock: 80, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
-  { id: 'prod_004', name: 'Noise-Cancelling Headphones', description: 'Over-ear headphones with active noise cancellation and 30-hour battery life.', price: 199.99, category: 'Audio', stock: 200, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_005', name: 'Smart Water Bottle', description: 'A bottle that tracks your water intake and glows to remind you to drink.', price: 49.95, category: 'Gadgets', stock: 150, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
-  { id: 'prod_006', name: 'Minimalist Leather Wallet', description: 'A slim, RFID-blocking wallet made from premium leather.', price: 55.00, category: 'Accessories', stock: 300, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
+  { id: 'prod_001', name: 'Men\'s Classic Cotton T-Shirt', description: 'A comfortable and stylish 100% cotton t-shirt for everyday wear.', price: 999.00, category: 'Men', stock: 120, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
+  { id: 'prod_002', name: 'Women\'s High-Waist Denim Jeans', description: 'Flattering high-waist jeans made from stretchable denim for a perfect fit.', price: 2499.00, category: 'Women', stock: 50, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
+  { id: 'prod_003', name: 'Kids\' Graphic Print Hoodie', description: 'A cozy and fun hoodie with a vibrant graphic print, perfect for kids.', price: 1499.00, category: 'Kids', stock: 80, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
+  { id: 'prod_004', name: 'Men\'s Formal Linen Shirt', description: 'A sharp and breathable linen shirt for formal occasions.', price: 2999.00, category: 'Men', stock: 200, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
+  { id: 'prod_005', name: 'Women\'s Floral Maxi Dress', description: 'An elegant floral maxi dress, perfect for summer outings and parties.', price: 3499.00, category: 'Women', stock: 150, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
+  { id: 'prod_006', name: 'Kids\' Striped Polo Shirt', description: 'A smart and casual striped polo shirt for kids, made from soft cotton.', price: 899.00, category: 'Kids', stock: 300, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
 ];
 
 export const mockOrders: Order[] = [
-  { id: 'ord_001', customerId: 'usr_004', customerName: 'Alice Johnson', items: [{ productId: 'prod_001', productName: 'Modern Desk Lamp', quantity: 1, price: 75.00 }], total: 75.00, status: 'Delivered', date: '2023-10-01', vendorId: 'usr_002' },
-  { id: 'ord_002', customerId: 'usr_005', customerName: 'Bob Williams', items: [{ productId: 'prod_003', productName: 'Wireless Mechanical Keyboard', quantity: 1, price: 120.00 }, { productId: 'prod_004', productName: 'Noise-Cancelling Headphones', quantity: 1, price: 199.99 }], total: 319.99, status: 'Shipped', date: '2023-10-05', vendorId: 'usr_003' },
-  { id: 'ord_003', customerId: 'usr_004', customerName: 'Alice Johnson', items: [{ productId: 'prod_002', productName: 'Ergonomic Office Chair', quantity: 1, price: 250.50 }], total: 250.50, status: 'Pending', date: '2023-10-10', vendorId: 'usr_002' },
+  { id: 'ord_001', customerId: 'usr_004', customerName: 'Priya Sharma', items: [{ productId: 'prod_005', productName: 'Women\'s Floral Maxi Dress', quantity: 1, price: 3499.00 }], total: 3499.00, status: 'Delivered', date: '2023-10-01', vendorId: 'usr_003' },
+  { id: 'ord_002', customerId: 'usr_005', customerName: 'Rahul Kumar', items: [{ productId: 'prod_001', productName: 'Men\'s Classic Cotton T-Shirt', quantity: 2, price: 999.00 }, { productId: 'prod_004', productName: 'Men\'s Formal Linen Shirt', quantity: 1, price: 2999.00 }], total: 4997.00, status: 'Shipped', date: '2023-10-05', vendorId: 'usr_002' },
+  { id: 'ord_003', customerId: 'usr_004', customerName: 'Priya Sharma', items: [{ productId: 'prod_002', productName: 'Women\'s High-Waist Denim Jeans', quantity: 1, price: 2499.00 }], total: 2499.00, status: 'Pending', date: '2023-10-10', vendorId: 'usr_002' },
 ];

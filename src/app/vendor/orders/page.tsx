@@ -56,7 +56,7 @@ export default function VendorOrdersPage() {
                                     <Badge variant={order.status === 'Delivered' ? 'default' : 'secondary'}>{order.status}</Badge>
                                 </TableCell>
                                 <TableCell className="hidden md:table-cell">{new Date(order.date).toLocaleDateString()}</TableCell>
-                                <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                                <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                                 <TableCell>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
