@@ -1,15 +1,8 @@
 'use client';
 import { LoginCard } from "@/components/common/LoginCard";
-import { useRouter } from "next/navigation";
+import { handleLogin } from "./actions";
 
 export default function VendorLoginPage() {
-  const router = useRouter();
-
-  const handleLogin = async () => {
-    'use server';
-    router.push('/vendor/dashboard');
-  }
-
   return (
     <LoginCard
       title="Vendor Portal"
