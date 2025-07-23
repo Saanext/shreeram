@@ -3,11 +3,16 @@ import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Flame, Tag } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 
 export default function ShopPage() {
+  const featuredProducts = mockProducts.slice(0, 4);
+  const bestSellers = mockProducts.slice(2, 6);
+  const onSaleProducts = mockProducts.filter(p => p.originalPrice);
+
+
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
@@ -48,16 +53,67 @@ export default function ShopPage() {
 
         <section id="products" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
-              Featured Products
-            </h2>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">New Arrivals</div>
+                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Featured Products
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                    Check out our latest collection of products. Fresh styles, updated daily.
+                </p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {mockProducts.map((product) => (
+              {featuredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
         </section>
+
+        <section id="best-sellers" className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <div className="inline-block rounded-lg bg-primary/10 text-primary px-3 py-1 text-sm font-medium flex items-center gap-2">
+                    <Flame className="h-4 w-4" />
+                    Top Picks
+                </div>
+                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Best Sellers
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                    Discover our most popular products, loved by customers like you.
+                </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              {bestSellers.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="on-sale" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">
+                    <Tag className="h-4 w-4" />
+                    Discount Offers
+                </div>
+                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Limited Time Offers
+                </h2>
+                <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                    Don't miss out on these special deals. Grab them before they're gone!
+                </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              {onSaleProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-muted-foreground">&copy; 2024 Shree Ram Enterprise. All rights reserved.</p>

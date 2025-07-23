@@ -34,7 +34,12 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-muted-foreground text-sm mt-1 h-10 overflow-hidden">{product.description}</p>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
-        <p className="text-xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
+        <div className="flex items-baseline gap-2">
+            <p className="text-xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
+            {product.originalPrice && (
+                <p className="text-sm text-muted-foreground line-through">₹{product.originalPrice.toFixed(2)}</p>
+            )}
+        </div>
         <Button size="sm" disabled={product.stock === 0}>
           <ShoppingCart className="mr-2 h-4 w-4" />
           {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
