@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { mockOrders } from '@/lib/data';
 import Link from 'next/link';
+import { CategoryNav } from '@/components/customer/CategoryNav';
 
 export default function OrdersPage() {
   const customerOrders = mockOrders.filter(o => o.customerId === 'usr_004' || o.customerId === 'usr_005');
@@ -11,6 +12,7 @@ export default function OrdersPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
+      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <h1 className="font-headline text-3xl md:text-4xl font-bold mb-8">My Orders</h1>
         <Card>

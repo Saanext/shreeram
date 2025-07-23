@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { CategoryNav } from '@/components/customer/CategoryNav';
 
 const subtotal = 11998;
 const shipping = 100;
@@ -13,6 +14,7 @@ export default function CheckoutPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
+      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <h1 className="font-headline text-3xl md:text-4xl font-bold mb-8">Checkout</h1>
         <div className="grid md:grid-cols-[1fr_400px] gap-12">

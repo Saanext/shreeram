@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
 import { Star } from 'lucide-react';
+import { CategoryNav } from '@/components/customer/CategoryNav';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = mockProducts.find(p => p.id === params.id);
@@ -21,6 +22,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
+      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <div className="flex items-center justify-center bg-muted/10 rounded-lg overflow-hidden aspect-square">

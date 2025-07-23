@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Trash2 } from 'lucide-react';
+import { CategoryNav } from '@/components/customer/CategoryNav';
 
 const cartItems = [
   { ...mockProducts[0], quantity: 1 },
@@ -20,6 +21,7 @@ export default function CartPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
+      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <h1 className="font-headline text-3xl md:text-4xl font-bold mb-8">Your Cart</h1>
         <div className="grid md:grid-cols-[1fr_400px] gap-8">

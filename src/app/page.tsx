@@ -5,11 +5,13 @@ import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { CategoryNav } from '@/components/customer/CategoryNav';
 
 export default function ShopPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
+      <CategoryNav />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
           <div className="container px-4 md:px-6">
