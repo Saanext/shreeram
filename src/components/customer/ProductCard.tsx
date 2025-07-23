@@ -7,17 +7,20 @@ import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
 
 export function ProductCard({ product }: { product: Product }) {
+  const getProductHint = (product: Product) => {
+    return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
+  }
   return (
     <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
       <CardHeader className="p-0 border-b">
-         <Link href={`/products/${product.id}`} className="block overflow-hidden">
+         <Link href={`/products/${product.id}`} className="block overflow-hidden aspect-square">
             <Image
                 src={product.imageUrl}
                 alt={product.name}
-                width={400}
-                height={300}
-                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                data-ai-hint="product image"
+                width={600}
+                height={600}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                data-ai-hint={getProductHint(product)}
             />
          </Link>
       </CardHeader>
@@ -32,9 +35,9 @@ export function ProductCard({ product }: { product: Product }) {
       </CardContent>
       <CardFooter className="p-4 pt-0 flex justify-between items-center">
         <p className="text-xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
-        <Button size="sm">
+        <Button size="sm" disabled={product.stock === 0}>
           <ShoppingCart className="mr-2 h-4 w-4" />
-          Add to Cart
+          {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
         </Button>
       </CardFooter>
     </Card>

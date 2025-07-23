@@ -9,12 +9,12 @@ export const mockUsers: User[] = [
 ];
 
 export const mockProducts: Product[] = [
-  { id: 'prod_001', name: 'Men\'s Classic Cotton T-Shirt', description: 'A comfortable and stylish 100% cotton t-shirt for everyday wear.', price: 999.00, category: 'Men', stock: 120, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_002', name: 'Women\'s High-Waist Denim Jeans', description: 'Flattering high-waist jeans made from stretchable denim for a perfect fit.', price: 2499.00, category: 'Women', stock: 50, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_003', name: 'Kids\' Graphic Print Hoodie', description: 'A cozy and fun hoodie with a vibrant graphic print, perfect for kids.', price: 1499.00, category: 'Kids', stock: 80, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
-  { id: 'prod_004', name: 'Men\'s Formal Linen Shirt', description: 'A sharp and breathable linen shirt for formal occasions.', price: 2999.00, category: 'Men', stock: 200, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
-  { id: 'prod_005', name: 'Women\'s Floral Maxi Dress', description: 'An elegant floral maxi dress, perfect for summer outings and parties.', price: 3499.00, category: 'Women', stock: 150, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_003' },
-  { id: 'prod_006', name: 'Kids\' Striped Polo Shirt', description: 'A smart and casual striped polo shirt for kids, made from soft cotton.', price: 899.00, category: 'Kids', stock: 300, imageUrl: 'https://placehold.co/400x300.png', vendorId: 'usr_002' },
+  { id: 'prod_001', name: 'Men\'s Classic Cotton T-Shirt', description: 'A comfortable and stylish 100% cotton t-shirt for everyday wear.', price: 999.00, category: 'Men', stock: 120, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_002' },
+  { id: 'prod_002', name: 'Women\'s High-Waist Denim Jeans', description: 'Flattering high-waist jeans made from stretchable denim for a perfect fit.', price: 2499.00, category: 'Women', stock: 50, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_002' },
+  { id: 'prod_003', name: 'Kids\' Graphic Print Hoodie', description: 'A cozy and fun hoodie with a vibrant graphic print, perfect for kids.', price: 1499.00, category: 'Kids', stock: 80, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_003' },
+  { id: 'prod_004', name: 'Men\'s Formal Linen Shirt', description: 'A sharp and breathable linen shirt for formal occasions.', price: 2999.00, category: 'Men', stock: 200, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_002' },
+  { id: 'prod_005', name: 'Women\'s Floral Maxi Dress', description: 'An elegant floral maxi dress, perfect for summer outings and parties.', price: 3499.00, category: 'Women', stock: 150, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_003' },
+  { id: 'prod_006', name: 'Kids\' Striped Polo Shirt', description: 'A smart and casual striped polo shirt for kids, made from soft cotton.', price: 899.00, category: 'Kids', stock: 300, imageUrl: 'https://placehold.co/600x600.png', vendorId: 'usr_002' },
 ];
 
 export const mockOrders: Order[] = [

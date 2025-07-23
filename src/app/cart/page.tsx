@@ -32,7 +32,7 @@ export default function CartPage() {
                   width={100}
                   height={100}
                   className="rounded-md object-cover w-24 h-24"
-                   data-ai-hint="product image"
+                   data-ai-hint={`${item.category} clothing`}
                 />
                 <div className="flex-1">
                   <h3 className="font-semibold">{item.name}</h3>

@@ -1,9 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import {
   Table,
@@ -66,7 +63,7 @@ export default function AdminProductsPage() {
                                     height="64"
                                     src={product.imageUrl}
                                     width="64"
-                                    data-ai-hint="product image"
+                                    data-ai-hint={`${product.category} clothing`}
                                 />
                                 </TableCell>
                                 <TableCell className="font-medium">{product.name}</TableCell>

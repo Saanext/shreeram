@@ -4,6 +4,7 @@ import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ShopPage() {
   return (
@@ -31,10 +32,12 @@ export default function ShopPage() {
                   </Button>
                 </div>
               </div>
-              <img
+              <Image
                 src="https://placehold.co/600x400.png"
                 data-ai-hint="fashion clothing family"
                 alt="Hero"
+                width={600}
+                height={400}
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
               />
             </div>

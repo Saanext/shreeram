@@ -13,23 +13,27 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   if (!product) {
     notFound();
   }
+  
+  const getProductHint = (product: {category: string, name: string}) => {
+    return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
+  }
 
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
       <main className="flex-1 container py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="flex items-center justify-center bg-muted/20 rounded-lg overflow-hidden">
+          <div className="flex items-center justify-center bg-muted/10 rounded-lg overflow-hidden aspect-square">
             <Image
               src={product.imageUrl}
               alt={product.name}
               width={600}
               height={600}
-              className="object-cover w-full h-full aspect-square"
-              data-ai-hint="product image"
+              className="object-cover w-full h-full"
+              data-ai-hint={getProductHint(product)}
             />
           </div>
-          <div className="flex flex-col justify-center space-y-6">
+          <div className="flex flex-col justify-center space-y-6 py-4">
             <div>
               <Badge variant="secondary" className="mb-2 font-semibold">{product.category}</Badge>
               <h1 className="font-headline text-3xl md:text-4xl font-bold">{product.name}</h1>
@@ -44,12 +48,12 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   <span className="text-sm text-muted-foreground">(123 reviews)</span>
               </div>
             </div>
-            <p className="text-muted-foreground text-base leading-relaxed">
+            <p className="text-muted-foreground text-base leading-relaxed max-w-prose">
               {product.description}
             </p>
             <div className="flex items-baseline gap-4">
               <span className="text-4xl font-bold text-primary">₹{product.price.toFixed(2)}</span>
-              <Badge variant={product.stock > 0 ? "default" : "destructive"}>
+              <Badge variant={product.stock > 0 ? "outline" : "destructive"} className="font-semibold">
                 {product.stock > 0 ? `${product.stock} in Stock` : 'Out of Stock'}
               </Badge>
             </div>
