@@ -81,11 +81,11 @@ export default function AdminSettingsPage() {
                     <form className="space-y-4 max-w-lg">
                         <div className="space-y-2">
                             <Label htmlFor="site-name">Site Name</Label>
-                            <Input id="site-name" defaultValue="RoleCraft" />
+                            <Input id="site-name" defaultValue="Shree Ram Enterprise" />
                         </div>
                          <div className="space-y-2">
                             <Label htmlFor="contact-email">Contact Email</Label>
-                            <Input id="contact-email" type="email" defaultValue="support@rolecraft.com" />
+                            <Input id="contact-email" type="email" defaultValue="support@shreeramenterprise.com" />
                         </div>
                     </form>
                 </CardContent>

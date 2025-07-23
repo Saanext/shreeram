@@ -7,7 +7,7 @@ export function Logo({ className, iconClassName }: { className?: string; iconCla
     <Link href="/" className={cn("flex items-center gap-2 text-primary", className)}>
       <Briefcase className={cn("h-6 w-6", iconClassName)} />
       <span className="font-headline text-xl font-bold">
-        RoleCraft
+        Shree Ram Enterprise
       </span>
     </Link>
   );
