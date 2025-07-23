@@ -17,6 +17,8 @@ export type Product = {
   stock: number;
   imageUrl: string;
   vendorId: string;
+  isBestSeller?: boolean;
+  isOnSale?: boolean;
 };
 
 export type Order = {

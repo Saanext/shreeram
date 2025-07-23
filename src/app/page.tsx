@@ -3,14 +3,14 @@ import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
-import { ArrowRight, Flame, Tag } from 'lucide-react';
+import { ArrowRight, Flame, Tag, Star } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 
 export default function ShopPage() {
   const featuredProducts = mockProducts.slice(0, 4);
-  const bestSellers = mockProducts.slice(2, 6);
-  const onSaleProducts = mockProducts.filter(p => p.originalPrice);
+  const bestSellers = mockProducts.filter(p => p.isBestSeller);
+  const onSaleProducts = mockProducts.filter(p => p.isOnSale);
 
 
   return (
@@ -74,11 +74,11 @@ export default function ShopPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="inline-block rounded-lg bg-primary/10 text-primary px-3 py-1 text-sm font-medium flex items-center gap-2">
-                    <Flame className="h-4 w-4" />
+                    <Star className="h-4 w-4" />
                     Top Picks
                 </div>
                 <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Best Sellers
+                Our Best Sellers
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl">
                     Discover our most popular products, loved by customers like you.
@@ -97,10 +97,10 @@ export default function ShopPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">
                     <Tag className="h-4 w-4" />
-                    Discount Offers
+                    Limited Time Deals
                 </div>
                 <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Limited Time Offers
+                Grab Them While They're Hot
                 </h2>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl">
                     Don't miss out on these special deals. Grab them before they're gone!

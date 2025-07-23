@@ -21,7 +21,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { mockProducts } from "@/lib/data"
 import Image from "next/image"
-import { MoreHorizontal, PlusCircle } from "lucide-react"
+import { MoreHorizontal, PlusCircle, CheckCircle2, Star, Tag } from "lucide-react"
 
 export default function AdminProductsPage() {
     return (
@@ -48,6 +48,7 @@ export default function AdminProductsPage() {
                             <TableHead>Category</TableHead>
                             <TableHead className="hidden md:table-cell">Price</TableHead>
                             <TableHead className="hidden md:table-cell">Stock</TableHead>
+                            <TableHead className="hidden md:table-cell">Featured</TableHead>
                             <TableHead>
                             <span className="sr-only">Actions</span>
                             </TableHead>
@@ -72,6 +73,22 @@ export default function AdminProductsPage() {
                                 </TableCell>
                                 <TableCell className="hidden md:table-cell">₹{product.price.toFixed(2)}</TableCell>
                                 <TableCell className="hidden md:table-cell">{product.stock}</TableCell>
+                                <TableCell className="hidden md:table-cell">
+                                  <div className="flex flex-col gap-1">
+                                    {product.isBestSeller && (
+                                      <Badge variant="secondary" className="flex items-center gap-1 w-fit">
+                                        <Star className="h-3 w-3" />
+                                        Best Seller
+                                      </Badge>
+                                    )}
+                                    {product.isOnSale && (
+                                      <Badge variant="outline" className="flex items-center gap-1 w-fit">
+                                        <Tag className="h-3 w-3" />
+                                        On Sale
+                                      </Badge>
+                                    )}
+                                  </div>
+                                </TableCell>
                                 <TableCell>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
