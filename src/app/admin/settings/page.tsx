@@ -20,10 +20,9 @@ import { Check } from 'lucide-react';
 
 const colorPalettes = [
     { name: 'Onyx & Gold', primary: '#d4af37', accent: '#e6c75e', background: '#1a1a1a' },
-    { name: 'Sapphire & Silver', primary: '#89cff0', accent: '#c0c0c0', background: '#0f172a' },
-    { name: 'Emerald & Cream', primary: '#50c878', accent: '#a3b18a', background: '#f5f5dc' },
-    { name: 'Ruby & Pearl', primary: '#e0115f', accent: '#fde5e2', background: '#2d2d2d' },
-    { name: 'Amethyst & Platinum', primary: '#9966cc', accent: '#e5e4e2', background: '#1c1917' },
+    { name: 'Sapphire & Silver', primary: '#4a90e2', accent: '#a4b0be', background: '#0f172a' },
+    { name: 'Pearl & Rose Gold', primary: '#b76e79', accent: '#d9a0a7', background: '#fdf6f0' },
+    { name: 'Mint & Coral', primary: '#ff6b6b', accent: '#76d7c4', background: '#f0fff4' },
 ];
 
 export default function AdminSettingsPage() {
@@ -100,7 +99,7 @@ export default function AdminSettingsPage() {
                     <div>
                         <Label className="font-medium">Color Palettes</Label>
                         <p className="text-sm text-muted-foreground mb-4">Select from a predefined set of luxury palettes.</p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
                             {colorPalettes.map((palette) => (
                                 <button
                                     key={palette.name}
