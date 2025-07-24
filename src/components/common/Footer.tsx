@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { Facebook, Twitter, Instagram } from 'lucide-react';
@@ -5,6 +6,9 @@ import { Facebook, Twitter, Instagram } from 'lucide-react';
 export function Footer() {
   return (
     <footer className="bg-muted/40 text-muted-foreground">
+       <div className="container py-8 text-center text-sm">
+        <p>This is an additional text section above the footer. You can use it for promotions, important announcements, or anything else.</p>
+      </div>
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4 md:col-span-1">
