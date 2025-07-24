@@ -34,6 +34,12 @@ export function CustomerHeader() {
           <Link href="/" className="text-foreground/80 transition-colors hover:text-foreground">
             Products
           </Link>
+          <Link href="/about" className="text-foreground/80 transition-colors hover:text-foreground">
+            About
+          </Link>
+          <Link href="/contact" className="text-foreground/80 transition-colors hover:text-foreground">
+            Contact Us
+          </Link>
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2 md:space-x-4">
           <form onSubmit={handleSearch} className="relative hidden sm:block">
