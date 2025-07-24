@@ -66,7 +66,7 @@ export default function VendorProductsPage() {
                                     height="64"
                                     src={product.imageUrl}
                                     width="64"
-                                    data-ai-hint="product image"
+                                    data-ai-hint={`${product.category} clothing`}
                                 />
                                 </TableCell>
                                 <TableCell className="font-medium">{product.name}</TableCell>

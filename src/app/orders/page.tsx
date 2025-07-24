@@ -30,7 +30,7 @@ export default function OrdersPage() {
                         {customerOrders.map(order => (
                             <TableRow key={order.id}>
                                 <TableCell className="font-medium">
-                                    <Link href="#" className="hover:underline">#{order.id.slice(-6)}</Link>
+                                    <Link href={`/orders/${order.id}`} className="hover:underline">#{order.id.slice(-6)}</Link>
                                 </TableCell>
                                 <TableCell>{new Date(order.date).toLocaleDateString()}</TableCell>
                                 <TableCell>
