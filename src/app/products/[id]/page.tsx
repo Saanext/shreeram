@@ -12,8 +12,9 @@ import { CategoryNav } from '@/components/customer/CategoryNav';
 import { useCart } from '@/contexts/CartContext';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const { addToCart } = useCart();
-  const product = mockProducts.find(p => p.id === params.id);
+  const product = mockProducts.find(p => p.id === id);
 
   if (!product) {
     notFound();
