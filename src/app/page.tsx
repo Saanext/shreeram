@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
@@ -16,7 +17,7 @@ export default function ShopPage() {
 
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <CustomerHeader />
+      <CustomerHeader cartItemCount={3} />
       <CategoryNav />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
@@ -68,10 +69,8 @@ export default function ShopPage() {
               </div>
             </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {featuredProducts.map((product, index) => (
-                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
-                  <ProductCard product={product} />
-                </ScrollAnimation>
+              {featuredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
@@ -94,10 +93,8 @@ export default function ShopPage() {
             </div>
             </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {bestSellers.map((product, index) => (
-                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
-                  <ProductCard product={product} />
-                </ScrollAnimation>
+              {bestSellers.map((product) => (
+                  <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
@@ -120,10 +117,8 @@ export default function ShopPage() {
             </div>
             </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {onSaleProducts.map((product, index) => (
-                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
-                  <ProductCard product={product} />
-                </ScrollAnimation>
+              {onSaleProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
