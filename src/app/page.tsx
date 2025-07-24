@@ -40,7 +40,7 @@ export default function ShopPage() {
                 </div>
               </div>
               <Image
-                src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjbG90aGluZyUyMGJyYW5kfGVufDB8fHx8MTc1MzM1OTYxNnww&ixlib=rb-4.1.0&q=80&w=1080"
+                src="https://images.pexels.com/photos/26297709/pexels-photo-26297709.jpeg"
                 data-ai-hint="fashion clothing family"
                 alt="Hero"
                 width={600}
