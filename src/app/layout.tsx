@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
+import { CartProvider } from '@/contexts/CartContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,7 +34,9 @@ export default function RootLayout({
           spaceGrotesk.variable
         )}
       >
-        {children}
+        <CartProvider>
+            {children}
+        </CartProvider>
         <Toaster />
       </body>
     </html>

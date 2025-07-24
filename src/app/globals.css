@@ -4,23 +4,25 @@
 
 @layer base {
   :root {
---background: 0.0 0.0% 100.0%;
-    --foreground: 0.0 0.0% 0.0%;
-    --card: 0.0 0.0% 100.0%;
-    --card-foreground: 0.0 0.0% 0.0%;
-    --popover: 0.0 0.0% 100.0%;
-    --popover-foreground: 0.0 0.0% 0.0%;
-    --primary: 240.0 100.0% 25.1%;
-    --primary-foreground: 0.0 0.0% 100.0%;
-    --secondary: 0.0 0.0% 94.5%;
-    --secondary-foreground: 0.0 0.0% 10.0%;
-    --muted: 0.0 0.0% 94.5%;
-    --muted-foreground: 0.0 0.0% 45.5%;
-    --accent: 0.0 0.0% 87.8%;
-    --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 0.0 0.0% 89.8%;
-    --input: 0.0 0.0% 89.8%;
-    --ring: 240.0 100.0% 25.1%;
+--background: 0.0 0.0% 7.1%;
+    --foreground: 0.0 0.0% 100.0%;
+    --card: 0.0 0.0% 5.1%;
+    --card-foreground: 0.0 0.0% 100.0%;
+    --popover: 0.0 0.0% 5.1%;
+    --popover-foreground: 0.0 0.0% 100.0%;
+    --primary: 45.9 64.6% 52.4%;
+    --primary-foreground: 0.0 0.0% 0.0%;
+    --secondary: 0.0 0.0% 13.3%;
+    --secondary-foreground: 0.0 0.0% 98.0%;
+    --muted: 0.0 0.0% 13.3%;
+    --muted-foreground: 0.0 0.0% 62.7%;
+    --accent: 0.0 0.0% 29.0%;
+    --accent-foreground: 0.0 0.0% 100.0%;
+    --border: 0.0 0.0% 19.4%;
+    --input: 0.0 0.0% 19.4%;
+    --ring: 45.9 64.6% 52.4%;
+
+
 
 
 
@@ -43,23 +45,25 @@
   }
  
   .dark {
---background: 0.0 0.0% 100.0%;
-    --foreground: 0.0 0.0% 0.0%;
-    --card: 0.0 0.0% 100.0%;
-    --card-foreground: 0.0 0.0% 0.0%;
-    --popover: 0.0 0.0% 100.0%;
-    --popover-foreground: 0.0 0.0% 0.0%;
-    --primary: 240.0 100.0% 25.1%;
-    --primary-foreground: 0.0 0.0% 100.0%;
-    --secondary: 0.0 0.0% 94.5%;
-    --secondary-foreground: 0.0 0.0% 10.0%;
-    --muted: 0.0 0.0% 94.5%;
-    --muted-foreground: 0.0 0.0% 45.5%;
-    --accent: 0.0 0.0% 87.8%;
-    --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 0.0 0.0% 89.8%;
-    --input: 0.0 0.0% 89.8%;
-    --ring: 240.0 100.0% 25.1%;
+--background: 0.0 0.0% 7.1%;
+    --foreground: 0.0 0.0% 100.0%;
+    --card: 0.0 0.0% 5.1%;
+    --card-foreground: 0.0 0.0% 100.0%;
+    --popover: 0.0 0.0% 5.1%;
+    --popover-foreground: 0.0 0.0% 100.0%;
+    --primary: 45.9 64.6% 52.4%;
+    --primary-foreground: 0.0 0.0% 0.0%;
+    --secondary: 0.0 0.0% 13.3%;
+    --secondary-foreground: 0.0 0.0% 98.0%;
+    --muted: 0.0 0.0% 13.3%;
+    --muted-foreground: 0.0 0.0% 62.7%;
+    --accent: 0.0 0.0% 29.0%;
+    --accent-foreground: 0.0 0.0% 100.0%;
+    --border: 0.0 0.0% 19.4%;
+    --input: 0.0 0.0% 19.4%;
+    --ring: 45.9 64.6% 52.4%;
+
+
 
 
 

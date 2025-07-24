@@ -1,3 +1,5 @@
+
+'use client';
 import { mockProducts } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -7,8 +9,10 @@ import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { CategoryNav } from '@/components/customer/CategoryNav';
+import { useCart } from '@/contexts/CartContext';
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
+  const { addToCart } = useCart();
   const product = mockProducts.find(p => p.id === params.id);
 
   if (!product) {
@@ -17,6 +21,10 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   
   const getProductHint = (product: {category: string, name: string}) => {
     return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
+  }
+
+  const handleAddToCart = () => {
+    addToCart(product);
   }
 
   return (
@@ -60,7 +68,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               </Badge>
             </div>
             <div className="flex gap-4">
-              <Button size="lg" disabled={product.stock === 0}>
+              <Button size="lg" disabled={product.stock === 0} onClick={handleAddToCart}>
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Add to Cart
               </Button>

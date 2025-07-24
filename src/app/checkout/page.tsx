@@ -1,3 +1,5 @@
+
+'use client';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -5,12 +7,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { CategoryNav } from '@/components/customer/CategoryNav';
+import { useCart } from '@/contexts/CartContext';
 
-const subtotal = 11998;
-const shipping = 100;
-const total = subtotal + shipping;
 
 export default function CheckoutPage() {
+  const { subtotal } = useCart();
+  const shipping = subtotal > 0 ? 100 : 0;
+  const total = subtotal + shipping;
+  
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />

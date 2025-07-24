@@ -1,3 +1,5 @@
+
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
@@ -5,11 +7,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
 
 export function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCart();
   const getProductHint = (product: Product) => {
     return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
   }
+  
+  const handleAddToCart = () => {
+    addToCart(product);
+  }
+
   return (
     <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
       <CardHeader className="p-0 border-b">
@@ -40,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
                 <p className="text-sm text-muted-foreground line-through">₹{product.originalPrice.toFixed(2)}</p>
             )}
         </div>
-        <Button size="sm" disabled={product.stock === 0} className="w-full sm:w-auto">
+        <Button size="sm" disabled={product.stock === 0} onClick={handleAddToCart} className="w-full sm:w-auto">
           <ShoppingCart className="mr-2 h-4 w-4" />
           {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
         </Button>

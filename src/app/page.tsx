@@ -1,4 +1,6 @@
 
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
@@ -17,7 +19,7 @@ export default function ShopPage() {
 
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <CustomerHeader cartItemCount={3} />
+      <CustomerHeader />
       <CategoryNav />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">

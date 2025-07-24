@@ -1,10 +1,14 @@
+
+'use client';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/common/Logo';
 import { Badge } from '../ui/badge';
+import { useCart } from '@/contexts/CartContext';
 
-export function CustomerHeader({ cartItemCount = 0 }: { cartItemCount?: number }) {
+export function CustomerHeader() {
+  const { cartItemCount } = useCart();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
