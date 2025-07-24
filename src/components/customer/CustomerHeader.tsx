@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { Search, ShoppingCart } from 'lucide-react';
+import { Menu, Search, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/common/Logo';
 import { Badge } from '../ui/badge';
@@ -9,10 +9,12 @@ import { useCart } from '@/contexts/CartContext';
 import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
+import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 
 export function CustomerHeader() {
   const { cartItemCount } = useCart();
   const router = useRouter();
+  const [open, setOpen] = React.useState(false);
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,23 +25,30 @@ export function CustomerHeader() {
     } else {
       router.push('/');
     }
+    setOpen(false); // Close sheet on search
   };
 
+
+  const navLinks = (
+    <>
+        <Link href="/" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
+            Products
+        </Link>
+        <Link href="/about" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
+            About
+        </Link>
+        <Link href="/contact" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
+            Contact Us
+        </Link>
+    </>
+  )
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <Logo />
         <nav className="ml-10 hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link href="/" className="text-foreground/80 transition-colors hover:text-foreground">
-            Products
-          </Link>
-          <Link href="/about" className="text-foreground/80 transition-colors hover:text-foreground">
-            About
-          </Link>
-          <Link href="/contact" className="text-foreground/80 transition-colors hover:text-foreground">
-            Contact Us
-          </Link>
+          {navLinks}
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2 md:space-x-4">
           <form onSubmit={handleSearch} className="relative hidden sm:block">
@@ -60,19 +69,40 @@ export function CustomerHeader() {
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
-          <Button asChild>
-            <Link href="/login">Sign In</Link>
-          </Button>
+          <div className="hidden md:block">
+            <Button asChild>
+                <Link href="/login">Sign In</Link>
+            </Button>
+          </div>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="shrink-0 md:hidden"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+                <div className="flex flex-col gap-6 text-lg font-medium">
+                     <Logo />
+                     <form onSubmit={handleSearch} className="relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input name="search" placeholder="Search products..." className="pl-10 h-9 w-full" />
+                    </form>
+                    <nav className="grid gap-4">
+                        {navLinks}
+                    </nav>
+                     <Button asChild onClick={() => setOpen(false)}>
+                        <Link href="/login">Sign In</Link>
+                    </Button>
+                </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-       <div className="sm:hidden border-t bg-background">
-          <div className="p-2">
-            <form onSubmit={handleSearch} className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input name="search" placeholder="Search products..." className="pl-10 h-9 w-full" />
-            </form>
-          </div>
-        </div>
     </header>
   );
 }
