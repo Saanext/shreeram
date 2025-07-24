@@ -19,8 +19,10 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Pearl & Rose Gold', primary: '#b76e79', accent: '#d9a0a7', background: '#fdf6f0' },
-    { name: 'Mint & Coral', primary: '#ff6b6b', accent: '#76d7c4', background: '#f0fff4' },
+    { name: 'Rose Quartz', primary: '#B76E79', accent: '#808080', background: '#FFFFFF' },
+    { name: 'Gold Standard', primary: '#D4AF37', accent: '#36454F', background: '#FFFFFF' },
+    { name: 'Serene Blue', primary: '#4682B4', accent: '#C0C0C0', background: '#FFFFFF' },
+    { name: 'Classic Navy', primary: '#000080', accent: '#E0E0E0', background: '#FFFFFF' },
 ];
 
 export default function AdminSettingsPage() {
