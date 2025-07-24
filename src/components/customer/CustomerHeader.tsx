@@ -57,14 +57,9 @@ export function CustomerHeader() {
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
-          <Button asChild variant="outline">
-            <Link href="/login">Customer Login</Link>
+          <Button asChild>
+            <Link href="/login">Sign In</Link>
           </Button>
-          <div className='hidden sm:block'>
-            <Button asChild>
-              <Link href="/vendor/login">Vendor Portal</Link>
-            </Button>
-          </div>
         </div>
       </div>
        <div className="sm:hidden border-t bg-background">
