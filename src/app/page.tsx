@@ -6,6 +6,7 @@ import { mockProducts } from '@/lib/data';
 import { ArrowRight, Flame, Tag, Star } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
+import { ScrollAnimation } from '@/components/common/ScrollAnimation';
 
 export default function ShopPage() {
   const featuredProducts = mockProducts.slice(0, 4);
@@ -20,6 +21,7 @@ export default function ShopPage() {
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
           <div className="container px-4 md:px-6">
+            <ScrollAnimation>
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -48,23 +50,28 @@ export default function ShopPage() {
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
               />
             </div>
+            </ScrollAnimation>
           </div>
         </section>
 
         <section id="products" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">New Arrivals</div>
-                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Featured Products
-                </h2>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                    Check out our latest collection of products. Fresh styles, updated daily.
-                </p>
-            </div>
+            <ScrollAnimation>
+              <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                  <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">New Arrivals</div>
+                  <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  Featured Products
+                  </h2>
+                  <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                      Check out our latest collection of products. Fresh styles, updated daily.
+                  </p>
+              </div>
+            </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {featuredProducts.map((product, index) => (
+                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
+                  <ProductCard product={product} />
+                </ScrollAnimation>
               ))}
             </div>
           </div>
@@ -72,6 +79,7 @@ export default function ShopPage() {
 
         <section id="best-sellers" className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
           <div className="container px-4 md:px-6">
+            <ScrollAnimation>
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="inline-block rounded-lg bg-primary/10 text-primary px-3 py-1 text-sm font-medium flex items-center gap-2">
                     <Star className="h-4 w-4" />
@@ -84,9 +92,12 @@ export default function ShopPage() {
                     Discover our most popular products, loved by customers like you.
                 </p>
             </div>
+            </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {bestSellers.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {bestSellers.map((product, index) => (
+                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
+                  <ProductCard product={product} />
+                </ScrollAnimation>
               ))}
             </div>
           </div>
@@ -94,6 +105,7 @@ export default function ShopPage() {
 
         <section id="on-sale" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
+            <ScrollAnimation>
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                 <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">
                     <Tag className="h-4 w-4" />
@@ -106,9 +118,12 @@ export default function ShopPage() {
                     Don't miss out on these special deals. Grab them before they're gone!
                 </p>
             </div>
+            </ScrollAnimation>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-              {onSaleProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {onSaleProducts.map((product, index) => (
+                <ScrollAnimation key={product.id} style={{ animationDelay: `${index * 100}ms`}}>
+                  <ProductCard product={product} />
+                </ScrollAnimation>
               ))}
             </div>
           </div>
