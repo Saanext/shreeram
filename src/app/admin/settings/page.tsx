@@ -19,12 +19,12 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Rose Quartz', primary: '#B76E79', accent: '#808080', background: '#FFFFFF' },
-    { name: 'Gold Standard', primary: '#D4AF37', accent: '#36454F', background: '#FFFFFF' },
+    { name: 'Default Indigo', primary: '#3F51B5', accent: '#9575CD', background: '#F0F2F5' },
     { name: 'Serene Blue', primary: '#4682B4', accent: '#C0C0C0', background: '#FFFFFF' },
     { name: 'Classic Navy', primary: '#000080', accent: '#E0E0E0', background: '#FFFFFF' },
     { name: 'Midnight Onyx', primary: '#D4AF37', accent: '#4A4A4A', background: '#121212' },
     { name: 'Royal Sapphire', primary: '#C0C0C0', accent: '#64FFDA', background: '#0A192F' },
+    { name: 'Rose Quartz', primary: '#B76E79', accent: '#808080', background: '#FFFFFF' },
 ];
 
 export default function AdminSettingsPage() {
@@ -100,8 +100,8 @@ export default function AdminSettingsPage() {
                 <CardContent className="space-y-8">
                     <div>
                         <Label className="font-medium">Color Palettes</Label>
-                        <p className="text-sm text-muted-foreground mb-4">Select from a predefined set of luxury palettes.</p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                        <p className="text-sm text-muted-foreground mb-4">Select from a predefined set of palettes.</p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                             {colorPalettes.map((palette) => (
                                 <button
                                     key={palette.name}
