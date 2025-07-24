@@ -22,13 +22,14 @@ const colorPalettes = [
     { name: 'Default', primary: '#6366f1', accent: '#818cf8', background: '#f8fafc' }, // Indigo
     { name: 'Stone', primary: '#78716c', accent: '#a8a29e', background: '#fafaf9' }, // Stone
     { name: 'Forest', primary: '#16a34a', accent: '#4ade80', background: '#f0fdf4' }, // Green
+    { name: 'Luxury', primary: '#c09a69', accent: '#e0c189', background: '#111111' }, // Gold/Dark
 ];
 
 export default function AdminSettingsPage() {
     const { toast } = useToast();
-    const [primaryColor, setPrimaryColor] = React.useState('#6366f1');
-    const [accentColor, setAccentColor] = React.useState('#818cf8');
-    const [backgroundColor, setBackgroundColor] = React.useState('#f8fafc');
+    const [primaryColor, setPrimaryColor] = React.useState('#c09a69');
+    const [accentColor, setAccentColor] = React.useState('#e0c189');
+    const [backgroundColor, setBackgroundColor] = React.useState('#111111');
     const [isSaving, setIsSaving] = React.useState(false);
 
     const handleThemeApply = async () => {
@@ -102,7 +103,7 @@ export default function AdminSettingsPage() {
                     <div>
                         <Label className="font-medium">Color Palettes</Label>
                         <p className="text-sm text-muted-foreground mb-4">Select a predefined palette or choose your own colors below.</p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {colorPalettes.map((palette) => (
                                 <button
                                     key={palette.name}
