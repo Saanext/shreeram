@@ -1,3 +1,6 @@
+
+'use client';
+
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,22 +11,27 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { ShoppingCart, Trash2 } from 'lucide-react';
 import { CategoryNav } from '@/components/customer/CategoryNav';
+import * as React from 'react';
 
-const cartItems = [
+const initialCartItems = [
   { ...mockProducts[0], quantity: 1 },
   { ...mockProducts[2], quantity: 2 },
 ];
 // To test empty state, use this:
 // const cartItems: (typeof mockProducts[0] & { quantity: number })[] = []; 
 
-const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-const shipping = cartItems.length > 0 ? 100.00 : 0;
-const total = subtotal + shipping;
 
 export default function CartPage() {
+  const [cartItems, setCartItems] = React.useState(initialCartItems);
+  
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const shipping = cartItems.length > 0 ? 100.00 : 0;
+  const total = subtotal + shipping;
+
+
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <CustomerHeader cartItemCount={cartItems.length} />
+      <CustomerHeader cartItemCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} />
       <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <h1 className="font-headline text-3xl md:text-4xl font-bold mb-8">Your Cart</h1>
@@ -45,7 +53,7 @@ export default function CartPage() {
                     <p className="text-sm text-muted-foreground">₹{item.price.toFixed(2)}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Input type="number" value={item.quantity} className="w-16 text-center" />
+                    <Input type="number" defaultValue={item.quantity} className="w-16 text-center" />
                   </div>
                   <p className="font-semibold w-24 text-right">₹{(item.price * item.quantity).toFixed(2)}</p>
                   <Button variant="ghost" size="icon">
