@@ -8,9 +8,13 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import * as React from 'react';
+import { cn } from '@/lib/utils';
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
   const getProductHint = (product: Product) => {
     return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
   }
@@ -18,6 +22,14 @@ export function ProductCard({ product }: { product: Product }) {
   const handleAddToCart = () => {
     addToCart(product);
   }
+  
+  const toggleDescription = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsExpanded(!isExpanded);
+  };
+
+  const isLongDescription = product.description.length > 100;
+
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
@@ -40,7 +52,14 @@ export function ProductCard({ product }: { product: Product }) {
             {product.name}
           </CardTitle>
         </Link>
-        <p className="text-muted-foreground text-sm mt-1 h-10 overflow-hidden">{product.description}</p>
+        <p className={cn("text-muted-foreground text-sm mt-1", !isExpanded && "h-10 overflow-hidden")}>
+          {product.description}
+          {isLongDescription && (
+            <button onClick={toggleDescription} className="text-primary hover:underline ml-1 font-medium">
+              {isExpanded ? 'Read Less' : 'Read More'}
+            </button>
+          )}
+        </p>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex flex-wrap justify-between items-center gap-2">
         <div className="flex items-baseline gap-2">
