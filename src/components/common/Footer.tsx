@@ -2,13 +2,24 @@
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { Facebook, Twitter, Instagram } from 'lucide-react';
+import { Separator } from '../ui/separator';
 
 export function Footer() {
   return (
-    <footer className="bg-muted/40 text-muted-foreground">
-       <div className="container py-8 text-center text-sm">
-        <p>This is an additional text section above the footer. You can use it for promotions, important announcements, or anything else.</p>
+    <footer className="bg-muted/40 text-muted-foreground border-t">
+       <div className="container py-8 text-sm">
+         <div className="grid md:grid-cols-2 gap-8 text-center md:text-left">
+            <div>
+              <h4 className="font-bold text-lg text-foreground mb-2">Exclusive Offers</h4>
+              <p>Sign up for our newsletter and get exclusive deals and discounts sent directly to your inbox. Don't miss out!</p>
+            </div>
+             <div>
+              <h4 className="font-bold text-lg text-foreground mb-2">Free Shipping</h4>
+              <p>We offer free shipping on all orders over ₹2000. Shop now and save on delivery costs for your favorite items.</p>
+            </div>
+         </div>
       </div>
+      <Separator />
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4 md:col-span-1">
