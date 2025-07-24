@@ -21,8 +21,8 @@ export function Footer() {
       </div>
       <Separator />
       <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="space-y-4 col-span-2 md:col-span-1">
             <Logo />
             <p className="text-sm">
                 A multi-faceted e-commerce platform for admins, vendors, and customers.
