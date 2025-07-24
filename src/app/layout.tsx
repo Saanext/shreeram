@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { CartProvider } from '@/contexts/CartContext';
+import { Footer } from '@/components/common/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,14 +30,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background font-body antialiased',
+          'min-h-screen bg-background font-body antialiased flex flex-col',
           inter.variable,
           spaceGrotesk.variable
         )}
       >
         <CartProvider>
-            {children}
+            <div className="flex-grow">
+              {children}
+            </div>
         </CartProvider>
+        <Footer />
         <Toaster />
       </body>
     </html>
