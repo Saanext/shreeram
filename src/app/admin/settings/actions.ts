@@ -49,19 +49,23 @@ const generateTheme = (primaryHex: string, accentHex: string, backgroundHex: str
 
     // Determine if the background is light or dark
     const isLight = bgL > 50;
+
+    // Dynamically set foreground and card foreground colors
+    const foregroundHsl: [number, number, number] = [bgH, bgS, isLight ? 10 : 98];
+    const cardHsl: [number, number, number] = [bgH, bgS, isLight ? Math.min(100, bgL + 2) : Math.max(0, bgL - 2)];
     
     // Light Theme Derivations
     const lightTheme = {
         '--background': hslToString(backgroundHsl),
-        '--foreground': hslToString([bgH, bgS, 10]),
-        '--card': hslToString([bgH, bgS, isLight ? Math.min(100, bgL + 2) : Math.max(0, bgL - 2) ]),
-        '--card-foreground': hslToString([bgH, bgS, 10]),
-        '--popover': hslToString([bgH, bgS, isLight ? Math.min(100, bgL + 2) : Math.max(0, bgL - 2) ]),
-        '--popover-foreground': hslToString([bgH, bgS, 10]),
+        '--foreground': hslToString(foregroundHsl),
+        '--card': hslToString(cardHsl),
+        '--card-foreground': hslToString(foregroundHsl),
+        '--popover': hslToString(cardHsl),
+        '--popover-foreground': hslToString(foregroundHsl),
         '--primary': hslToString(primaryHsl),
         '--primary-foreground': hslToString([primaryHsl[0], primaryHsl[1], primaryHsl[2] > 40 ? 10 : 98]),
         '--secondary': hslToString([bgH, bgS, isLight ? 94.5 : 13.3]),
-        '--secondary-foreground': hslToString([bgH, bgS, 10]),
+        '--secondary-foreground': hslToString([bgH, bgS, isLight ? 10 : 98]),
         '--muted': hslToString([bgH, bgS, isLight ? 94.5 : 13.3]),
         '--muted-foreground': hslToString([bgH, bgS, 45.5]),
         '--accent': hslToString(accentHsl),
@@ -74,15 +78,15 @@ const generateTheme = (primaryHex: string, accentHex: string, backgroundHex: str
     // Dark Theme Derivations
     const darkTheme = {
         '--background': hslToString([bgH, bgS, isLight ? 9.8 : Math.max(0, bgL - 2)]),
-        '--foreground': hslToString([bgH, bgS, 98]),
+        '--foreground': hslToString(foregroundHsl),
         '--card': hslToString([bgH, bgS, isLight ? 9.8 : Math.max(0, bgL - 2)]),
-        '--card-foreground': hslToString([bgH, bgS, 98]),
+        '--card-foreground': hslToString(foregroundHsl),
         '--popover': hslToString([bgH, bgS, isLight ? 9.8 : Math.max(0, bgL - 2)]),
-        '--popover-foreground': hslToString([bgH, bgS, 98]),
+        '--popover-foreground': hslToString(foregroundHsl),
         '--primary': hslToString([primaryHsl[0], primaryHsl[1], primaryHsl[2] + (isLight ? 0 : 10)]),
         '--primary-foreground': hslToString([primaryHsl[0], primaryHsl[1], primaryHsl[2] > 40 ? 10 : 98]),
         '--secondary': hslToString([bgH, bgS, isLight ? 17.5 : Math.max(0, bgL - 8)]),
-        '--secondary-foreground': hslToString([bgH, bgS, 98]),
+        '--secondary-foreground': hslToString([bgH, bgS, isLight ? 10 : 98]),
         '--muted': hslToString([bgH, bgS, isLight ? 17.5 : Math.max(0, bgL - 8)]),
         '--muted-foreground': hslToString([bgH, bgS, 62.7]),
         '--accent': hslToString([accentHsl[0], accentHsl[1], accentHsl[2] + (isLight ? 0 : 10)]),
@@ -108,9 +112,8 @@ export async function updateTheme(primaryColor: string, accentColor: string, bac
         lightThemeContent += `    ${prop}: ${value};\n`;
     }
     cssContent = cssContent.replace(
-        /(?<=:root\s*\{)[\s\S]*?(?=\n\s*--chart-1)/,
-        `\n${lightThemeContent.trim()}\n 
-    --radius: 0.5rem;\n`
+        /(?<=:root\s*\{)[\s\S]*?(?=\n\s*--radius)/,
+        `\n${lightThemeContent.trim()}\n`
     );
 
     // Update dark theme variables
