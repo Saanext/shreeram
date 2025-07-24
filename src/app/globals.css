@@ -4,23 +4,26 @@
 
 @layer base {
   :root {
---background: 136.0 100.0% 97.1%;
+--background: 0.0 0.0% 100.0%;
     --foreground: 0.0 0.0% 0.0%;
-    --card: 136.0 100.0% 99.1%;
+    --card: 0.0 0.0% 100.0%;
     --card-foreground: 0.0 0.0% 0.0%;
-    --popover: 136.0 100.0% 99.1%;
+    --popover: 0.0 0.0% 100.0%;
     --popover-foreground: 0.0 0.0% 0.0%;
-    --primary: 0.0 100.0% 71.0%;
-    --primary-foreground: 0.0 0.0% 0.0%;
-    --secondary: 136.0 100.0% 94.5%;
-    --secondary-foreground: 136.0 100.0% 10.0%;
-    --muted: 136.0 100.0% 94.5%;
-    --muted-foreground: 136.0 100.0% 45.5%;
-    --accent: 168.2 54.8% 65.3%;
+    --primary: 240.0 100.0% 25.1%;
+    --primary-foreground: 0.0 0.0% 100.0%;
+    --secondary: 0.0 0.0% 94.5%;
+    --secondary-foreground: 0.0 0.0% 10.0%;
+    --muted: 0.0 0.0% 94.5%;
+    --muted-foreground: 0.0 0.0% 45.5%;
+    --accent: 0.0 0.0% 87.8%;
     --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 136.0 100.0% 89.8%;
-    --input: 136.0 100.0% 89.8%;
-    --ring: 0.0 100.0% 71.0%;
+    --border: 0.0 0.0% 89.8%;
+    --input: 0.0 0.0% 89.8%;
+    --ring: 240.0 100.0% 25.1%;
+
+
+
 
 
 
@@ -40,23 +43,26 @@
   }
  
   .dark {
---background: 136.0 100.0% 97.1%;
+--background: 0.0 0.0% 100.0%;
     --foreground: 0.0 0.0% 0.0%;
-    --card: 136.0 100.0% 99.1%;
+    --card: 0.0 0.0% 100.0%;
     --card-foreground: 0.0 0.0% 0.0%;
-    --popover: 136.0 100.0% 99.1%;
+    --popover: 0.0 0.0% 100.0%;
     --popover-foreground: 0.0 0.0% 0.0%;
-    --primary: 0.0 100.0% 71.0%;
-    --primary-foreground: 0.0 0.0% 0.0%;
-    --secondary: 136.0 100.0% 94.5%;
-    --secondary-foreground: 136.0 100.0% 10.0%;
-    --muted: 136.0 100.0% 94.5%;
-    --muted-foreground: 136.0 100.0% 45.5%;
-    --accent: 168.2 54.8% 65.3%;
+    --primary: 240.0 100.0% 25.1%;
+    --primary-foreground: 0.0 0.0% 100.0%;
+    --secondary: 0.0 0.0% 94.5%;
+    --secondary-foreground: 0.0 0.0% 10.0%;
+    --muted: 0.0 0.0% 94.5%;
+    --muted-foreground: 0.0 0.0% 45.5%;
+    --accent: 0.0 0.0% 87.8%;
     --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 136.0 100.0% 89.8%;
-    --input: 136.0 100.0% 89.8%;
-    --ring: 0.0 100.0% 71.0%;
+    --border: 0.0 0.0% 89.8%;
+    --input: 0.0 0.0% 89.8%;
+    --ring: 240.0 100.0% 25.1%;
+
+
+
 
 
 

@@ -23,6 +23,8 @@ const colorPalettes = [
     { name: 'Gold Standard', primary: '#D4AF37', accent: '#36454F', background: '#FFFFFF' },
     { name: 'Serene Blue', primary: '#4682B4', accent: '#C0C0C0', background: '#FFFFFF' },
     { name: 'Classic Navy', primary: '#000080', accent: '#E0E0E0', background: '#FFFFFF' },
+    { name: 'Midnight Onyx', primary: '#D4AF37', accent: '#4A4A4A', background: '#121212' },
+    { name: 'Royal Sapphire', primary: '#C0C0C0', accent: '#64FFDA', background: '#0A192F' },
 ];
 
 export default function AdminSettingsPage() {
