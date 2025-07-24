@@ -19,8 +19,6 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Onyx & Gold', primary: '#d4af37', accent: '#e6c75e', background: '#1a1a1a' },
-    { name: 'Sapphire & Silver', primary: '#4a90e2', accent: '#a4b0be', background: '#0f172a' },
     { name: 'Pearl & Rose Gold', primary: '#b76e79', accent: '#d9a0a7', background: '#fdf6f0' },
     { name: 'Mint & Coral', primary: '#ff6b6b', accent: '#76d7c4', background: '#f0fff4' },
 ];
