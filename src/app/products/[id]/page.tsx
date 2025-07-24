@@ -11,8 +11,7 @@ import { Star } from 'lucide-react';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 import { useCart } from '@/contexts/CartContext';
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const product = mockProducts.find(p => p.id === id);
 
