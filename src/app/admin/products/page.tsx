@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardContent,
@@ -22,6 +23,7 @@ import { Button } from "@/components/ui/button"
 import { mockProducts } from "@/lib/data"
 import Image from "next/image"
 import { MoreHorizontal, PlusCircle, CheckCircle2, Star, Tag } from "lucide-react"
+import { AddProductDialog } from "@/components/common/AddProductDialog"
 
 export default function AdminProductsPage() {
     return (
@@ -31,10 +33,7 @@ export default function AdminProductsPage() {
                     <h1 className="text-2xl font-headline font-bold">Products</h1>
                     <p className="text-muted-foreground">Manage all products across the platform.</p>
                 </div>
-                 <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Add Product
-                </Button>
+                 <AddProductDialog />
             </div>
             <Card>
                 <CardContent className="pt-6">

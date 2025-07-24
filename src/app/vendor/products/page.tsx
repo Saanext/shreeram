@@ -1,3 +1,4 @@
+
 import {
   Card,
   CardContent,
@@ -22,6 +23,7 @@ import { Button } from "@/components/ui/button"
 import { mockProducts } from "@/lib/data"
 import Image from "next/image"
 import { MoreHorizontal, PlusCircle } from "lucide-react"
+import { AddProductDialog } from "@/components/common/AddProductDialog"
 
 export default function VendorProductsPage() {
     const vendorId = 'usr_002'; // Mocking logged in vendor
@@ -34,10 +36,7 @@ export default function VendorProductsPage() {
                     <h1 className="text-2xl font-headline font-bold">My Products</h1>
                     <p className="text-muted-foreground">Manage your product listings.</p>
                 </div>
-                 <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Add Product
-                </Button>
+                 <AddProductDialog />
             </div>
             <Card>
                 <CardContent className="pt-6">
