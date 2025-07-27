@@ -19,15 +19,16 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Modern Minimalist', background: '#FFFFFF', primary: '#333333', accent: '#007BFF' },
-    { name: 'Earthy & Natural', background: '#F7F7F7', primary: '#9DC183', accent: '#6B4F3F' },
-    { name: 'Luxury Noir', background: '#000000', primary: '#FFD700', accent: '#1C1C1C' },
-    { name: 'Bright & Playful', background: '#FFFFFF', primary: '#FF5722', accent: '#FFEB3B' },
-    { name: 'Mocha Mousse', background: '#F7E8D3', primary: '#A0755B', accent: '#B17A50' },
-    { name: 'Ocean Breeze', background: '#FAEBD7', primary: '#008080', accent: '#87CEEB' },
-    { name: 'Vibrant Heat', background: '#FFFFFF', primary: '#BF1922', accent: '#FFC93C' },
-    { name: 'Trust & Growth', background: '#FFFFFF', primary: '#137DC5', accent: '#68D388' },
+    { name: 'Modern Minimalist', primary: '#FFFFFF', secondary: '#333333', accent: '#007BFF' },
+    { name: 'Earthy & Natural', primary: '#F7F7F7', secondary: '#9DC183', accent: '#6B4F3F' },
+    { name: 'Luxury Noir', primary: '#000000', secondary: '#FFD700', accent: '#1C1C1C' },
+    { name: 'Bright & Playful', primary: '#FFEB3B', secondary: '#00BCD4', accent: '#FF5722' },
+    { name: 'Mocha Mousse', primary: '#A0755B', secondary: '#F7E8D3', accent: '#B17A50' },
+    { name: 'Ocean Breeze', primary: '#008080', secondary: '#FAEBD7', accent: '#87CEEB' },
+    { name: 'Vibrant Heat', primary: '#BF1922', secondary: '#FFC93C', accent: '#FACF39' },
+    { name: 'Trust & Growth', primary: '#137DC5', secondary: '#68D388', accent: '#112D4E' },
 ];
+
 
 export default function AdminSettingsPage() {
     const { toast } = useToast();
@@ -37,14 +38,12 @@ export default function AdminSettingsPage() {
     const handleThemeApply = async () => {
         setIsSaving(true);
         try {
-            // Pass background as the primary color for the 60-30-10 rule
-            const result = await updateTheme(selectedPalette.primary, selectedPalette.accent, selectedPalette.background);
+            const result = await updateTheme(selectedPalette.secondary, selectedPalette.accent, selectedPalette.primary);
             if (result.success) {
                 toast({
                     title: 'Theme Updated',
                     description: 'Your new color palette has been applied. Refresh to see changes.',
                 });
-                // Note: a full page reload is needed to see CSS variable changes
                 setTimeout(() => window.location.reload(), 2000);
             } else {
                 toast({
@@ -64,7 +63,7 @@ export default function AdminSettingsPage() {
         }
     };
     
-    const handlePaletteSelect = (palette: { name: string, primary: string, accent: string, background: string }) => {
+    const handlePaletteSelect = (palette: { name: string, primary: string, secondary: string, accent: string }) => {
         setSelectedPalette(palette);
     };
 
@@ -83,11 +82,11 @@ export default function AdminSettingsPage() {
                     <form className="space-y-4 max-w-lg">
                         <div className="space-y-2">
                             <Label htmlFor="site-name">Site Name</Label>
-                            <Input id="site-name" defaultValue="Shree Ram Enterprise" />
+                            <Input id="site-name" defaultValue="SRE Clothing" />
                         </div>
                          <div className="space-y-2">
                             <Label htmlFor="contact-email">Contact Email</Label>
-                            <Input id="contact-email" type="email" defaultValue="support@shreeramenterprise.com" />
+                            <Input id="contact-email" type="email" defaultValue="support@sreclothing.com" />
                         </div>
                     </form>
                 </CardContent>
@@ -116,8 +115,8 @@ export default function AdminSettingsPage() {
                                             : 'border-transparent hover:border-muted-foreground/50'
                                     )}
                                 >
-                                    <div className="flex h-16 w-full items-center justify-center gap-1 rounded-md overflow-hidden relative" style={{backgroundColor: palette.background}}>
-                                        <div className="h-full w-2/3 rounded-sm" style={{ backgroundColor: palette.primary }} />
+                                    <div className="flex h-16 w-full items-center justify-center gap-1 rounded-md overflow-hidden relative" style={{backgroundColor: palette.primary}}>
+                                        <div className="h-full w-2/3 rounded-sm" style={{ backgroundColor: palette.secondary }} />
                                         <div className="h-full w-1/3 rounded-sm" style={{ backgroundColor: palette.accent }} />
                                          {selectedPalette.name === palette.name && (
                                             <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">

@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Shree Ram Enterprise - A Modern E-Commerce Platform',
+  title: 'SRE Clothing - A Modern E-Commerce Platform',
   description: 'A role-based e-commerce platform for Admins, Vendors, and Customers.',
 };
 

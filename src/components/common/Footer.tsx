@@ -55,7 +55,7 @@ export function Footer() {
       </div>
       <div className="bg-muted/60 py-4">
         <div className="container flex flex-col sm:flex-row justify-between items-center text-sm">
-          <p className="text-xs">&copy; 2024 Shree Ram Enterprise. All rights reserved.</p>
+          <p className="text-xs">&copy; 2024 SRE Clothing. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6 mt-2 sm:mt-0">
             <Link href="/vendor/login" className="text-xs hover:underline underline-offset-4">
               Vendor Portal
