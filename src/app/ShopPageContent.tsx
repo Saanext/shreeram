@@ -12,6 +12,14 @@ import { CategoryNav } from '@/components/customer/CategoryNav';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
 import { useSearchParams } from 'next/navigation';
 import * as React from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel"
+
 
 export function ShopPageContent() {
   const searchParams = useSearchParams();
@@ -136,11 +144,25 @@ export function ShopPageContent() {
                     </p>
                 </div>
                 </ScrollAnimation>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                  {bestSellers.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
+                 <Carousel
+                    opts={{
+                      align: "start",
+                      loop: true,
+                    }}
+                    className="w-full"
+                  >
+                    <CarouselContent>
+                      {bestSellers.map((product) => (
+                        <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                           <div className="p-1 h-full">
+                            <ProductCard product={product} />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
               </div>
             </section>
 
