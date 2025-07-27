@@ -20,6 +20,7 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import { AnimatedDivider } from '@/components/common/AnimatedDivider';
 
 
 export function ShopPageContent() {
@@ -132,7 +133,9 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <section id="products" className="w-full py-12 md:py-24 lg:py-32">
+            <AnimatedDivider />
+
+            <section id="products" className="w-full pb-12 md:pb-24 lg:pb-32">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                   <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -153,7 +156,9 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <section id="best-sellers" className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
+            <AnimatedDivider />
+
+            <section id="best-sellers" className="w-full pb-12 md:pb-24 lg:pb-32 bg-muted/20">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -191,7 +196,9 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <section id="on-sale" className="w-full py-12 md:py-24 lg:py-32">
+             <AnimatedDivider />
+
+            <section id="on-sale" className="w-full pb-12 md:pb-24 lg:pb-32">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
