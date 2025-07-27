@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -36,7 +37,7 @@ export function WhatsAppButton() {
             href={whatsappUrl} 
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-5 left-5 z-50 p-3 bg-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+            className="fixed bottom-5 right-5 z-50 p-3 bg-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
             aria-label="Chat with us on WhatsApp"
         >
             <WhatsAppIcon />
