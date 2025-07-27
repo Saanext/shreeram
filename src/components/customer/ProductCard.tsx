@@ -54,10 +54,13 @@ export function ProductCard({ product }: { product: Product }) {
         </Link>
         <p className={cn("text-muted-foreground text-sm mt-1", !isExpanded && "h-10 overflow-hidden")}>
           {product.description}
-          {isLongDescription && (
-            <button onClick={toggleDescription} className="text-primary hover:underline ml-1 font-medium">
-              {isExpanded ? 'Read Less' : 'Read More'}
-            </button>
+          {isLongDescription && !isExpanded && (
+             <>
+                ...
+                <button onClick={toggleDescription} className="text-primary hover:underline ml-1 font-medium">
+                Read More
+                </button>
+            </>
           )}
         </p>
       </CardContent>
