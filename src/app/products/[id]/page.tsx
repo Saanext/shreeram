@@ -2,7 +2,6 @@
 'use client';
 import { mockProducts } from '@/lib/data';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -10,6 +9,8 @@ import { ShoppingCart } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 import { useCart } from '@/contexts/CartContext';
+import { ProductImageGallery } from '@/components/customer/ProductImageGallery';
+import type { Product } from '@/lib/types';
 
 export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const { addToCart } = useCart();
@@ -17,10 +18,6 @@ export default function ProductDetailPage({ params: { id } }: { params: { id: st
 
   if (!product) {
     notFound();
-  }
-  
-  const getProductHint = (product: {category: string, name: string}) => {
-    return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
   }
 
   const handleAddToCart = () => {
@@ -33,16 +30,7 @@ export default function ProductDetailPage({ params: { id } }: { params: { id: st
       <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="flex items-center justify-center bg-muted/10 rounded-lg overflow-hidden aspect-square">
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={600}
-              height={600}
-              className="object-cover w-full h-full"
-              data-ai-hint={getProductHint(product)}
-            />
-          </div>
+          <ProductImageGallery product={product} />
           <div className="flex flex-col justify-center space-y-6 py-4">
             <div>
               <Badge variant="secondary" className="mb-2 font-semibold">{product.category}</Badge>

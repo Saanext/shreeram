@@ -15,7 +15,7 @@ export type Product = {
   originalPrice?: number;
   category: string;
   stock: number;
-  imageUrl: string;
+  imageUrls: string[];
   vendorId: string;
   isBestSeller?: boolean;
   isOnSale?: boolean;

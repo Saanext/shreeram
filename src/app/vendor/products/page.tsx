@@ -63,7 +63,7 @@ export default function VendorProductsPage() {
                                     alt={product.name}
                                     className="aspect-square rounded-md object-cover"
                                     height="64"
-                                    src={product.imageUrl}
+                                    src={product.imageUrls[0]}
                                     width="64"
                                     data-ai-hint={`${product.category} clothing`}
                                 />
