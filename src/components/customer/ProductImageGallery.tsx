@@ -22,7 +22,6 @@ interface ProductImageGalleryProps {
 export function ProductImageGallery({ product }: ProductImageGalleryProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const [mainImageLoaded, setMainImageLoaded] = React.useState(false);
 
   React.useEffect(() => {
     if (!api) {
@@ -30,14 +29,9 @@ export function ProductImageGallery({ product }: ProductImageGalleryProps) {
     }
 
     setCurrent(api.selectedScrollSnap());
-    setMainImageLoaded(true);
 
     const onSelect = () => {
-      setMainImageLoaded(false);
-      requestAnimationFrame(() => {
-         setCurrent(api.selectedScrollSnap());
-         setMainImageLoaded(true);
-      })
+      setCurrent(api.selectedScrollSnap());
     };
     
     api.on('select', onSelect);
@@ -68,15 +62,9 @@ export function ProductImageGallery({ product }: ProductImageGalleryProps) {
                     alt={`${product.name} - view ${index + 1}`}
                     width={600}
                     height={600}
-                    className={cn(
-                        "object-cover w-full h-full transition-opacity duration-300",
-                        mainImageLoaded ? "opacity-100" : "opacity-0"
-                    )}
+                    className="object-cover w-full h-full"
                     data-ai-hint={getProductHint(product)}
                     priority={index === 0}
-                    onLoad={() => {
-                        if (index === current) setMainImageLoaded(true);
-                    }}
                   />
                 </div>
               </CarouselItem>
