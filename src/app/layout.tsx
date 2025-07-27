@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { CartProvider } from '@/contexts/CartContext';
 import { Footer } from '@/components/common/Footer';
+import { WhatsAppButton } from '@/components/common/WhatsAppButton';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -41,6 +42,7 @@ export default function RootLayout({
             </div>
         </CartProvider>
         <Footer />
+        <WhatsAppButton />
         <Toaster />
       </body>
     </html>
