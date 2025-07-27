@@ -19,6 +19,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 
 export function ShopPageContent() {
@@ -39,6 +40,17 @@ export function ShopPageContent() {
   const featuredProducts = mockProducts.slice(0, 4);
   const bestSellers = mockProducts.filter(p => p.isBestSeller);
   const onSaleProducts = mockProducts.filter(p => p.isOnSale);
+  
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  )
+  
+  const heroImages = [
+    { src: 'https://images.pexels.com/photos/26297709/pexels-photo-26297709.jpeg', hint: 'fashion clothing family' },
+    { src: 'https://images.unsplash.com/photo-1558068078-7a6b350aed4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwd29tYW4lMjBtYXhpJTIwZHJlc3N8ZW58MHx8fHwxNzUzMzYwMDk4fDA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman dress' },
+    { src: 'https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21lbiUyMGplYW5zfGVufDB8fHx8MTc1MzM2MDAzNXww&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman jeans' },
+    { src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBzaGlydHxlbnwwfHx8fDE3NTMzNTk4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'cotton shirt' },
+  ];
 
 
   return (
@@ -94,14 +106,27 @@ export function ShopPageContent() {
                       </Button>
                     </div>
                   </div>
-                  <Image
-                    src="https://images.pexels.com/photos/26297709/pexels-photo-26297709.jpeg"
-                    data-ai-hint="fashion clothing family"
-                    alt="Hero"
-                    width={600}
-                    height={400}
-                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-                  />
+                    <Carousel
+                      plugins={[plugin.current]}
+                      className="w-full"
+                      onMouseEnter={plugin.current.stop}
+                      onMouseLeave={plugin.current.reset}
+                    >
+                      <CarouselContent>
+                        {heroImages.map((image, index) => (
+                          <CarouselItem key={index}>
+                            <Image
+                              src={image.src}
+                              data-ai-hint={image.hint}
+                              alt="Hero Banner Image"
+                              width={600}
+                              height={600}
+                              className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full"
+                            />
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                    </Carousel>
                 </div>
                 </ScrollAnimation>
               </div>
