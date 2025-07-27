@@ -19,12 +19,14 @@ import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
 
 const colorPalettes = [
-    { name: 'Default Indigo', primary: '#3F51B5', accent: '#9575CD', background: '#F0F2F5' },
-    { name: 'Serene Blue', primary: '#4682B4', accent: '#C0C0C0', background: '#FFFFFF' },
-    { name: 'Classic Navy', primary: '#000080', accent: '#E0E0E0', background: '#FFFFFF' },
-    { name: 'Midnight Onyx', primary: '#D4AF37', accent: '#4A4A4A', background: '#121212' },
-    { name: 'Royal Sapphire', primary: '#C0C0C0', accent: '#64FFDA', background: '#0A192F' },
-    { name: 'Rose Quartz', primary: '#B76E79', accent: '#808080', background: '#FFFFFF' },
+    { name: 'Modern Minimalist', background: '#FFFFFF', primary: '#333333', accent: '#007BFF' },
+    { name: 'Earthy & Natural', background: '#F7F7F7', primary: '#9DC183', accent: '#6B4F3F' },
+    { name: 'Luxury Noir', background: '#000000', primary: '#FFD700', accent: '#1C1C1C' },
+    { name: 'Bright & Playful', background: '#FFFFFF', primary: '#FFEB3B', accent: '#FF5722' },
+    { name: 'Mocha Mousse', background: '#F7E8D3', primary: '#A0755B', accent: '#B17A50' },
+    { name: 'Ocean Breeze', background: '#FAEBD7', primary: '#008080', accent: '#87CEEB' },
+    { name: 'Vibrant Heat', background: '#FFFFFF', primary: '#BF1922', accent: '#FFC93C' },
+    { name: 'Trust & Growth', background: '#FFFFFF', primary: '#137DC5', accent: '#68D388' },
 ];
 
 export default function AdminSettingsPage() {
@@ -101,7 +103,7 @@ export default function AdminSettingsPage() {
                     <div>
                         <Label className="font-medium">Color Palettes</Label>
                         <p className="text-sm text-muted-foreground mb-4">Select from a predefined set of palettes.</p>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                             {colorPalettes.map((palette) => (
                                 <button
                                     key={palette.name}
