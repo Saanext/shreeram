@@ -14,6 +14,7 @@ import {
 import { mockUsers } from "@/lib/data"
 import { Switch } from "@/components/ui/switch"
 import { AddVendorDialog } from "@/components/admin/AddVendorDialog"
+import Link from "next/link"
 
 export default function AdminVendorsPage() {
     const vendors = mockUsers.filter(u => u.role === 'vendor');
@@ -41,7 +42,11 @@ export default function AdminVendorsPage() {
                         <TableBody>
                         {vendors.map(user => (
                             <TableRow key={user.id}>
-                                <TableCell className="font-medium">{user.name}</TableCell>
+                                <TableCell className="font-medium">
+                                    <Link href={`/admin/vendors/${user.id}`} className="hover:underline text-primary">
+                                        {user.name}
+                                    </Link>
+                                </TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell className="hidden md:table-cell">{new Date(user.createdAt).toLocaleDateString()}</TableCell>
                                 <TableCell>
