@@ -30,8 +30,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, MoreHorizontal } from 'lucide-react';
 
-export default function VendorDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function VendorDetailPage({ params: { id } }: { params: { id: string } }) {
   const router = useRouter();
   const vendor = mockUsers.find(u => u.id === id && u.role === 'vendor');
   const vendorProducts = mockProducts.filter(p => p.vendorId === id);
