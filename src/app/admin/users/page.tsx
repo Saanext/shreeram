@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button"
 import { mockUsers } from "@/lib/data"
 import { PlusCircle } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
+import { AddVendorDialog } from "@/components/admin/AddVendorDialog"
 
 export default function AdminUsersPage() {
     return (
@@ -24,10 +25,7 @@ export default function AdminUsersPage() {
                     <h1 className="text-2xl font-headline font-bold">Users</h1>
                     <p className="text-muted-foreground">Manage all vendor and customer accounts.</p>
                 </div>
-                 <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Create Vendor
-                </Button>
+                 <AddVendorDialog />
             </div>
             <Card>
                 <CardContent className="pt-6">
