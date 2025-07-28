@@ -34,8 +34,8 @@ export default function AdminSubAdminsPage() {
                         <TableHeader>
                         <TableRow>
                             <TableHead>Name</TableHead>
-                            <TableHead>Email</TableHead>
-                            <TableHead>Roles</TableHead>
+                            <TableHead className="hidden sm:table-cell">Email</TableHead>
+                            <TableHead className="hidden md:table-cell">Roles</TableHead>
                             <TableHead>Status</TableHead>
                         </TableRow>
                         </TableHeader>
@@ -43,12 +43,14 @@ export default function AdminSubAdminsPage() {
                         {subAdmins.length > 0 ? subAdmins.map(user => (
                             <TableRow key={user.id}>
                                 <TableCell className="font-medium">{user.name}</TableCell>
-                                <TableCell>{user.email}</TableCell>
-                                <TableCell>
-                                    <div className="flex gap-1">
+                                <TableCell className="hidden sm:table-cell">{user.email}</TableCell>
+                                <TableCell className="hidden md:table-cell">
+                                    <div className="flex gap-1 flex-wrap">
                                         {/* This is mock data, in a real app this would come from the user object */}
                                         <Badge variant="outline">Products</Badge>
                                         <Badge variant="outline">Vendors</Badge>
+                                        <Badge variant="outline">Customers</Badge>
+                                        <Badge variant="outline">Orders</Badge>
                                     </div>
                                 </TableCell>
                                 <TableCell>
