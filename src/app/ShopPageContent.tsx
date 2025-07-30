@@ -118,8 +118,8 @@ export function ShopPageContent() {
                         <div className="flex justify-center gap-2 min-[400px]:flex-row">
                             <Button asChild size="lg" variant="secondary" className="group">
                                 <Link href="#products">
-                                    <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:scale-125 group-hover:animate-pulse" />
-                                    <span className="sr-only">Shop Now</span>
+                                    Shop Now
+                                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                                 </Link>
                             </Button>
                         </div>
