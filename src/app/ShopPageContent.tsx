@@ -48,8 +48,8 @@ export function ShopPageContent() {
   )
   
   const heroImages = [
-    { src: 'https://images.pexels.com/photos/26297709/pexels-photo-26297709.jpeg', hint: 'fashion clothing family' },
-    { src: 'https://images.unsplash.com/photo-1558068078-7a6b350aed4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8JTIwd29tYW4lMjBtYXhpJTIwZHJlc3N8ZW58MHx8fHwxNzUzMzYwMDk4fDA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman dress' },
+    { src: '/banner1.png', hint: 'fashion clothing family' },
+    { src: '/banner2.png', hint: 'woman dress' },
     { src: 'https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21lbiUyMGplYW5zfGVufDB8fHx8MTc1MzM2MDAzNXww&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman jeans' },
     { src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBzaGlydHxlbnwwfHx8fDE3NTMzNTk4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'cotton shirt' },
   ];
