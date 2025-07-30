@@ -115,18 +115,12 @@ export function ShopPageContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
                     <div className="container px-4 md:px-6 text-center text-primary-foreground space-y-4">
                         <ScrollAnimation>
-                        <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">
-                            Latest Trends for Everyone
-                        </h1>
-                        <p className="max-w-[600px] mx-auto md:text-xl">
-                            Explore our curated collection of stylish apparel for men, women, and kids.
-                        </p>
                         <div className="flex justify-center gap-2 min-[400px]:flex-row">
-                            <Button asChild size="lg" variant="secondary">
-                            <Link href="#products">
-                                Shop Now
-                                <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
+                            <Button asChild size="lg" variant="secondary" className="group">
+                                <Link href="#products">
+                                    <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:scale-125 group-hover:animate-pulse" />
+                                    <span className="sr-only">Shop Now</span>
+                                </Link>
                             </Button>
                         </div>
                         </ScrollAnimation>
