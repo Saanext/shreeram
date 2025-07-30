@@ -102,9 +102,8 @@ export function ShopPageContent() {
                                 src={image.src}
                                 data-ai-hint={image.hint}
                                 alt="Hero Banner Image"
-                                layout="fill"
-                                objectFit="cover"
-                                className="brightness-75"
+                                fill
+                                className="object-cover brightness-75"
                                 priority={index === 0}
                             />
                         </div>
