@@ -228,8 +228,8 @@ export function ShopPageContent() {
                   <div className="relative rounded-xl overflow-hidden py-24 px-8 flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg')"}}>
                     <div className="absolute inset-0 bg-black/50 z-0"></div>
                     <div className="relative z-10 space-y-4 max-w-2xl">
-                        <h2 className="text-4xl font-headline font-bold text-primary-foreground sm:text-5xl md:text-6xl">Kid's Collection</h2>
-                        <p className="text-lg text-primary-foreground/90">
+                        <h2 className="text-4xl font-headline font-bold text-white sm:text-5xl md:text-6xl">Kid's Collection</h2>
+                        <p className="text-lg text-white/90">
                             Explore our latest collection for kids. Fun, stylish, and comfortable clothes for every occasion.
                         </p>
                         <Button asChild size="lg" variant="secondary">
