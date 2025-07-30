@@ -30,7 +30,6 @@ export function LoginCard({ title, description, userType, loginAction }: LoginCa
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-muted/40 p-4">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center space-y-4">
           <Logo className="justify-center" />
@@ -71,6 +70,5 @@ export function LoginCard({ title, description, userType, loginAction }: LoginCa
           </p>
         </CardFooter>
       </Card>
-    </div>
   );
 }
