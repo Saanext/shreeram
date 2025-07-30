@@ -81,7 +81,7 @@ export function CustomerHeader() {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/account">Profile</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link href="/orders">My Orders</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/account/orders">My Orders</Link></DropdownMenuItem>
               <DropdownMenuSeparator />
                <DropdownMenuItem asChild>
                  <Link href="/login">Sign In</Link>

@@ -11,8 +11,8 @@ import { Separator } from '@/components/ui/separator';
 
 const navItems = [
   { href: '/account', icon: User, label: 'Your Profile' },
-  { href: '/orders', icon: ShoppingBag, label: 'Your Orders' },
-  { href: '/addresses', icon: MapPin, label: 'Your Addresses' },
+  { href: '/account/orders', icon: ShoppingBag, label: 'Your Orders' },
+  { href: '/account/addresses', icon: MapPin, label: 'Your Addresses' },
   { href: '/account/security', icon: KeyRound, label: 'Login & Security' },
 ];
 
@@ -40,13 +40,13 @@ export default function AccountLayout({
                     href={item.href}
                     className={cn(
                         'flex items-center gap-3 rounded-md px-3 py-2 text-muted-foreground transition-all hover:bg-muted hover:text-primary font-medium',
-                        pathname === item.href && 'bg-muted text-primary'
+                        (pathname === item.href || (item.href !== '/account' && pathname.startsWith(item.href))) && 'bg-muted text-primary'
                     )}
                     >
                     <item.icon className="h-5 w-5" />
                     <span>{item.label}</span>
                     </Link>
-                     {index === 0 && <Separator className="my-2" />}
+                     {item.href === '/account/orders' && <Separator className="my-2" />}
                 </React.Fragment>
               ))}
             </nav>
