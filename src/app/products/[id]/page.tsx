@@ -12,8 +12,7 @@ import { useCart } from '@/contexts/CartContext';
 import { ProductImageGallery } from '@/components/customer/ProductImageGallery';
 import type { Product } from '@/lib/types';
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const product = mockProducts.find(p => p.id === id);
 
