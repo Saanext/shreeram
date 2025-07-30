@@ -1,24 +1,27 @@
 
 'use client';
-import { mockProducts } from '@/lib/data';
+import { mockProducts, mockUsers } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Store } from 'lucide-react';
 import { Star } from 'lucide-react';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 import { useCart } from '@/contexts/CartContext';
 import { ProductImageGallery } from '@/components/customer/ProductImageGallery';
 import type { Product } from '@/lib/types';
+import Link from 'next/link';
 
 export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const product = mockProducts.find(p => p.id === id);
-
+  
   if (!product) {
     notFound();
   }
+  
+  const vendor = mockUsers.find(u => u.id === product.vendorId);
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -35,6 +38,12 @@ export default function ProductDetailPage({ params: { id } }: { params: { id: st
             <div>
               <Badge variant="secondary" className="mb-2 font-semibold">{product.category}</Badge>
               <h1 className="font-headline text-3xl md:text-4xl font-bold">{product.name}</h1>
+              {vendor && (
+                <Link href={`/vendor/${vendor.id}`} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 mt-2">
+                    <Store className="h-4 w-4" />
+                    Sold by {vendor.name}
+                </Link>
+              )}
               <div className="flex items-center gap-2 mt-2">
                   <div className="flex items-center gap-0.5">
                       <Star className="w-5 h-5 fill-primary text-primary" />
