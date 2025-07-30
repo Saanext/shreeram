@@ -1,8 +1,7 @@
 
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { CategoryNav } from '@/components/customer/CategoryNav';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { mockUsers } from '@/lib/data';
 import Link from 'next/link';
 import { KeyRound, ShoppingBag, User, MapPin } from 'lucide-react';
@@ -18,7 +17,7 @@ const accountSections = [
         icon: MapPin,
         title: 'Your Addresses',
         description: 'Edit addresses for orders and gifts',
-        href: '/account'
+        href: '/addresses'
     },
     {
         icon: User,
@@ -52,11 +51,13 @@ export default function AccountPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {accountSections.map((section) => (
                 <Link href={section.href} key={section.title} className="group">
-                    <Card className="h-full flex items-center p-6 hover:bg-muted/50 transition-colors hover:shadow-md border-2 border-transparent hover:border-primary/20">
-                        <section.icon className="w-12 h-12 text-primary mr-6" />
-                        <div>
-                            <h2 className="font-headline text-lg font-semibold">{section.title}</h2>
-                            <p className="text-sm text-muted-foreground mt-1">{section.description}</p>
+                    <Card className="h-full flex flex-col justify-center p-6 hover:bg-muted/50 transition-colors hover:shadow-md border-2 border-transparent hover:border-primary/20">
+                        <div className="flex items-center">
+                            <section.icon className="w-12 h-12 text-primary mr-6" />
+                            <div>
+                                <h2 className="font-headline text-lg font-semibold">{section.title}</h2>
+                                <p className="text-sm text-muted-foreground mt-1">{section.description}</p>
+                            </div>
                         </div>
                     </Card>
                 </Link>
