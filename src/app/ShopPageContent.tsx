@@ -44,7 +44,7 @@ export function ShopPageContent() {
   const onSaleProducts = mockProducts.filter(p => p.isOnSale);
   
   const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   )
   
   const heroImages = [
@@ -86,79 +86,83 @@ export function ShopPageContent() {
           </section>
         ) : (
           <>
-            <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/20">
-              <div className="container px-4 md:px-6">
-                <ScrollAnimation>
-                <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-                  <div className="flex flex-col justify-center space-y-4">
-                    <div className="space-y-2">
-                      <h1 className="font-headline text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                        Latest Trends for Everyone
-                      </h1>
-                      <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                        Explore our curated collection of stylish apparel for men, women, and kids.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                      <Button asChild size="lg">
-                        <Link href="#products">
-                          Shop Now
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                    <Carousel
-                      plugins={[plugin.current]}
-                      className="w-full"
-                      onMouseEnter={plugin.current.stop}
-                      onMouseLeave={plugin.current.reset}
-                    >
-                      <CarouselContent>
-                        {heroImages.map((image, index) => (
-                          <CarouselItem key={index}>
+            <section className="w-full relative">
+                <Carousel
+                    plugins={[plugin.current]}
+                    className="w-full"
+                    onMouseEnter={plugin.current.stop}
+                    onMouseLeave={plugin.current.reset}
+                    opts={{ loop: true }}
+                >
+                    <CarouselContent>
+                    {heroImages.map((image, index) => (
+                        <CarouselItem key={index}>
+                        <div className="relative h-[60vh] md:h-[80vh] w-full">
                             <Image
-                              src={image.src}
-                              data-ai-hint={image.hint}
-                              alt="Hero Banner Image"
-                              width={600}
-                              height={600}
-                              className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full"
+                                src={image.src}
+                                data-ai-hint={image.hint}
+                                alt="Hero Banner Image"
+                                layout="fill"
+                                objectFit="cover"
+                                className="brightness-75"
+                                priority={index === 0}
                             />
-                          </CarouselItem>
-                        ))}
-                      </CarouselContent>
-                    </Carousel>
-                </div>
-                </ScrollAnimation>
-                 <div className="mt-16">
-                  <ScrollAnimation>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                        <FeatureCard 
-                            icon={Truck}
-                            title="Free Shipping"
-                            description="On all orders over ₹2000. Get your products delivered to your doorstep without any extra cost."
-                        />
-                        <FeatureCard 
-                            icon={ShieldCheck}
-                            title="Secure Payments"
-                            description="Your transactions are safe with us. We use the latest encryption technology."
-                        />
-                        <FeatureCard 
-                            icon={Tag}
-                            title="Exclusive Offers"
-                            description="Sign up for our newsletter to receive special discounts and early access to sales."
-                        />
-                         <FeatureCard 
-                            icon={Headset}
-                            title="24/7 Support"
-                            description="Our customer support team is here to help you around the clock with any queries."
-                        />
+                        </div>
+                        </CarouselItem>
+                    ))}
+                    </CarouselContent>
+                </Carousel>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
+                    <div className="container px-4 md:px-6 text-center text-primary-foreground space-y-4">
+                        <ScrollAnimation>
+                        <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-6xl xl:text-7xl/none">
+                            Latest Trends for Everyone
+                        </h1>
+                        <p className="max-w-[600px] mx-auto md:text-xl">
+                            Explore our curated collection of stylish apparel for men, women, and kids.
+                        </p>
+                        <div className="flex justify-center gap-2 min-[400px]:flex-row">
+                            <Button asChild size="lg" variant="secondary">
+                            <Link href="#products">
+                                Shop Now
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                            </Button>
+                        </div>
+                        </ScrollAnimation>
                     </div>
-                  </ScrollAnimation>
-                 </div>
-              </div>
+                </div>
             </section>
+            
+            <div className="bg-muted/30">
+                <div className="container px-4 md:px-6 py-12">
+                    <ScrollAnimation>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                            <FeatureCard 
+                                icon={Truck}
+                                title="Free Shipping"
+                                description="On all orders over ₹2000. Get your products delivered to your doorstep without any extra cost."
+                            />
+                            <FeatureCard 
+                                icon={ShieldCheck}
+                                title="Secure Payments"
+                                description="Your transactions are safe with us. We use the latest encryption technology."
+                            />
+                            <FeatureCard 
+                                icon={Tag}
+                                title="Exclusive Offers"
+                                description="Sign up for our newsletter to receive special discounts and early access to sales."
+                            />
+                            <FeatureCard 
+                                icon={Headset}
+                                title="24/7 Support"
+                                description="Our customer support team is here to help you around the clock with any queries."
+                            />
+                        </div>
+                    </ScrollAnimation>
+                </div>
+            </div>
+
 
             <AnimatedDivider />
 
