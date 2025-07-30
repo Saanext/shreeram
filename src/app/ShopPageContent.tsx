@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
-import { ArrowRight, Flame, Tag, Star, Frown } from 'lucide-react';
+import { ArrowRight, Flame, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { AnimatedDivider } from '@/components/common/AnimatedDivider';
+import { FeatureCard } from '@/components/customer/FeatureCard';
 
 
 export function ShopPageContent() {
@@ -130,6 +131,32 @@ export function ShopPageContent() {
                     </Carousel>
                 </div>
                 </ScrollAnimation>
+                 <div className="mt-16">
+                  <ScrollAnimation>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                        <FeatureCard 
+                            icon={Truck}
+                            title="Free Shipping"
+                            description="On all orders over ₹2000. Get your products delivered to your doorstep without any extra cost."
+                        />
+                        <FeatureCard 
+                            icon={ShieldCheck}
+                            title="Secure Payments"
+                            description="Your transactions are safe with us. We use the latest encryption technology."
+                        />
+                        <FeatureCard 
+                            icon={Tag}
+                            title="Exclusive Offers"
+                            description="Sign up for our newsletter to receive special discounts and early access to sales."
+                        />
+                         <FeatureCard 
+                            icon={Headset}
+                            title="24/7 Support"
+                            description="Our customer support team is here to help you around the clock with any queries."
+                        />
+                    </div>
+                  </ScrollAnimation>
+                 </div>
               </div>
             </section>
 
