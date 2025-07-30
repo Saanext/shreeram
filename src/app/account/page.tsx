@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Button } from '@/components/ui/button';
 import { mockUsers } from '@/lib/data';
 import Link from 'next/link';
-import { KeyRound, ShoppingBag, User, MapPin, Shield } from 'lucide-react';
+import { KeyRound, ShoppingBag, User, MapPin } from 'lucide-react';
 
 const accountSections = [
     {
@@ -13,12 +13,6 @@ const accountSections = [
         title: 'Your Orders',
         description: 'Track, return, or buy things again',
         href: '/orders'
-    },
-    {
-        icon: Shield,
-        title: 'Login & Security',
-        description: 'Edit login, name, and mobile number',
-        href: '/account'
     },
     {
         icon: MapPin,
