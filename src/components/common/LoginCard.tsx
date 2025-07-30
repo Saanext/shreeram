@@ -64,7 +64,7 @@ export function LoginCard({ title, description, userType, loginAction }: LoginCa
                 </p>
                 <div className="w-full">
                     <Button variant="outline" className="w-full" asChild>
-                        <Link href="/">Demo Dashboard</Link>
+                        <Link href="/account">Demo Dashboard</Link>
                     </Button>
                 </div>
             </>

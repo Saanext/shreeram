@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { Menu, Search, ShoppingCart } from 'lucide-react';
+import { Menu, Search, ShoppingCart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/common/Logo';
 import { Badge } from '../ui/badge';
@@ -10,6 +10,7 @@ import { Input } from '../ui/input';
 import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
 
 export function CustomerHeader() {
   const { cartItemCount } = useCart();
@@ -69,11 +70,24 @@ export function CustomerHeader() {
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
-          <div className="hidden md:block">
-            <Button asChild>
-                <Link href="/login">Sign In</Link>
-            </Button>
-          </div>
+           <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+                <span className="sr-only">User Menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild><Link href="/account">Profile</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/orders">My Orders</Link></DropdownMenuItem>
+              <DropdownMenuSeparator />
+               <DropdownMenuItem asChild>
+                 <Link href="/login">Sign In</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
