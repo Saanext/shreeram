@@ -24,6 +24,7 @@ import { mockProducts } from "@/lib/data"
 import Image from "next/image"
 import { MoreHorizontal, PlusCircle } from "lucide-react"
 import { AddProductDialog } from "@/components/common/AddProductDialog"
+import Link from "next/link"
 
 export default function VendorProductsPage() {
     const vendorId = 'usr_002'; // Mocking logged in vendor
@@ -36,7 +37,7 @@ export default function VendorProductsPage() {
                     <h1 className="text-2xl font-headline font-bold">My Products</h1>
                     <p className="text-muted-foreground">Manage your product listings.</p>
                 </div>
-                 <AddProductDialog />
+                 <AddProductDialog vendorId={vendorId} />
             </div>
             <Card>
                 <CardContent className="pt-6">
@@ -84,7 +85,9 @@ export default function VendorProductsPage() {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                                    <DropdownMenuItem asChild>
+                                        <Link href={`/vendor/products/${product.id}`}>Edit</Link>
+                                    </DropdownMenuItem>
                                     <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>

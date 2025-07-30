@@ -22,8 +22,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { mockProducts } from "@/lib/data"
 import Image from "next/image"
-import { MoreHorizontal, PlusCircle, CheckCircle2, Star, Tag } from "lucide-react"
-import { AddProductDialog } from "@/components/common/AddProductDialog"
+import { MoreHorizontal, CheckCircle2, Star, Tag } from "lucide-react"
 
 export default function AdminProductsPage() {
     return (
@@ -33,7 +32,6 @@ export default function AdminProductsPage() {
                     <h1 className="text-2xl font-headline font-bold">Products</h1>
                     <p className="text-muted-foreground">Manage all products across the platform.</p>
                 </div>
-                 <AddProductDialog />
             </div>
             <Card>
                 <CardContent className="pt-6">
@@ -98,8 +96,8 @@ export default function AdminProductsPage() {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>Edit</DropdownMenuItem>
-                                    <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                                    <DropdownMenuItem>View Product</DropdownMenuItem>
+                                    <DropdownMenuItem className="text-destructive">Unlist Product</DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
                                 </TableCell>
