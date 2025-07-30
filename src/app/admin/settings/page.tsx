@@ -27,6 +27,7 @@ const colorPalettes = [
     { name: 'Ocean Breeze', primary: '#008080', secondary: '#FAEBD7', accent: '#87CEEB' },
     { name: 'Vibrant Heat', primary: '#BF1922', secondary: '#FFC93C', accent: '#FACF39' },
     { name: 'Trust & Growth', primary: '#137DC5', secondary: '#68D388', accent: '#112D4E' },
+    { name: 'Pastel Dream', primary: '#FFF5E1', secondary: '#D8B4FE', accent: '#A7F3D0' },
 ];
 
 
