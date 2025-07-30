@@ -18,25 +18,25 @@ const accountSections = [
         icon: Shield,
         title: 'Login & Security',
         description: 'Edit login, name, and mobile number',
-        href: '#'
+        href: '/account'
     },
     {
         icon: MapPin,
         title: 'Your Addresses',
         description: 'Edit addresses for orders and gifts',
-        href: '#'
+        href: '/account'
     },
     {
         icon: User,
         title: 'Your Profile',
         description: 'Manage your public profile and preferences',
-        href: '#'
+        href: '/account'
     },
      {
         icon: KeyRound,
         title: 'Change Password',
         description: 'Update your account password for security',
-        href: '#'
+        href: '/account'
     }
 ]
 
