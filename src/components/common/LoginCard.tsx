@@ -55,12 +55,19 @@ export function LoginCard({ title, description, userType, loginAction }: LoginCa
         </CardContent>
         <CardFooter className="flex flex-col gap-4 text-center">
           {userType === 'Customer' && (
-            <p className="text-sm text-muted-foreground">
-              Don&apos;t have an account?{" "}
-              <Link href="/register" className="underline hover:text-primary font-medium">
-                Register
-              </Link>
-            </p>
+            <>
+                <p className="text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
+                <Link href="/register" className="underline hover:text-primary font-medium">
+                    Register
+                </Link>
+                </p>
+                <div className="w-full">
+                    <Button variant="outline" className="w-full" asChild>
+                        <Link href="/">Demo Dashboard</Link>
+                    </Button>
+                </div>
+            </>
           )}
            <p className="text-xs text-muted-foreground">
             {userType !== 'Customer' ? 'Go back to ' : ''}
