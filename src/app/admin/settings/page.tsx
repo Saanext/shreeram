@@ -26,8 +26,9 @@ const colorPalettes = [
     { name: 'Mocha Mousse', primary: '#A0755B', secondary: '#F7E8D3', accent: '#B17A50' },
     { name: 'Ocean Breeze', primary: '#008080', secondary: '#FAEBD7', accent: '#87CEEB' },
     { name: 'Vibrant Heat', primary: '#BF1922', secondary: '#FFC93C', accent: '#FACF39' },
-    { name: 'Trust & Growth', primary: '#137DC5', secondary: '#68D388', accent: '#112D4E' },
+    { name: 'Trust & Growth', primary: '#137DC5', secondary: '#68D388', accent: '#F4F4F4' },
     { name: 'Pastel Dream', primary: '#FFF5E1', secondary: '#D8B4FE', accent: '#A7F3D0' },
+    { name: 'Cyber Future', primary: '#1A1A1D', secondary: '#4A90E2', accent: '#00F5D4' },
 ];
 
 
