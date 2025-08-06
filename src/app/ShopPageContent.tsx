@@ -69,7 +69,9 @@ export function ShopPageContent() {
               {filteredProducts && filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                   {filteredProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                    <ScrollAnimation key={product.id}>
+                      <ProductCard product={product} />
+                    </ScrollAnimation>
                   ))}
                 </div>
               ) : (
@@ -174,7 +176,9 @@ export function ShopPageContent() {
                 </ScrollAnimation>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                   {featuredProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                    <ScrollAnimation key={product.id}>
+                      <ProductCard product={product} />
+                    </ScrollAnimation>
                   ))}
                 </div>
               </div>
@@ -261,7 +265,9 @@ export function ShopPageContent() {
                 </ScrollAnimation>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                   {onSaleProducts.map((product) => (
-                      <ProductCard key={product.id} product={product} />
+                    <ScrollAnimation key={product.id}>
+                      <ProductCard product={product} />
+                    </ScrollAnimation>
                   ))}
                 </div>
               </div>

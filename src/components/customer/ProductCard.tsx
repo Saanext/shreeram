@@ -30,10 +30,9 @@ export function ProductCard({ product }: { product: Product }) {
 
   const isLongDescription = product.description.length > 100;
 
-
   return (
-    <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
-      <CardHeader className="p-0 border-b">
+    <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
+      <CardHeader className="p-0 border-b relative">
          <Link href={`/products/${product.id}`} className="block overflow-hidden aspect-square">
             <Image
                 src={product.imageUrls[0]}
@@ -44,25 +43,27 @@ export function ProductCard({ product }: { product: Product }) {
                 data-ai-hint={getProductHint(product)}
             />
          </Link>
+          {product.isOnSale && (
+            <Badge variant="destructive" className="absolute top-2 right-2">Sale</Badge>
+          )}
       </CardHeader>
-      <CardContent className="p-4 flex-grow">
-        {product.category && <Badge variant="secondary" className="mb-2 font-semibold">{product.category}</Badge>}
+      <CardContent className="p-4 flex-grow flex flex-col">
+        {product.category && <Badge variant="secondary" className="mb-2 font-semibold w-fit">{product.category}</Badge>}
         <Link href={`/products/${product.id}`}>
           <CardTitle className="text-lg font-headline leading-tight hover:text-primary transition-colors">
             {product.name}
           </CardTitle>
         </Link>
-        <p className={cn("text-muted-foreground text-sm mt-1", !isExpanded && "h-10 overflow-hidden")}>
-          {product.description}
-          {isLongDescription && !isExpanded && (
-             <>
-                ...
-                <button onClick={toggleDescription} className="text-primary hover:underline ml-1 font-medium">
-                Read More
-                </button>
-            </>
+        <div className="flex-grow">
+          <p className={cn("text-muted-foreground text-sm mt-1 transition-all duration-300", isExpanded ? "max-h-full" : "max-h-10 overflow-hidden")}>
+            {product.description}
+          </p>
+          {isLongDescription && (
+             <button onClick={toggleDescription} className="text-primary text-sm hover:underline mt-1 font-medium">
+                {isExpanded ? 'Read Less' : 'Read More'}
+            </button>
           )}
-        </p>
+        </div>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex flex-wrap justify-between items-center gap-2">
         <div className="flex items-baseline gap-2">

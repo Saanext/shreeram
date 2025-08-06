@@ -4,23 +4,23 @@
 
 @layer base {
   :root {
-    --background: 240.0 2.2% 11.0%;
+    --background: 222.9 83.1% 7.8%;
     --foreground: 0.0 0.0% 100.0%;
-    --card: 240.0 2.2% 9.0%;
+    --card: 222.9 83.1% 5.8%;
     --card-foreground: 0.0 0.0% 100.0%;
-    --popover: 240.0 2.2% 9.0%;
+    --popover: 222.9 83.1% 5.8%;
     --popover-foreground: 0.0 0.0% 100.0%;
-    --primary: 213.1 76.5% 60.0%;
-    --primary-foreground: 0.0 0.0% 100.0%;
-    --secondary: 240.0 2.2% 13.3%;
+    --primary: 211.1 82.3% 62.7%;
+    --primary-foreground: 0.0 0.0% 0.0%;
+    --secondary: 222.9 83.1% 13.3%;
     --secondary-foreground: 0.0 0.0% 98.0%;
-    --muted: 240.0 2.2% 13.3%;
-    --muted-foreground: 240.0 2.2% 62.7%;
-    --accent: 173.6 100.0% 47.6%;
+    --muted: 222.9 83.1% 13.3%;
+    --muted-foreground: 222.9 83.1% 62.7%;
+    --accent: 173.8 100.0% 50.0%;
     --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 240.0 2.2% 19.4%;
-    --input: 240.0 2.2% 19.4%;
-    --ring: 213.1 76.5% 60.0%;
+    --border: 222.9 83.1% 19.4%;
+    --input: 222.9 83.1% 19.4%;
+    --ring: 211.1 82.3% 62.7%;
     --radius: 0.5rem;
     --chart-1: 207 44% 49%;
     --chart-2: 0 0% 75%;
@@ -30,23 +30,23 @@
   }
  
   .dark {
-    --background: 240.0 2.2% 11.0%;
+    --background: 222.9 83.1% 7.8%;
     --foreground: 0.0 0.0% 100.0%;
-    --card: 240.0 2.2% 9.0%;
+    --card: 222.9 83.1% 5.8%;
     --card-foreground: 0.0 0.0% 100.0%;
-    --popover: 240.0 2.2% 9.0%;
+    --popover: 222.9 83.1% 5.8%;
     --popover-foreground: 0.0 0.0% 100.0%;
-    --primary: 213.1 76.5% 60.0%;
-    --primary-foreground: 0.0 0.0% 100.0%;
-    --secondary: 240.0 2.2% 13.3%;
+    --primary: 211.1 82.3% 62.7%;
+    --primary-foreground: 0.0 0.0% 0.0%;
+    --secondary: 222.9 83.1% 13.3%;
     --secondary-foreground: 0.0 0.0% 98.0%;
-    --muted: 240.0 2.2% 13.3%;
-    --muted-foreground: 240.0 2.2% 62.7%;
-    --accent: 173.6 100.0% 47.6%;
+    --muted: 222.9 83.1% 13.3%;
+    --muted-foreground: 222.9 83.1% 62.7%;
+    --accent: 173.8 100.0% 50.0%;
     --accent-foreground: 0.0 0.0% 0.0%;
-    --border: 240.0 2.2% 19.4%;
-    --input: 240.0 2.2% 19.4%;
-    --ring: 213.1 76.5% 60.0%;
+    --border: 222.9 83.1% 19.4%;
+    --input: 222.9 83.1% 19.4%;
+    --ring: 211.1 82.3% 62.7%;
     --chart-1: 207 44% 59%;
     --chart-2: 0 0% 85%;
     --chart-3: 220 70% 50%;
@@ -61,5 +61,22 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.7s ease-out forwards;
   }
 }
