@@ -3,16 +3,15 @@
 
 import { Sparkles } from 'lucide-react';
 import { ScrollAnimation } from './ScrollAnimation';
-import { Separator } from '@/components/ui/separator';
 
 export function AnimatedDivider() {
   return (
     <ScrollAnimation className="container py-16">
-      <div className="relative">
-        <Separator />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="bg-background px-4 text-primary">
-            <Sparkles className="h-6 w-6" />
+      <div className="relative flex items-center justify-center">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute flex items-center justify-center">
+          <span className="bg-background p-2 rounded-full ring-1 ring-border">
+            <Sparkles className="h-5 w-5 text-primary" />
           </span>
         </div>
       </div>
