@@ -17,6 +17,7 @@ import { Label } from "@/components/ui/label";
 import { PlusCircle } from "lucide-react";
 import * as React from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Textarea } from "../ui/textarea";
 
 export function AddVendorDialog() {
     const [open, setOpen] = React.useState(false);
@@ -45,7 +46,7 @@ export function AddVendorDialog() {
           Create Vendor
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[525px]">
         <DialogHeader>
           <DialogTitle>Create Vendor Profile</DialogTitle>
           <DialogDescription>
@@ -53,25 +54,52 @@ export function AddVendorDialog() {
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
-            <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="name" className="text-right">
-                        Full Name
-                    </Label>
-                    <Input id="name" name="name" placeholder="e.g. Fashionista Vendor" className="col-span-3" required/>
+            <div className="grid gap-4 py-4 max-h-[70vh] overflow-y-auto px-1">
+                <div className="space-y-2">
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input id="name" name="name" placeholder="e.g. Fashionista Vendor" required/>
                 </div>
-                 <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="email" className="text-right">
-                        Email
-                    </Label>
-                    <Input id="email" name="email" type="email" placeholder="vendor@example.com" className="col-span-3" required/>
+                 <div className="space-y-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <Input id="email" name="email" type="email" placeholder="vendor@example.com" required/>
                 </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="password" className="text-right">
-                        Password
-                    </Label>
-                    <Input id="password" name="password" type="password" placeholder="••••••••" className="col-span-3" required/>
+                 <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input id="phone" name="phone" type="tel" placeholder="+91 12345 67890" required/>
                 </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="password">Password</Label>
+                    <Input id="password" name="password" type="password" placeholder="••••••••" required/>
+                </div>
+
+                 <div className="border-t my-4"></div>
+
+                <div className="space-y-2">
+                    <Label htmlFor="businessName">Business Name</Label>
+                    <Input id="businessName" name="businessName" placeholder="e.g. Threads & Co." required/>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="gstNumber">GST Number</Label>
+                    <Input id="gstNumber" name="gstNumber" placeholder="e.g. 29ABCDE1234F1Z5" required/>
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="address">Full Address</Label>
+                    <Textarea id="address" name="address" placeholder="123 Commerce Lane, Business City" required />
+                </div>
+                 <div className="grid grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="city">City</Label>
+                        <Input id="city" name="city" placeholder="e.g. Mumbai" required/>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="state">State</Label>
+                        <Input id="state" name="state" placeholder="e.g. Maharashtra" required/>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="zip">ZIP Code</Label>
+                        <Input id="zip" name="zip" placeholder="e.g. 400001" required/>
+                    </div>
+                 </div>
             </div>
             <DialogFooter>
                 <DialogClose asChild>
