@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
-import { mockProducts } from '@/lib/data';
+import { mockProducts, mockCategories } from '@/lib/data';
 import { ArrowRight, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
@@ -22,6 +22,7 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import { AnimatedDivider } from '@/components/common/AnimatedDivider';
 import { FeatureCard } from '@/components/customer/FeatureCard';
+import { CategoryCard } from '@/components/customer/CategoryCard';
 
 
 export function ShopPageContent() {
@@ -42,6 +43,7 @@ export function ShopPageContent() {
   const featuredProducts = mockProducts.slice(0, 4);
   const bestSellers = mockProducts.filter(p => p.isBestSeller);
   const onSaleProducts = mockProducts.filter(p => p.isOnSale);
+  const parentCategories = mockCategories.filter(c => !c.parentId);
   
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -187,6 +189,31 @@ export function ShopPageContent() {
                   </div>
                 </div>
               </ScrollAnimation>
+            </section>
+
+            <AnimatedDivider />
+            
+            <section id="categories" className="w-full pb-12 md:pb-24 lg:pb-32">
+              <div className="container px-4 md:px-6">
+                  <ScrollAnimation>
+                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                      <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Top Categories</div>
+                      <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                        Shop by Category
+                      </h2>
+                      <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                          Browse our curated collections and find exactly what you're looking for.
+                      </p>
+                  </div>
+                  </ScrollAnimation>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                    {parentCategories.map((category) => (
+                       <ScrollAnimation key={category.id}>
+                          <CategoryCard category={category} />
+                       </ScrollAnimation>
+                    ))}
+                  </div>
+              </div>
             </section>
 
             <AnimatedDivider />
