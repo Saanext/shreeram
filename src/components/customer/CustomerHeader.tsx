@@ -32,7 +32,7 @@ export function CustomerHeader() {
 
   const navLinks = (
     <>
-        <Link href="/" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
+        <Link href="/#products" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
             Products
         </Link>
         <Link href="/about" onClick={() => setOpen(false)} className="text-foreground/80 transition-colors hover:text-foreground">
