@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts } from '@/lib/data';
-import { ArrowRight, Flame, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
+import { ArrowRight, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
 import Image from 'next/image';
 import { CategoryNav } from '@/components/customer/CategoryNav';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
@@ -158,6 +158,36 @@ export function ShopPageContent() {
                 </div>
             </div>
 
+            <section className="w-full py-12">
+              <ScrollAnimation>
+                <div className="container px-4 md:px-6">
+                  <div className="p-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500">
+                    <div className="bg-background rounded-lg p-4 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <Image
+                          src="https://picsum.photos/seed/creditcard/120/80"
+                          alt="Credit Card Offer"
+                          width={100}
+                          height={60}
+                          className="rounded-md hidden sm:block"
+                          data-ai-hint="credit card"
+                        />
+                        <div className="h-10 w-px bg-border hidden sm:block" />
+                        <div>
+                          <h3 className="font-bold text-lg md:text-xl">Flat 7.5% Cashback*</h3>
+                          <p className="text-sm text-muted-foreground">On SRE AXIS BANK Credit Card</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center">
+                        <p className="text-xs text-muted-foreground/80 transform rotate-90 origin-center whitespace-nowrap">
+                          *T&C Apply
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            </section>
 
             <AnimatedDivider />
 
