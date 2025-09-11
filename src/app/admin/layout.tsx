@@ -9,7 +9,8 @@ import {
   Users,
   UserCircle,
   Briefcase,
-  Shield
+  Shield,
+  LayoutGrid
 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
@@ -31,6 +32,7 @@ const navItems = [
   { href: '/admin/dashboard', icon: Home, label: 'Dashboard' },
   { href: '/admin/orders', icon: ShoppingCart, label: 'Orders' },
   { href: '/admin/products', icon: Package, label: 'Products' },
+  { href: '/admin/categories', icon: LayoutGrid, label: 'Categories' },
   { href: '/admin/vendors', icon: Briefcase, label: 'Vendors' },
   { href: '/admin/customers', icon: Users, label: 'Customers' },
   { href: '/admin/subadmins', icon: Shield, label: 'Sub-admins' },

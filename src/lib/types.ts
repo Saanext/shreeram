@@ -36,3 +36,11 @@ export type Order = {
   date: string;
   vendorId: string;
 };
+
+export type Category = {
+  id: string;
+  name: string;
+  parentId?: string;
+  productCount: number;
+  imageUrl: string;
+};
