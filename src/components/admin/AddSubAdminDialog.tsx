@@ -62,18 +62,26 @@ export function AddSubAdminDialog() {
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-4 py-4 max-h-[70vh] overflow-y-auto px-1">
                 <div className="space-y-2">
                     <Label htmlFor="name">
                         Full Name
                     </Label>
                     <Input id="name" name="name" placeholder="e.g. Test Admin" required/>
                 </div>
+                <div className="space-y-2">
+                    <Label htmlFor="job-title">Job Title</Label>
+                    <Input id="job-title" name="job-title" placeholder="e.g. Marketing Manager" required />
+                </div>
                  <div className="space-y-2">
                     <Label htmlFor="email">
-                        Email
+                        Email Address
                     </Label>
                     <Input id="email" name="email" type="email" placeholder="subadmin@example.com" required/>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input id="phone" name="phone" type="tel" placeholder="+91 12345 67890" required />
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="password">
