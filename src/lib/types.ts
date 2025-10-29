@@ -1,3 +1,4 @@
+
 export type User = {
   id: string;
   name: string;
@@ -14,6 +15,7 @@ export type Product = {
   price: number;
   originalPrice?: number;
   category: string;
+  subCategory?: string;
   stock: number;
   imageUrls: string[];
   vendorId: string;

@@ -29,6 +29,11 @@ export function ProductCard({ product }: { product: Product }) {
   };
 
   const isLongDescription = product.description.length > 100;
+  
+  const productLink = product.subCategory 
+    ? `/category/${product.category.toLowerCase()}/${product.subCategory.toLowerCase()}`
+    : `/category/${product.category.toLowerCase()}`;
+
 
   return (
     <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
@@ -48,7 +53,15 @@ export function ProductCard({ product }: { product: Product }) {
           )}
       </CardHeader>
       <CardContent className="p-4 flex-grow flex flex-col">
-        {product.category && <Badge variant="secondary" className="mb-2 font-semibold w-fit">{product.category}</Badge>}
+        {product.subCategory ? (
+            <Link href={productLink}>
+                <Badge variant="secondary" className="mb-2 font-semibold w-fit hover:bg-primary/10 transition-colors">{product.subCategory}</Badge>
+            </Link>
+        ) : product.category && (
+            <Link href={productLink}>
+                <Badge variant="secondary" className="mb-2 font-semibold w-fit hover:bg-primary/10 transition-colors">{product.category}</Badge>
+            </Link>
+        )}
         <Link href={`/products/${product.id}`}>
           <CardTitle className="text-lg font-headline leading-tight hover:text-primary transition-colors">
             {product.name}

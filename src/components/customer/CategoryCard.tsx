@@ -6,8 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export function CategoryCard({ category }: { category: Category }) {
-  const categoryLink = `/category/${category.name.toLowerCase()}`;
+export function CategoryCard({ category, parentSlug }: { category: Category, parentSlug?: string }) {
+  const categoryLink = parentSlug 
+    ? `/category/${parentSlug}/${category.name.toLowerCase()}` 
+    : `/category/${category.name.toLowerCase()}`;
 
   return (
     <Link href={categoryLink} className="group relative block overflow-hidden rounded-xl">
@@ -21,8 +23,8 @@ export function CategoryCard({ category }: { category: Category }) {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-      <div className="absolute bottom-0 left-0 p-6 text-white">
-        <h3 className="text-2xl font-headline font-bold">{category.name}</h3>
+      <div className="absolute bottom-0 left-0 p-4 text-white w-full">
+        <h3 className="text-lg md:text-xl font-headline font-bold">{category.name}</h3>
         <p className="mt-1 flex items-center text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           Shop Now <ArrowRight className="ml-1 h-4 w-4" />
         </p>
