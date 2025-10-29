@@ -28,8 +28,8 @@ export function CategoryNav() {
                     <Link href={`/category/${category.name.toLowerCase()}`}>{category.name}</Link>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <div className="row-span-3">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <li className="row-span-3">
                          <NavigationMenuLink asChild>
                            <a
                              className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
@@ -42,13 +42,13 @@ export function CategoryNav() {
                              </p>
                            </a>
                          </NavigationMenuLink>
-                      </div>
+                      </li>
                       <div className="flex flex-col gap-2">
                         {subCategories.map((sub) => (
                            <ListItem key={sub.id} href={`/category/${category.name.toLowerCase()}/${sub.name.toLowerCase()}`} title={sub.name} />
                         ))}
                       </div>
-                    </div>
+                    </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
               )
