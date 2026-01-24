@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Roboto } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
@@ -7,14 +7,16 @@ import { CartProvider } from '@/contexts/CartContext';
 import { Footer } from '@/components/common/Footer';
 import { WhatsAppButton } from '@/components/common/WhatsAppButton';
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ['latin'],
   variable: '--font-body',
+  weight: ['400', '500', '700'],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-headline',
+  weight: ['800'],
 });
 
 export const metadata: Metadata = {
@@ -32,8 +34,8 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
-          inter.variable,
-          spaceGrotesk.variable
+          roboto.variable,
+          inter.variable
         )}
       >
         <CartProvider>
