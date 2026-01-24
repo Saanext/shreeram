@@ -20,7 +20,6 @@ import {
   CarouselNext,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
-import { AnimatedDivider } from '@/components/common/AnimatedDivider';
 import { FeatureCard } from '@/components/customer/FeatureCard';
 import { CategoryCard } from '@/components/customer/CategoryCard';
 
@@ -148,7 +147,7 @@ export function ShopPageContent() {
             </section>
             
             <div className="bg-muted/30">
-                <div className="container px-4 md:px-6 py-12">
+                <div className="container px-4 md:px-6 py-12 md:py-16">
                     <ScrollAnimation>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                             <FeatureCard 
@@ -176,7 +175,7 @@ export function ShopPageContent() {
                 </div>
             </div>
 
-            <section className="w-full py-12">
+            <section className="w-full py-12 md:py-16">
               <ScrollAnimation>
                 <div className="container px-4 md:px-6">
                   <div className="p-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500">
@@ -206,10 +205,8 @@ export function ShopPageContent() {
                 </div>
               </ScrollAnimation>
             </section>
-
-            <AnimatedDivider />
             
-            <section id="categories" className="w-full pb-12 md:pb-24 lg:pb-32">
+            <section id="categories" className="w-full py-12 md:py-16 lg:py-20">
               <div className="container px-4 md:px-6">
                   <ScrollAnimation>
                   <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -232,9 +229,7 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <AnimatedDivider />
-
-            <section id="products" className="w-full pb-12 md:pb-24 lg:pb-32">
+            <section id="products" className="w-full py-12 md:py-16 lg:py-20">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                   <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -257,9 +252,7 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <AnimatedDivider />
-
-            <section id="best-sellers" className="w-full pb-12 md:pb-24 lg:pb-32 bg-muted/20">
+            <section id="best-sellers" className="w-full py-12 md:py-16 lg:py-20 bg-muted/20">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -296,10 +289,8 @@ export function ShopPageContent() {
                   </Carousel>
               </div>
             </section>
-
-             <AnimatedDivider />
              
-            <section className="w-full">
+            <section className="w-full py-12 md:py-16 lg:py-20">
               <ScrollAnimation>
                 <div className="container px-4 md:px-6">
                   <div className="relative rounded-xl overflow-hidden py-24 px-8 flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg')"}}>
@@ -318,9 +309,7 @@ export function ShopPageContent() {
               </ScrollAnimation>
             </section>
 
-             <AnimatedDivider />
-
-            <section id="on-sale" className="w-full pb-12 md:pb-24 lg:pb-32">
+            <section id="on-sale" className="w-full py-12 md:py-16 lg:py-20">
               <div className="container px-4 md:px-6">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
