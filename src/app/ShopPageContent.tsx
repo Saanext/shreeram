@@ -179,7 +179,7 @@ export function ShopPageContent() {
             <section className="w-full py-12">
               <ScrollAnimation>
                 <div className="container px-4 md:px-6">
-                  <div className="p-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500">
+                  <div className="p-1.5 rounded-xl bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-500">
                     <div className="bg-background rounded-lg p-4 flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <Image
