@@ -14,6 +14,17 @@ import { cn } from '@/lib/utils';
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [currentImage, setCurrentImage] = React.useState(product.imageUrls[0]);
+
+  const handleMouseEnter = () => {
+    if (product.imageUrls.length > 1) {
+      setCurrentImage(product.imageUrls[1]);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setCurrentImage(product.imageUrls[0]);
+  };
   
   const getProductHint = (product: Product) => {
     return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
@@ -36,11 +47,15 @@ export function ProductCard({ product }: { product: Product }) {
 
 
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group">
+    <Card 
+      className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <CardHeader className="p-0 border-b relative">
          <Link href={`/products/${product.id}`} className="block overflow-hidden aspect-square">
             <Image
-                src={product.imageUrls[0]}
+                src={currentImage}
                 alt={product.name}
                 width={600}
                 height={600}
