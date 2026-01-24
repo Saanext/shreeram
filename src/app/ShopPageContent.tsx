@@ -50,8 +50,8 @@ export function ShopPageContent() {
   )
   
   const heroImages = [
-    { src: '/banner1.png', hint: 'fashion clothing family' },
-    { src: '/banner2.png', hint: 'woman dress' },
+    { src: 'https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg', hint: 'fashion clothing family' },
+    { src: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg', hint: 'woman dress' },
     { src: 'https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21lbiUyMGplYW5zfGVufDB8fHx8MTc1MzM2MDAzNXww&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman jeans' },
     { src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBzaGlydHxlbnwwfHx8fDE3NTMzNTk4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'cotton shirt' },
   ];
@@ -90,45 +90,61 @@ export function ShopPageContent() {
           </section>
         ) : (
           <>
-            <section className="w-full relative">
-                <Carousel
-                    plugins={[plugin.current]}
-                    className="w-full"
-                    onMouseEnter={plugin.current.stop}
-                    onMouseLeave={plugin.current.reset}
-                    opts={{ loop: true }}
-                >
-                    <CarouselContent>
-                    {heroImages.map((image, index) => (
-                        <CarouselItem key={index}>
-                        <div className="relative h-[60vh] md:h-[80vh] w-full">
-                            <Image
-                                src={image.src}
-                                data-ai-hint={image.hint}
-                                alt="Hero Banner Image"
-                                fill
-                                className="object-cover brightness-75"
-                                priority={index === 0}
-                            />
-                        </div>
-                        </CarouselItem>
-                    ))}
-                    </CarouselContent>
-                </Carousel>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
-                    <div className="container px-4 md:px-6 text-center text-primary-foreground space-y-4">
-                        <ScrollAnimation>
-                        <div className="flex justify-center gap-2 min-[400px]:flex-row">
-                            <Button asChild size="lg" variant="secondary" className="group">
-                                <Link href="#products">
-                                    Shop Now
-                                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                                </Link>
-                            </Button>
-                        </div>
-                        </ScrollAnimation>
-                    </div>
+            <section className="w-full py-12 md:py-24 lg:py-32">
+              <div className="container px-4 md:px-6">
+                <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+                  <div className="flex flex-col justify-center space-y-6">
+                    <ScrollAnimation>
+                      <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                        Discover Your Next Favorite Outfit
+                      </h1>
+                    </ScrollAnimation>
+                    <ScrollAnimation style={{ animationDelay: '0.2s' }}>
+                      <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                        Explore our latest collection of high-quality apparel. From casual wear to formal attire, find the perfect look for any occasion.
+                      </p>
+                    </ScrollAnimation>
+                    <ScrollAnimation style={{ animationDelay: '0.4s' }}>
+                      <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                          <Button asChild size="lg" className="group">
+                              <Link href="#products">
+                                  Shop Collection
+                                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                              </Link>
+                          </Button>
+                      </div>
+                    </ScrollAnimation>
+                  </div>
+                  <ScrollAnimation className="w-full">
+                      <Carousel
+                          plugins={[plugin.current]}
+                          className="w-full rounded-xl overflow-hidden"
+                          onMouseEnter={plugin.current.stop}
+                          onMouseLeave={plugin.current.reset}
+                          opts={{ loop: true }}
+                      >
+                          <CarouselContent>
+                          {heroImages.map((image, index) => (
+                              <CarouselItem key={index}>
+                              <div className="aspect-square relative w-full">
+                                  <Image
+                                      src={image.src}
+                                      data-ai-hint={image.hint}
+                                      alt="Hero Banner Image"
+                                      fill
+                                      className="object-cover"
+                                      priority={index === 0}
+                                  />
+                              </div>
+                              </CarouselItem>
+                          ))}
+                          </CarouselContent>
+                           <CarouselPrevious className="left-4" />
+                           <CarouselNext className="right-4" />
+                      </Carousel>
+                  </ScrollAnimation>
                 </div>
+              </div>
             </section>
             
             <div className="bg-muted/30">
