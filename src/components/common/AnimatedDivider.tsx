@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Sparkles } from 'lucide-react';
@@ -10,8 +9,8 @@ export function AnimatedDivider() {
       <div className="relative flex items-center justify-center">
         <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute flex items-center justify-center">
-          <span className="bg-background p-2 rounded-full ring-1 ring-border">
-            <Sparkles className="h-5 w-5 text-primary" />
+          <span className="bg-background p-2 rounded-full ring-1 ring-border animate-sparkle-pulse">
+            <Sparkles className="h-5 w-5 text-accent" />
           </span>
         </div>
       </div>
