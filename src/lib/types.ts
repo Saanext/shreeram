@@ -21,6 +21,9 @@ export type Product = {
   vendorId: string;
   isBestSeller?: boolean;
   isOnSale?: boolean;
+  sizes?: string[];
+  details?: { [key: string]: string };
+  sizeChartImageUrl?: string;
 };
 
 export type Order = {
