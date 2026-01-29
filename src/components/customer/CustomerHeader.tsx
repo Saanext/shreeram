@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { Menu, Search, User, Heart, ShoppingBag } from 'lucide-react';
@@ -20,6 +19,8 @@ import {
     navigationMenuTriggerStyle,
   } from '@/components/ui/navigation-menu';
 import { mockCategories } from '@/lib/data';
+import type { Category } from '@/lib/types';
+
 
 const ListItem = React.forwardRef<
   React.ElementRef<'a'>,
@@ -30,12 +31,12 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            'block select-none py-1 text-muted-foreground leading-none no-underline outline-none transition-colors hover:text-foreground focus:text-foreground',
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="text-sm font-normal leading-snug">{title}</div>
         </a>
       </NavigationMenuLink>
   );
@@ -101,6 +102,15 @@ export function CustomerHeader() {
                          const hasSubcategories = subCategories.length > 0;
                          const isStudio = category.name.toLowerCase() === 'studio';
 
+                         const groupedSubcategories = subCategories.reduce((acc, sub) => {
+                            const groupName = sub.group || 'All';
+                            if (!acc[groupName]) {
+                                acc[groupName] = [];
+                            }
+                            acc[groupName].push(sub);
+                            return acc;
+                         }, {} as Record<string, Category[]>);
+
                          if (!hasSubcategories) {
                            return (
                               <NavigationMenuItem key={category.id}>
@@ -120,11 +130,20 @@ export function CustomerHeader() {
                                    <Link href={`/category/${category.name.toLowerCase()}`}>{category.name.toUpperCase()}</Link>
                                 </NavigationMenuTrigger>
                                 <NavigationMenuContent>
-                                    <ul className={cn("grid gap-3 p-4", subCategories.length > 7 ? "md:w-[500px] md:grid-cols-2" : "md:w-[250px]")}>
-                                        {subCategories.map(sub => (
-                                            <ListItem key={sub.id} href={`/category/${category.name.toLowerCase()}/${sub.name.toLowerCase()}`} title={sub.name} />
+                                    <div className="grid auto-cols-max grid-flow-col gap-x-8 gap-y-4 p-6 min-w-[600px]">
+                                        {Object.entries(groupedSubcategories).map(([groupName, items]) => (
+                                            <div key={groupName} className="flex flex-col gap-3">
+                                                <h3 className="font-bold text-sm text-primary">{groupName}</h3>
+                                                <ul className="flex flex-col gap-2">
+                                                    {items.map(item => (
+                                                        <li key={item.id}>
+                                                            <ListItem href={`/category/${category.name.toLowerCase()}/${item.name.toLowerCase()}`} title={item.name} />
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
                                         ))}
-                                    </ul>
+                                    </div>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                          )

@@ -43,6 +43,7 @@ export type Category = {
   id: string;
   name: string;
   parentId?: string;
+  group?: string;
   productCount: number;
   imageUrl: string;
 };
