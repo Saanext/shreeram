@@ -61,7 +61,7 @@ export function CustomerHeader() {
     }
   };
   
-  const parentCategories = mockCategories.filter(c => !c.parentId);
+  const parentCategories = mockCategories.filter(c => !c.parentId && c.name.toLowerCase() !== 'home' && c.name.toLowerCase() !== 'beauty' && c.name.toLowerCase() !== 'studio');
 
   const mobileNav = (
      <nav className="grid gap-4 text-lg font-medium">
@@ -100,7 +100,6 @@ export function CustomerHeader() {
                     {parentCategories.map(category => {
                          const subCategories = mockCategories.filter(c => c.parentId === category.id);
                          const hasSubcategories = subCategories.length > 0;
-                         const isStudio = category.name.toLowerCase() === 'studio';
 
                          const groupedSubcategories = subCategories.reduce((acc, sub) => {
                             const groupName = sub.group || 'All';
@@ -117,7 +116,6 @@ export function CustomerHeader() {
                                   <Link href={`/category/${category.name.toLowerCase()}`} legacyBehavior passHref>
                                     <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-bold tracking-wider text-sm bg-transparent")}>
                                       {category.name.toUpperCase()}
-                                      {isStudio && <sup className="text-xs text-red-500 font-bold ml-1">NEW</sup>}
                                     </NavigationMenuLink>
                                   </Link>
                               </NavigationMenuItem>
