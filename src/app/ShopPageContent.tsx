@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
-import { mockProducts, mockCategories } from '@/lib/data';
+import { mockProducts } from '@/lib/data';
 import { ArrowRight, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
 import Image from 'next/image';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { FeatureCard } from '@/components/customer/FeatureCard';
-import { CategoryCard } from '@/components/customer/CategoryCard';
 
 
 export function ShopPageContent() {
@@ -41,7 +40,6 @@ export function ShopPageContent() {
   const featuredProducts = mockProducts.slice(0, 4);
   const bestSellers = mockProducts.filter(p => p.isBestSeller);
   const onSaleProducts = mockProducts.filter(p => p.isOnSale);
-  const parentCategories = mockCategories.filter(c => !c.parentId && c.name.toLowerCase() !== 'studio' && c.name.toLowerCase() !== 'home' && c.name.toLowerCase() !== 'beauty');
   
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -230,29 +228,6 @@ export function ShopPageContent() {
               </ScrollAnimation>
             </section>
             
-            <section id="categories" className="w-full py-12 md:py-16 lg:py-20">
-              <div className="px-4 sm:px-6 lg:px-8">
-                  <ScrollAnimation>
-                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                      <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Top Categories</div>
-                      <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                        Shop by Category
-                      </h2>
-                      <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                          Browse our curated collections and find exactly what you're looking for.
-                      </p>
-                  </div>
-                  </ScrollAnimation>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8">
-                    {parentCategories.map((category) => (
-                       <ScrollAnimation key={category.id}>
-                          <CategoryCard category={category} />
-                       </ScrollAnimation>
-                    ))}
-                  </div>
-              </div>
-            </section>
-
             <section id="products" className="w-full py-12 md:py-16 lg:py-20">
               <div className="px-4 sm:px-6 lg:px-8">
                 <ScrollAnimation>
@@ -312,25 +287,6 @@ export function ShopPageContent() {
                     <CarouselNext />
                   </Carousel>
               </div>
-            </section>
-             
-            <section className="w-full py-12 md:py-16 lg:py-20">
-              <ScrollAnimation>
-                <div className="px-4 sm:px-6 lg:px-8">
-                  <div className="relative rounded-xl overflow-hidden py-24 px-8 flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg')"}}>
-                    <div className="absolute inset-0 bg-black/50 z-0"></div>
-                    <div className="relative z-10 space-y-4 max-w-2xl">
-                        <h2 className="text-4xl font-headline font-bold text-white sm:text-5xl md:text-6xl">Kid's Collection</h2>
-                        <p className="text-lg text-white/90">
-                            Explore our latest collection for kids. Fun, stylish, and comfortable clothes for every occasion.
-                        </p>
-                        <Button asChild size="lg" variant="secondary">
-                           <Link href="/category/kids">Shop Kid's Wear <ArrowRight className="ml-2 h-5 w-5" /></Link>
-                        </Button>
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
             </section>
           </>
         )}
