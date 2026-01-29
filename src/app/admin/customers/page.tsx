@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   Card,
   CardContent,
@@ -13,15 +15,36 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { mockUsers } from "@/lib/data"
+import { Button } from "@/components/ui/button";
+import { FileSpreadsheet } from "lucide-react";
+import { exportToCsv } from "@/lib/export";
 
 export default function AdminCustomersPage() {
     const customers = mockUsers.filter(u => u.role === 'customer');
 
+    const handleExport = () => {
+        const dataToExport = customers.map(customer => ({
+            id: customer.id,
+            name: customer.name,
+            email: customer.email,
+            role: customer.role,
+            status: customer.status,
+            createdAt: customer.createdAt
+        }));
+        exportToCsv('customers.csv', dataToExport);
+    }
+
     return (
         <div className="flex flex-col gap-4">
-            <div>
-                <h1 className="text-2xl font-headline font-bold">Customers</h1>
-                <p className="text-muted-foreground">Manage all customer accounts.</p>
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-2xl font-headline font-bold">Customers</h1>
+                    <p className="text-muted-foreground">Manage all customer accounts.</p>
+                </div>
+                 <Button onClick={handleExport}>
+                    <FileSpreadsheet className="mr-2 h-4 w-4" />
+                    Export to XLS
+                </Button>
             </div>
             <Card>
                 <CardContent className="pt-6">

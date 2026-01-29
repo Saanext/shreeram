@@ -1,9 +1,9 @@
+
+'use client';
+
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import {
   Table,
@@ -23,14 +23,35 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { mockOrders } from "@/lib/data"
-import { MoreHorizontal } from "lucide-react"
+import { MoreHorizontal, FileSpreadsheet } from "lucide-react"
+import { exportToCsv } from "@/lib/export";
 
 export default function AdminOrdersPage() {
+
+    const handleExport = () => {
+        const dataToExport = mockOrders.map(order => ({
+            orderId: order.id,
+            customerName: order.customerName,
+            status: order.status,
+            date: order.date,
+            total: order.total,
+            vendorId: order.vendorId,
+            items: order.items.map(item => `${item.productName} (x${item.quantity})`).join('; ')
+        }));
+        exportToCsv('orders.csv', dataToExport);
+    }
+
     return (
         <div className="flex flex-col gap-4">
-             <div>
-                <h1 className="text-2xl font-headline font-bold">Orders</h1>
-                <p className="text-muted-foreground">Oversee and manage all customer orders.</p>
+             <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-2xl font-headline font-bold">Orders</h1>
+                    <p className="text-muted-foreground">Oversee and manage all customer orders.</p>
+                </div>
+                <Button onClick={handleExport}>
+                    <FileSpreadsheet className="mr-2 h-4 w-4" />
+                    Export to XLS
+                </Button>
             </div>
             <Card>
                 <CardContent className="pt-6">
