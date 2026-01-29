@@ -143,6 +143,32 @@ export function ShopPageContent() {
                 </div>
               </div>
             </section>
+
+            <section id="on-sale" className="w-full py-12 md:py-16 lg:py-20">
+              <div className="px-4 sm:px-6 lg:px-8">
+                <ScrollAnimation>
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">
+                        <Tag className="h-4 w-4" />
+                        Limited Time Deals
+                    </div>
+                    <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                    Grab Them While They're Hot
+                    </h2>
+                    <p className="max-w-[700px] text-muted-foreground md:text-xl">
+                        Don't miss out on these special deals. Grab them before they're gone!
+                    </p>
+                </div>
+                </ScrollAnimation>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                  {onSaleProducts.map((product) => (
+                    <ScrollAnimation key={product.id}>
+                      <ProductCard product={product} />
+                    </ScrollAnimation>
+                  ))}
+                </div>
+              </div>
+            </section>
             
             <div className="bg-muted/30">
                 <div className="px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -305,32 +331,6 @@ export function ShopPageContent() {
                   </div>
                 </div>
               </ScrollAnimation>
-            </section>
-
-            <section id="on-sale" className="w-full py-12 md:py-16 lg:py-20">
-              <div className="px-4 sm:px-6 lg:px-8">
-                <ScrollAnimation>
-                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-                    <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">
-                        <Tag className="h-4 w-4" />
-                        Limited Time Deals
-                    </div>
-                    <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    Grab Them While They're Hot
-                    </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                        Don't miss out on these special deals. Grab them before they're gone!
-                    </p>
-                </div>
-                </ScrollAnimation>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                  {onSaleProducts.map((product) => (
-                    <ScrollAnimation key={product.id}>
-                      <ProductCard product={product} />
-                    </ScrollAnimation>
-                  ))}
-                </div>
-              </div>
             </section>
           </>
         )}
