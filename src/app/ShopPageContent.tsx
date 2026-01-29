@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -45,11 +44,39 @@ export function ShopPageContent() {
     Autoplay({ delay: 4000, stopOnInteraction: true })
   )
   
-  const heroImages = [
-    { src: 'https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg', hint: 'fashion clothing family' },
-    { src: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg', hint: 'woman dress' },
-    { src: 'https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21lbiUyMGplYW5zfGVufDB8fHx8MTc1MzM2MDAzNXww&ixlib=rb-4.1.0&q=80&w=1080', hint: 'woman jeans' },
-    { src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBzaGlydHxlbnwwfHx8fDE3NTMzNTk4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080', hint: 'cotton shirt' },
+  const heroSlides = [
+    { 
+      src: 'https://images.pexels.com/photos/3768005/pexels-photo-3768005.jpeg', 
+      hint: 'fashion clothing family',
+      title: 'Discover Your Next Favorite Outfit',
+      description: 'Explore our latest collection of high-quality apparel. From casual wear to formal attire, find the perfect look for any occasion.',
+      buttonText: 'Shop Collection',
+      buttonLink: '#products'
+    },
+    { 
+      src: 'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg', 
+      hint: 'woman dress',
+      title: 'Elegance in Every Stitch',
+      description: 'Discover timeless pieces and modern trends for every woman.',
+      buttonText: 'Shop Women',
+      buttonLink: '/category/women'
+    },
+    { 
+      src: 'https://images.unsplash.com/photo-1602233158242-3ba0ac4d2167?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3b21lbiUyMGplYW5zfGVufDB8fHx8MTc1MzM2MDAzNXww&ixlib=rb-4.1.0&q=80&w=1080', 
+      hint: 'woman jeans',
+      title: 'The Perfect Fit: Denim',
+      description: 'Comfortable, stylish, and durable jeans for your everyday adventures.',
+      buttonText: 'Explore Denim',
+      buttonLink: '/category/women/jeans'
+    },
+    { 
+      src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3R0b24lMjBzaGlydHxlbnwwfHx8fDE3NTMzNTk4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080', 
+      hint: 'cotton shirt',
+      title: 'Casual & Cool Cotton',
+      description: 'Breathable and soft cotton wear for ultimate comfort.',
+      buttonText: 'Shop Men',
+      buttonLink: '/category/men'
+    },
   ];
 
 
@@ -85,61 +112,54 @@ export function ShopPageContent() {
           </section>
         ) : (
           <>
-            <section className="w-full py-12 md:py-24 lg:py-32">
-              <div className="px-4 sm:px-6 lg:px-8">
-                <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-                  <div className="flex flex-col justify-center space-y-6">
-                    <ScrollAnimation>
-                      <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                        Discover Your Next Favorite Outfit
-                      </h1>
-                    </ScrollAnimation>
-                    <ScrollAnimation style={{ animationDelay: '0.2s' }}>
-                      <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                        Explore our latest collection of high-quality apparel. From casual wear to formal attire, find the perfect look for any occasion.
-                      </p>
-                    </ScrollAnimation>
-                    <ScrollAnimation style={{ animationDelay: '0.4s' }}>
-                      <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                          <Button asChild size="lg" className="group">
-                              <Link href="#products">
-                                  Shop Collection
-                                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                              </Link>
-                          </Button>
-                      </div>
-                    </ScrollAnimation>
-                  </div>
-                  <ScrollAnimation className="w-full">
-                      <Carousel
-                          plugins={[plugin.current]}
-                          className="w-full rounded-xl overflow-hidden"
-                          onMouseEnter={plugin.current.stop}
-                          onMouseLeave={plugin.current.reset}
-                          opts={{ loop: true }}
-                      >
-                          <CarouselContent>
-                          {heroImages.map((image, index) => (
-                              <CarouselItem key={index}>
-                              <div className="aspect-square relative w-full">
-                                  <Image
-                                      src={image.src}
-                                      data-ai-hint={image.hint}
-                                      alt="Hero Banner Image"
-                                      fill
-                                      className="object-cover"
-                                      priority={index === 0}
-                                  />
-                              </div>
-                              </CarouselItem>
-                          ))}
-                          </CarouselContent>
-                           <CarouselPrevious className="left-4" />
-                           <CarouselNext className="right-4" />
-                      </Carousel>
-                  </ScrollAnimation>
-                </div>
-              </div>
+            <section className="w-full relative">
+                <Carousel
+                    plugins={[plugin.current]}
+                    className="w-full"
+                    onMouseEnter={plugin.current.stop}
+                    onMouseLeave={plugin.current.reset}
+                    opts={{ loop: true }}
+                >
+                    <CarouselContent>
+                    {heroSlides.map((slide, index) => (
+                        <CarouselItem key={index}>
+                        <div className="relative w-full h-[60vh] md:h-[80vh]">
+                            <Image
+                                src={slide.src}
+                                data-ai-hint={slide.hint}
+                                alt="Hero Banner Image"
+                                fill
+                                className="object-cover"
+                                priority={index === 0}
+                            />
+                             <div className="absolute inset-0 bg-black/40" />
+                            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
+                                <ScrollAnimation>
+                                    <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                                        {slide.title}
+                                    </h1>
+                                </ScrollAnimation>
+                                <ScrollAnimation style={{ animationDelay: '0.2s' }}>
+                                    <p className="max-w-[700px] text-lg md:text-xl mt-4">
+                                        {slide.description}
+                                    </p>
+                                </ScrollAnimation>
+                                <ScrollAnimation style={{ animationDelay: '0.4s' }}>
+                                    <Button asChild size="lg" className="mt-8 group bg-white text-black hover:bg-white/90">
+                                        <Link href={slide.buttonLink}>
+                                            {slide.buttonText}
+                                            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                        </Link>
+                                    </Button>
+                                </ScrollAnimation>
+                            </div>
+                        </div>
+                        </CarouselItem>
+                    ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-4 text-white border-white hover:bg-white/20 hover:text-white" />
+                    <CarouselNext className="right-4 text-white border-white hover:bg-white/20 hover:text-white" />
+                </Carousel>
             </section>
 
             <section id="on-sale" className="w-full py-12 md:py-16 lg:py-20">
