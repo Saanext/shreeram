@@ -1,4 +1,3 @@
-
 'use client';
 import { mockProducts, mockUsers } from '@/lib/data';
 import { notFound } from 'next/navigation';
@@ -15,7 +14,8 @@ import { useToast } from '@/hooks/use-toast';
 import { SizeChartDialog } from '@/components/customer/SizeChartDialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
-export default function ProductDetailPage({ params: { id } }: { params: { id: string } }) {
+export default function ProductDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [selectedSize, setSelectedSize] = React.useState<string | null>(null);
