@@ -1,6 +1,5 @@
 
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { mockProducts, mockCategories } from '@/lib/data';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { notFound } from 'next/navigation';
@@ -25,7 +24,6 @@ export default function SubCategoryPage({ params }: { params: { slug: string, su
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <div className="mb-8">
             <Breadcrumb>

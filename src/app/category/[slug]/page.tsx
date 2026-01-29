@@ -1,6 +1,5 @@
 
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { mockProducts, mockCategories } from '@/lib/data';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { notFound } from 'next/navigation';
@@ -23,7 +22,6 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-12 md:py-16">
         <div className="mb-12">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">

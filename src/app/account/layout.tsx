@@ -4,7 +4,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { cn } from '@/lib/utils';
 import { User, ShoppingBag, MapPin, KeyRound } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
@@ -26,7 +25,6 @@ export default function AccountLayout({
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-12 md:py-16">
          <div className="mb-12">
           <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">Your Account</h1>

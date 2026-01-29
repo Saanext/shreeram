@@ -8,7 +8,6 @@ import { ProductCard } from '@/components/customer/ProductCard';
 import { mockProducts, mockCategories } from '@/lib/data';
 import { ArrowRight, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
 import Image from 'next/image';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
 import { useSearchParams } from 'next/navigation';
 import * as React from 'react';
@@ -42,7 +41,7 @@ export function ShopPageContent() {
   const featuredProducts = mockProducts.slice(0, 4);
   const bestSellers = mockProducts.filter(p => p.isBestSeller);
   const onSaleProducts = mockProducts.filter(p => p.isOnSale);
-  const parentCategories = mockCategories.filter(c => !c.parentId);
+  const parentCategories = mockCategories.filter(c => !c.parentId && c.name.toLowerCase() !== 'studio' && c.name.toLowerCase() !== 'home' && c.name.toLowerCase() !== 'beauty');
   
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -59,7 +58,6 @@ export function ShopPageContent() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1">
         {searchQuery ? (
           <section className="w-full py-12 md:py-24 lg:py-32">

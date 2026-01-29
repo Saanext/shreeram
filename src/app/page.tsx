@@ -4,13 +4,11 @@ import { Suspense } from 'react';
 import { ShopPageContent } from './ShopPageContent';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 
 function LoadingFallback() {
   return (
     <div className="flex flex-col min-h-screen">
       <CustomerHeader />
-      <CategoryNav />
       <div className="container px-4 md:px-6 py-12 md:py-24 lg:py-32 flex-1">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] mb-12">
           <div className="flex flex-col justify-center space-y-4">

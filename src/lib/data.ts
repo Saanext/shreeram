@@ -28,7 +28,10 @@ export const mockCategories: Category[] = [
   { id: 'cat_001', name: 'Men', productCount: 2, imageUrl: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg' },
   { id: 'cat_002', name: 'Women', productCount: 2, imageUrl: 'https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg' },
   { id: 'cat_003', name: 'Kids', productCount: 2, imageUrl: 'https://images.pexels.com/photos/1619779/pexels-photo-1619779.jpeg' },
-  
+  { id: 'cat_home', name: 'Home', productCount: 0, imageUrl: 'https://picsum.photos/seed/home/400/400' },
+  { id: 'cat_beauty', name: 'Beauty', productCount: 0, imageUrl: 'https://picsum.photos/seed/beauty/400/400' },
+  { id: 'cat_studio', name: 'Studio', productCount: 0, imageUrl: 'https://picsum.photos/seed/studio/400/400' },
+
   // Men's Subcategories
   { id: 'cat_004', name: 'T-Shirts', parentId: 'cat_001', productCount: 1, imageUrl: 'https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg' },
   { id: 'cat_005', name: 'Shirts', parentId: 'cat_001', productCount: 1, imageUrl: 'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg' },

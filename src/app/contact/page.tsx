@@ -1,5 +1,4 @@
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,7 +10,6 @@ export default function ContactPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-12 md:py-24">
         <div className="text-center mb-12">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">Contact Us</h1>

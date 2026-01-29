@@ -1,12 +1,10 @@
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import Image from 'next/image';
 
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-12 md:py-24">
         <div className="grid gap-8 md:grid-cols-2 md:gap-12">
           <div className="space-y-6">

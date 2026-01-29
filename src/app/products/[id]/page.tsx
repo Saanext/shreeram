@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Store } from 'lucide-react';
 import { Star } from 'lucide-react';
-import { CategoryNav } from '@/components/customer/CategoryNav';
 import { useCart } from '@/contexts/CartContext';
 import { ProductImageGallery } from '@/components/customer/ProductImageGallery';
 import type { Product } from '@/lib/types';
@@ -30,7 +29,6 @@ export default function ProductDetailPage({ params: { id } }: { params: { id: st
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <CategoryNav />
       <main className="flex-1 container py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <ProductImageGallery product={product} />
