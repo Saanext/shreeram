@@ -7,7 +7,7 @@ import { Separator } from '../ui/separator';
 export function Footer() {
   return (
     <footer className="bg-muted/40 text-muted-foreground border-t">
-       <div className="container py-8 text-sm">
+       <div className="px-4 sm:px-6 lg:px-8 py-8 text-sm">
          <div className="grid md:grid-cols-2 gap-8 text-center md:text-left">
             <div>
               <h4 className="font-bold text-lg text-foreground mb-2">Exclusive Offers</h4>
@@ -20,7 +20,7 @@ export function Footer() {
          </div>
       </div>
       <Separator />
-      <div className="container py-12">
+      <div className="px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="space-y-4 col-span-2 md:col-span-1">
             <Logo />
@@ -54,7 +54,7 @@ export function Footer() {
         </div>
       </div>
       <div className="bg-muted/60 py-4">
-        <div className="container flex flex-col sm:flex-row justify-between items-center text-sm">
+        <div className="px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm">
           <p className="text-xs">&copy; 2024 SRE Clothing. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6 mt-2 sm:mt-0">
             <Link href="/vendor/login" className="text-xs hover:underline underline-offset-4">

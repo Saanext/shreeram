@@ -7,7 +7,7 @@ export default function WishlistPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <main className="flex-1 container py-8 md:py-12">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="mb-8">
             <h1 className="font-headline text-3xl md:text-4xl font-bold">Your Wishlist</h1>
         </div>

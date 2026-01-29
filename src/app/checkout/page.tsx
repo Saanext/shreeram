@@ -17,7 +17,7 @@ export default function CheckoutPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <main className="flex-1 container py-8 md:py-12">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <h1 className="font-headline text-3xl md:text-4xl font-bold mb-8">Checkout</h1>
         <div className="grid md:grid-cols-[1fr_400px] gap-12">
           <div>

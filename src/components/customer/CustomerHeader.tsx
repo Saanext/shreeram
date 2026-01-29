@@ -1,3 +1,4 @@
+
 'use client';
 import Link from 'next/link';
 import { Menu, Search, User, Heart, ShoppingBag } from 'lucide-react';
@@ -75,7 +76,7 @@ export function CustomerHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background shadow-sm">
-      <div className="container flex h-20 items-center">
+      <div className="flex h-20 items-center px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
             {/* Mobile menu trigger */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>

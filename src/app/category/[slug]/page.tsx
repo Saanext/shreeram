@@ -22,7 +22,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <main className="flex-1 container py-12 md:py-16">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="mb-12">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">
                 {categoryName}'s Collection

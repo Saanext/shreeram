@@ -61,7 +61,7 @@ export function ShopPageContent() {
       <main className="flex-1">
         {searchQuery ? (
           <section className="w-full py-12 md:py-24 lg:py-32">
-            <div className="container px-4 md:px-6">
+            <div className="px-4 sm:px-6 lg:px-8">
               <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8">
                 Search Results for "{searchQuery}"
               </h2>
@@ -88,7 +88,7 @@ export function ShopPageContent() {
         ) : (
           <>
             <section className="w-full py-12 md:py-24 lg:py-32">
-              <div className="container px-4 md:px-6">
+              <div className="px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
                   <div className="flex flex-col justify-center space-y-6">
                     <ScrollAnimation>
@@ -145,7 +145,7 @@ export function ShopPageContent() {
             </section>
             
             <div className="bg-muted/30">
-                <div className="container px-4 md:px-6 py-12 md:py-16">
+                <div className="px-4 sm:px-6 lg:px-8 py-12 md:py-16">
                     <ScrollAnimation>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                             <FeatureCard 
@@ -175,8 +175,8 @@ export function ShopPageContent() {
 
             <section className="w-full py-12 md:py-16">
               <ScrollAnimation>
-                <div className="container px-4 md:px-6">
-                  <div className="p-1.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500">
+                <div className="px-4 sm:px-6 lg:px-8">
+                  <div className="p-1.5 rounded-xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500">
                     <div className="bg-background rounded-lg p-4 flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <Image
@@ -205,7 +205,7 @@ export function ShopPageContent() {
             </section>
             
             <section id="categories" className="w-full py-12 md:py-16 lg:py-20">
-              <div className="container px-4 md:px-6">
+              <div className="px-4 sm:px-6 lg:px-8">
                   <ScrollAnimation>
                   <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                       <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Top Categories</div>
@@ -228,7 +228,7 @@ export function ShopPageContent() {
             </section>
 
             <section id="products" className="w-full py-12 md:py-16 lg:py-20">
-              <div className="container px-4 md:px-6">
+              <div className="px-4 sm:px-6 lg:px-8">
                 <ScrollAnimation>
                   <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                       <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">New Arrivals</div>
@@ -251,7 +251,7 @@ export function ShopPageContent() {
             </section>
 
             <section id="best-sellers" className="w-full py-12 md:py-16 lg:py-20 bg-muted/20">
-              <div className="container px-4 md:px-6">
+              <div className="px-4 sm:px-6 lg:px-8">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <div className="inline-block rounded-lg bg-primary/10 text-primary px-3 py-1 text-sm font-medium flex items-center gap-2">
@@ -290,7 +290,7 @@ export function ShopPageContent() {
              
             <section className="w-full py-12 md:py-16 lg:py-20">
               <ScrollAnimation>
-                <div className="container px-4 md:px-6">
+                <div className="px-4 sm:px-6 lg:px-8">
                   <div className="relative rounded-xl overflow-hidden py-24 px-8 flex items-center justify-center text-center bg-cover bg-center" style={{backgroundImage: "url('https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg')"}}>
                     <div className="absolute inset-0 bg-black/50 z-0"></div>
                     <div className="relative z-10 space-y-4 max-w-2xl">
@@ -308,7 +308,7 @@ export function ShopPageContent() {
             </section>
 
             <section id="on-sale" className="w-full py-12 md:py-16 lg:py-20">
-              <div className="container px-4 md:px-6">
+              <div className="px-4 sm:px-6 lg:px-8">
                 <ScrollAnimation>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <div className="inline-block rounded-lg bg-destructive/10 text-destructive px-3 py-1 text-sm font-medium flex items-center gap-2">

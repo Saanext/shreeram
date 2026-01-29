@@ -29,7 +29,7 @@ export default function ProductDetailPage({ params: { id } }: { params: { id: st
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <main className="flex-1 container py-8 md:py-12">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <ProductImageGallery product={product} />
           <div className="flex flex-col justify-center space-y-6 py-4">

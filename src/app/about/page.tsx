@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <CustomerHeader />
-      <main className="flex-1 container py-12 md:py-24">
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 py-12 md:py-24">
         <div className="grid gap-8 md:grid-cols-2 md:gap-12">
           <div className="space-y-6">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl">About SRE Clothing</h1>
