@@ -18,7 +18,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft } from 'lucide-react';
 
@@ -26,7 +26,10 @@ const productSchema = z.object({
   name: z.string().min(3, 'Product name must be at least 3 characters'),
   description: z.string().min(10, 'Description must be at least 10 characters'),
   price: z.coerce.number().min(0, 'Price must be a positive number'),
+  originalPrice: z.coerce.number().min(0, 'Original price must be a positive number').optional(),
   stock: z.coerce.number().int().min(0, 'Stock must be a non-negative integer'),
+  sizes: z.string().optional(),
+  sizeChartImageUrl: z.string().url('Please enter a valid URL').optional().or(z.literal('')),
 });
 
 type ProductFormValues = z.infer<typeof productSchema>;
@@ -43,7 +46,10 @@ export default function VendorProductEditPage({ params }: { params: { id: string
       name: product?.name || '',
       description: product?.description || '',
       price: product?.price || 0,
+      originalPrice: product?.originalPrice || 0,
       stock: product?.stock || 0,
+      sizes: product?.sizes?.join(', ') || '',
+      sizeChartImageUrl: product?.sizeChartImageUrl || '',
     }
   });
 
@@ -107,13 +113,26 @@ export default function VendorProductEditPage({ params }: { params: { id: string
                             </FormItem>
                         )}
                     />
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <FormField
                             control={form.control}
                             name="price"
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Price (₹)</FormLabel>
+                                    <FormControl>
+                                        <Input type="number" step="0.01" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="originalPrice"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Original Price (MRP)</FormLabel>
                                     <FormControl>
                                         <Input type="number" step="0.01" {...field} />
                                     </FormControl>
@@ -135,6 +154,35 @@ export default function VendorProductEditPage({ params }: { params: { id: string
                             )}
                         />
                     </div>
+                     <FormField
+                        control={form.control}
+                        name="sizes"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Sizes</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="S, M, L, XL" {...field} />
+                                </FormControl>
+                                <FormDescription>
+                                    Enter available sizes, separated by commas.
+                                </FormDescription>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                     <FormField
+                        control={form.control}
+                        name="sizeChartImageUrl"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Size Chart Image URL</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="https://example.com/size-chart.jpg" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                 </CardContent>
                 <CardFooter className="border-t px-6 py-4">
                 <Button type="submit" disabled={form.formState.isSubmitting}>

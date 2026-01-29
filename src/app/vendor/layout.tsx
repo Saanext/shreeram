@@ -1,4 +1,3 @@
-
 'use client'
 import Link from 'next/link'
 import {
@@ -108,6 +107,11 @@ export default function VendorLayout({
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           {children}
         </main>
+        <footer className="border-t bg-muted/40 px-4 py-2 lg:px-6">
+            <div className="text-center text-xs text-muted-foreground">
+                <Link href="#" className="hover:underline">Terms & Conditions</Link>
+            </div>
+        </footer>
       </div>
     </div>
   )

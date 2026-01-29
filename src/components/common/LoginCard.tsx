@@ -46,7 +46,14 @@ export function LoginCard({ title, description, userType, loginAction }: LoginCa
                 <Input id="email" type="email" placeholder="name@example.com" required />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Password</Label>
+                   {userType !== 'Customer' && (
+                     <Link href="#" className="text-sm font-medium text-primary hover:underline">
+                        Forgot Password?
+                     </Link>
+                   )}
+                </div>
                 <Input id="password" type="password" placeholder="••••••••" required />
               </div>
               <Button type="submit" className="w-full">Sign In</Button>
