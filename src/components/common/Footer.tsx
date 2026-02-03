@@ -18,8 +18,8 @@ export function Footer() {
 
   return (
     <footer className="bg-muted/40 text-muted-foreground border-t">
-      <div className="px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h4 className="font-headline text-sm font-semibold uppercase text-foreground tracking-wider">Online Shopping</h4>
             <ul className="space-y-2">
@@ -39,21 +39,21 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-headline text-sm font-semibold uppercase text-foreground tracking-wider">Keep in touch</h4>
             <div className="flex space-x-4">
-              <Link href="#" className="hover:text-primary transition-colors"><Facebook className="h-5 w-5" /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><Twitter className="h-5 w-5" /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><Instagram className="h-5 w-5" /></Link>
+              <Link href="#" className="hover:text-primary transition-colors"><Facebook className="h-6 w-6" /></Link>
+              <Link href="#" className="hover:text-primary transition-colors"><Twitter className="h-6 w-6" /></Link>
+              <Link href="#" className="hover:text-primary transition-colors"><Instagram className="h-6 w-6" /></Link>
             </div>
           </div>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-                <ShieldCheck className="h-10 w-10 text-foreground shrink-0"/>
+                <ShieldCheck className="h-8 w-8 text-foreground shrink-0 mt-1"/>
                 <div>
                     <p className="font-bold text-foreground">100% ORIGINAL</p>
                     <p className="text-sm">guarantee for all products at sreclothing.com</p>
                 </div>
             </div>
              <div className="flex items-start gap-4">
-                <RefreshCw className="h-10 w-10 text-foreground shrink-0"/>
+                <RefreshCw className="h-8 w-8 text-foreground shrink-0 mt-1"/>
                  <div>
                     <p className="font-bold text-foreground">Return within 14 days</p>
                     <p className="text-sm">of receiving your order</p>
@@ -64,8 +64,8 @@ export function Footer() {
       </div>
       <Separator />
        <div className="bg-muted/60 py-4">
-        <div className="px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm">
-          <p className="text-xs">&copy; 2024 SRE Clothing. All rights reserved.</p>
+        <div className="px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+          <p className="text-xs text-center sm:text-left">&copy; 2024 SRE Clothing. All rights reserved.</p>
           <nav className="flex gap-4 sm:gap-6 mt-2 sm:mt-0">
             <Link href="/vendor/login" className="text-xs hover:underline underline-offset-4">
               Vendor Portal
