@@ -46,6 +46,10 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname()
 
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
+
   const sidebarNav = (
     <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
       {navItems.map((item) => (
@@ -71,7 +75,7 @@ export default function AdminLayout({
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-      <div className="hidden bg-background md:block">
+      <div className="hidden border-r bg-background md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Logo />
