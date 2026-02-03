@@ -58,7 +58,7 @@ export default function AdminLayout({
           href={item.href}
           className={cn(
             'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary',
-            pathname.startsWith(item.href) && 'bg-muted text-primary'
+            (pathname === item.href || (item.href !== '/admin/dashboard' && pathname.startsWith(item.href))) && 'bg-muted text-primary'
           )}
         >
           <item.icon className="h-4 w-4" />
@@ -118,8 +118,7 @@ export default function AdminLayout({
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuItem asChild><Link href="/admin/settings">Settings</Link></DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/">Logout</Link></DropdownMenuItem>
             </DropdownMenuContent>
