@@ -1,5 +1,6 @@
 
 'use client'
+import * as React from 'react';
 import Link from 'next/link'
 import {
   Home,
@@ -35,6 +36,7 @@ export default function VendorLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   if (pathname === '/vendor/login') {
     return <>{children}</>;
@@ -50,6 +52,7 @@ export default function VendorLayout({
             'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary',
             (pathname === item.href || (item.href !== '/vendor/dashboard' && pathname.startsWith(item.href))) && 'bg-muted text-primary'
           )}
+          onClick={() => setMobileMenuOpen(false)}
         >
           <item.icon className="h-4 w-4" />
           {item.label}
@@ -72,7 +75,7 @@ export default function VendorLayout({
       </div>
       <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
-          <Sheet>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
