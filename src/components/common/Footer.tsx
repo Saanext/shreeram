@@ -6,6 +6,7 @@ import { Separator } from '../ui/separator';
 
 export function Footer() {
   const usefulLinks = [
+    { href: '/account', label: 'Your Account' },
     { href: '/about', label: 'About Us' },
     { href: '/contact', label: 'Contact Us' },
     { href: '/#', label: 'FAQ' },
