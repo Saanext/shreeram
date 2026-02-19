@@ -58,11 +58,15 @@ const Carousel = React.forwardRef<
     },
     ref
   ) => {
+    // Memoize options to prevent unnecessary re-initialization of Embla
+    // which causes 'api' to change on every render, triggering infinite setApi loop
+    const emblaOptions = React.useMemo(() => ({
+      ...opts,
+      axis: orientation === "horizontal" ? "x" : "y",
+    }), [opts, orientation]);
+
     const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...opts,
-        axis: orientation === "horizontal" ? "x" : "y",
-      },
+      emblaOptions as any, // Type cast to avoid potential type mismatch with strict memo
       plugins
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)

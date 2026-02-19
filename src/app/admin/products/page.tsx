@@ -21,12 +21,41 @@ import {
   } from "@/components/ui/dropdown-menu"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { mockProducts } from "@/lib/data"
 import Image from "next/image"
 import { MoreHorizontal, CheckCircle2, Star, Tag } from "lucide-react"
 import { AddProductDialog } from "@/components/common/AddProductDialog"
+import { ProductActions } from "@/components/admin/ProductActions"
+import { createClient } from "@/lib/supabase/server"
 
-export default function AdminProductsPage() {
+export default async function AdminProductsPage() {
+    const supabase = await createClient();
+
+    const { data: products, error } = await supabase
+        .from('products')
+        .select(`
+            *,
+            category:categories!category_id(name)
+        `)
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error('Error fetching products:', error);
+    }
+
+    const mappedProducts = products?.map(p => ({
+        id: p.id,
+        name: p.name,
+        description: p.description || '',
+        price: p.price,
+        originalPrice: p.original_price,
+        category: p.category?.name || 'Uncategorized',
+        stock: p.stock,
+        imageUrls: p.image_urls || [],
+        isBestSeller: p.is_best_seller,
+        isOnSale: p.is_on_sale,
+        slug: p.slug,
+    })) || [];
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -55,7 +84,7 @@ export default function AdminProductsPage() {
                         </TableRow>
                         </TableHeader>
                         <TableBody>
-                        {mockProducts.map(product => (
+                        {mappedProducts.map(product => (
                             <TableRow key={product.id}>
                                 <TableCell className="hidden sm:table-cell">
                                 <Image
@@ -90,19 +119,7 @@ export default function AdminProductsPage() {
                                   </div>
                                 </TableCell>
                                 <TableCell>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                    <Button aria-haspopup="true" size="icon" variant="ghost">
-                                        <MoreHorizontal className="h-4 w-4" />
-                                        <span className="sr-only">Toggle menu</span>
-                                    </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>View Product</DropdownMenuItem>
-                                    <DropdownMenuItem className="text-destructive">Unlist Product</DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
+                                    <ProductActions product={product} />
                                 </TableCell>
                             </TableRow>
                          ))}

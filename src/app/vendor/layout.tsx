@@ -38,7 +38,7 @@ export default function VendorLayout({
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
-  if (pathname === '/vendor/login') {
+  if (pathname === '/vendor/login' || pathname === '/vendor/register') {
     return <>{children}</>;
   }
 
@@ -87,9 +87,9 @@ export default function VendorLayout({
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-                <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-                  <Logo />
-                </div>
+              <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+                <Logo />
+              </div>
               {sidebarNav}
             </SheetContent>
           </Sheet>

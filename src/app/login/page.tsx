@@ -12,7 +12,7 @@ export default function CustomerLoginPage() {
       <CustomerHeader />
       <main className="flex-1 flex items-center justify-center bg-muted/40 p-4">
         <LoginCard
-          title="Sign In"
+          title="Welcome to SRE Clothing"
           description="Access your account to view orders and manage your profile."
           userType="Customer"
           loginAction={handleCustomerLogin}

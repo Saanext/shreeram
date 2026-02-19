@@ -16,21 +16,40 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { mockOrders, mockProducts, mockUsers } from "@/lib/data";
+import { createClient } from "@/lib/supabase/server";
 
-export default function VendorDashboardPage() {
-    const vendorId = 'usr_002'; // Mocking logged in vendor
-    const vendorOrders = mockOrders.filter(o => o.vendorId === vendorId);
-    const vendorProducts = mockProducts.filter(p => p.vendorId === vendorId);
-    const totalRevenue = vendorOrders.reduce((acc, order) => acc + order.total, 0);
+export default async function VendorDashboardPage() {
+    const supabase = await createClient();
+
+    // Get current vendor user
+    const { data: { user } } = await supabase.auth.getUser();
+    const vendorId = user?.id;
+
+    // Fetch vendor's products
+    const { data: vendorProducts } = await supabase
+        .from('products')
+        .select('*')
+        .eq('vendor_id', vendorId);
+
+    // Fetch vendor's orders through order_items
+    const { data: orderItems } = await supabase
+        .from('order_items')
+        .select('*, order:orders(*)')
+        .eq('vendor_id', vendorId)
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+    // Calculate total revenue from order items
+    const totalRevenue = orderItems?.reduce((acc, item) => acc + (item.total || 0), 0) || 0;
+    const totalOrders = orderItems?.length || 0;
 
   return (
     <>
        <h1 className="text-2xl font-headline font-bold">Dashboard</h1>
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-        <StatCard title="Total Revenue" value={`₹${totalRevenue.toLocaleString()}`} icon={DollarSign} description="+15.2% from last month" />
-        <StatCard title="Active Products" value={`${vendorProducts.length}`} icon={Package} description="Total products you are selling" />
-        <StatCard title="Total Orders" value={`+${vendorOrders.length}`} icon={ShoppingCart} description="+10% from last month" />
+        <StatCard title="Total Revenue" value={`₹${totalRevenue.toLocaleString()}`} icon={DollarSign} description="From all your sales" />
+        <StatCard title="Active Products" value={`${vendorProducts?.length || 0}`} icon={Package} description="Total products you are selling" />
+        <StatCard title="Total Orders" value={`+${totalOrders}`} icon={ShoppingCart} description="All time orders" />
       </div>
       <Card>
         <CardHeader>
@@ -41,25 +60,35 @@ export default function VendorDashboardPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Customer</TableHead>
+                <TableHead>Product</TableHead>
+                <TableHead>Quantity</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right">Amount</TableHead>
                  <TableHead>Date</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {vendorOrders.slice(0, 5).map(order => (
-                <TableRow key={order.id}>
+              {orderItems && orderItems.length > 0 ? orderItems.map(item => (
+                <TableRow key={item.id}>
                   <TableCell>
-                    <div className="font-medium">{order.customerName}</div>
+                    <div className="font-medium">{item.name}</div>
                   </TableCell>
+                  <TableCell>{item.quantity}</TableCell>
                   <TableCell>
-                    <Badge variant={order.status === 'Delivered' ? 'default' : 'secondary'}>{order.status}</Badge>
+                    <Badge variant={item.order?.status === 'delivered' ? 'default' : 'secondary'} className="capitalize">
+                      {item.order?.status || 'pending'}
+                    </Badge>
                   </TableCell>
-                  <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
-                   <TableCell>{new Date(order.date).toLocaleDateString()}</TableCell>
+                  <TableCell className="text-right">₹{item.total?.toFixed(2) || '0.00'}</TableCell>
+                   <TableCell>{new Date(item.created_at).toLocaleDateString()}</TableCell>
                 </TableRow>
-              ))}
+              )) : (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center py-4 text-muted-foreground">
+                    No orders yet
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </CardContent>

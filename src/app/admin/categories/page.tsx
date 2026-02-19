@@ -1,15 +1,16 @@
+'use client';
 
 import {
-  Card,
-  CardContent,
+    Card,
+    CardContent,
 } from "@/components/ui/card"
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "@/components/ui/table"
 import {
     DropdownMenu,
@@ -17,18 +18,44 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
-import { mockCategories } from "@/lib/data"
 import Image from "next/image"
-import { MoreHorizontal } from "lucide-react"
+import { MoreHorizontal, Loader2 } from "lucide-react"
 import { AddCategoryDialog } from "@/components/admin/AddCategoryDialog"
+import { useState, useEffect } from "react"
+import { Category } from "@/lib/types"
 
 export default function AdminCategoriesPage() {
-    const parentCategories = mockCategories.filter(c => !c.parentId);
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchCategories = async () => {
+        try {
+            const res = await fetch('/api/categories');
+            if (res.ok) {
+                const data = await res.json();
+                setCategories(data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch categories", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
+
+    const parentCategories = categories.filter(c => !c.parentId);
 
     const getSubcategoryCount = (categoryId: string) => {
-        return mockCategories.filter(c => c.parentId === categoryId).length;
+        return categories.filter(c => c.parentId === categoryId).length;
+    }
+
+    if (loading) {
+        return <div className="flex justify-center p-8"><Loader2 className="h-8 w-8 animate-spin" /></div>;
     }
 
     return (
@@ -38,60 +65,67 @@ export default function AdminCategoriesPage() {
                     <h1 className="text-2xl font-headline font-bold">Categories</h1>
                     <p className="text-muted-foreground">Manage your product categories and subcategories.</p>
                 </div>
-                 <AddCategoryDialog />
+                <AddCategoryDialog onCategoryAdded={fetchCategories} categories={categories} />
             </div>
             <Card>
                 <CardContent className="pt-6">
                     <Table>
                         <TableHeader>
-                        <TableRow>
-                            <TableHead className="hidden w-[100px] sm:table-cell">
-                                Image
-                            </TableHead>
-                            <TableHead>Name</TableHead>
-                            <TableHead>Subcategories</TableHead>
-                            <TableHead className="hidden md:table-cell">Products</TableHead>
-                            <TableHead>
-                                <span className="sr-only">Actions</span>
-                            </TableHead>
-                        </TableRow>
+                            <TableRow>
+                                <TableHead className="hidden w-[100px] sm:table-cell">
+                                    Image
+                                </TableHead>
+                                <TableHead>Name</TableHead>
+                                <TableHead>Subcategories</TableHead>
+                                <TableHead className="hidden md:table-cell">Products</TableHead>
+                                <TableHead>
+                                    <span className="sr-only">Actions</span>
+                                </TableHead>
+                            </TableRow>
                         </TableHeader>
                         <TableBody>
-                        {parentCategories.map(category => (
-                            <TableRow key={category.id}>
-                                <TableCell className="hidden sm:table-cell">
-                                <Image
-                                    alt={category.name}
-                                    className="aspect-square rounded-md object-cover"
-                                    height="64"
-                                    src={category.imageUrl}
-                                    width="64"
-                                    data-ai-hint={`${category.name} category`}
-                                />
-                                </TableCell>
-                                <TableCell className="font-medium">{category.name}</TableCell>
-                                <TableCell>
-                                    {getSubcategoryCount(category.id)}
-                                </TableCell>
-                                <TableCell className="hidden md:table-cell">{category.productCount}</TableCell>
-                                <TableCell>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                    <Button aria-haspopup="true" size="icon" variant="ghost">
-                                        <MoreHorizontal className="h-4 w-4" />
-                                        <span className="sr-only">Toggle menu</span>
-                                    </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem>Edit Category</DropdownMenuItem>
-                                    <DropdownMenuItem>View Subcategories</DropdownMenuItem>
-                                    <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                                </TableCell>
-                            </TableRow>
-                         ))}
+                            {parentCategories.map(category => (
+                                <TableRow key={category.id}>
+                                    <TableCell className="hidden sm:table-cell">
+                                        <Image
+                                            alt={category.name}
+                                            className="aspect-square rounded-md object-cover"
+                                            height="64"
+                                            src={category.imageUrl}
+                                            width="64"
+                                            data-ai-hint={`${category.name} category`}
+                                        />
+                                    </TableCell>
+                                    <TableCell className="font-medium">{category.name}</TableCell>
+                                    <TableCell>
+                                        {getSubcategoryCount(category.id)}
+                                    </TableCell>
+                                    <TableCell className="hidden md:table-cell">{category.productCount}</TableCell>
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button aria-haspopup="true" size="icon" variant="ghost">
+                                                    <MoreHorizontal className="h-4 w-4" />
+                                                    <span className="sr-only">Toggle menu</span>
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end">
+                                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                                <DropdownMenuItem>Edit Category</DropdownMenuItem>
+                                                <DropdownMenuItem>View Subcategories</DropdownMenuItem>
+                                                <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                            {parentCategories.length === 0 && (
+                                <TableRow>
+                                    <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
+                                        No categories found. Add one to get started.
+                                    </TableCell>
+                                </TableRow>
+                            )}
                         </TableBody>
                     </Table>
                 </CardContent>

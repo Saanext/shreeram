@@ -1,12 +1,32 @@
 
-export type User = {
+export type Admin = {
   id: string;
-  name: string;
+  fullName: string;
   email: string;
-  role: 'admin' | 'vendor' | 'customer';
-  status: 'active' | 'inactive';
+  role: 'admin';
   createdAt: string;
 };
+
+export type Vendor = {
+  id: string;
+  fullName: string;
+  email: string;
+  storeName?: string;
+  gstNumber?: string;
+  role: 'vendor';
+  createdAt: string;
+};
+
+export type Customer = {
+  id: string;
+  fullName: string;
+  email: string;
+  shippingAddress?: string;
+  role: 'customer';
+  createdAt: string;
+};
+
+export type User = Admin | Vendor | Customer;
 
 export type Product = {
   id: string;
@@ -22,8 +42,13 @@ export type Product = {
   isBestSeller?: boolean;
   isOnSale?: boolean;
   sizes?: string[];
+  colors?: string[];
   details?: { [key: string]: string };
+  tags?: string[];
+  sku?: string;
   sizeChartImageUrl?: string;
+  slug?: string;
+  discountPrice?: number;
 };
 
 export type Order = {

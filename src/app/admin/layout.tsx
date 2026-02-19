@@ -45,10 +45,11 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
-  if (pathname === '/admin/login') {
+  // Robustly check for login page to hide sidebar
+  if (pathname?.startsWith('/admin/login')) {
     return <>{children}</>;
   }
 
@@ -66,11 +67,7 @@ export default function AdminLayout({
         >
           <item.icon className="h-4 w-4" />
           {item.label}
-          {item.label === 'Orders' && (
-             <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-              3
-            </Badge>
-          )}
+
         </Link>
       ))}
     </nav>
@@ -102,9 +99,9 @@ export default function AdminLayout({
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-                <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-                  <Logo />
-                </div>
+              <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+                <Logo />
+              </div>
               {sidebarNav}
             </SheetContent>
           </Sheet>

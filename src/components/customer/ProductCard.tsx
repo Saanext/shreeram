@@ -41,19 +41,21 @@ export function ProductCard({ product }: { product: Product }) {
 
   const isLongDescription = product.description.length > 100;
   
-  const productLink = product.subCategory 
+  const productLink = product.subCategory
     ? `/category/${product.category.toLowerCase()}/${product.subCategory.toLowerCase()}`
     : `/category/${product.category.toLowerCase()}`;
 
+  // Use slug if available, otherwise fall back to ID
+  const productDetailLink = product.slug ? `/products/${product.slug}` : `/products/${product.id}`;
 
   return (
-    <Card 
+    <Card
       className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <CardHeader className="p-0 border-b relative">
-         <Link href={`/products/${product.id}`} className="block overflow-hidden aspect-square">
+         <Link href={productDetailLink} className="block overflow-hidden aspect-square">
             <Image
                 src={currentImage}
                 alt={product.name}
@@ -77,7 +79,7 @@ export function ProductCard({ product }: { product: Product }) {
                 <Badge variant="secondary" className="mb-2 font-semibold w-fit hover:bg-primary/10 transition-colors">{product.category}</Badge>
             </Link>
         )}
-        <Link href={`/products/${product.id}`}>
+        <Link href={productDetailLink}>
           <CardTitle className="text-lg font-headline leading-tight hover:text-primary transition-colors">
             {product.name}
           </CardTitle>

@@ -14,6 +14,10 @@ import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/common/Logo";
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 
+import { signup } from './actions';
+
+// ... imports ...
+
 export default function RegisterPage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -28,19 +32,19 @@ export default function RegisterPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <form>
+            <form action={signup}>
               <div className="grid w-full items-center gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" type="text" placeholder="John Doe" required />
+                  <Input id="name" name="name" type="text" placeholder="John Doe" required />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="name@example.com" required />
+                  <Input id="email" name="email" type="email" placeholder="name@example.com" required />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="password">Password</Label>
-                  <Input id="password" type="password" placeholder="••••••••" required />
+                  <Input id="password" name="password" type="password" placeholder="••••••••" required />
                 </div>
                 <Button type="submit" className="w-full">Register</Button>
               </div>
