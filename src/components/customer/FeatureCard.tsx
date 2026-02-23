@@ -10,15 +10,15 @@ interface FeatureCardProps {
 
 export function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
   return (
-    <Card className="text-center group hover:bg-muted/50 transition-colors duration-300 hover:shadow-lg">
-      <CardHeader className="items-center pb-4">
-        <div className="p-4 bg-primary/10 rounded-full group-hover:scale-110 transition-transform duration-300">
-          <Icon className="h-8 w-8 text-primary" />
+    <Card className="text-left group bg-transparent border-none shadow-none rounded-none">
+      <CardHeader className="p-0 pb-4">
+        <div className="text-black transform transition-transform duration-300 group-hover:-translate-y-1">
+          <Icon className="h-8 w-8 stroke-[1.5px]" />
         </div>
       </CardHeader>
-      <CardContent>
-        <CardTitle className="text-xl font-headline mb-2">{title}</CardTitle>
-        <p className="text-muted-foreground text-sm">{description}</p>
+      <CardContent className="p-0">
+        <CardTitle className="text-lg font-headline font-bold uppercase tracking-wide mb-2">{title}</CardTitle>
+        <p className="text-gray-500 text-sm font-light leading-relaxed">{description}</p>
       </CardContent>
     </Card>
   );

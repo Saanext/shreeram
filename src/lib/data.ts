@@ -2,11 +2,11 @@
 import type { User, Product, Order, Category } from './types';
 
 export const mockUsers: User[] = [
-  { id: 'usr_001', name: 'Admin User', email: 'admin@rolecraft.com', role: 'admin', status: 'active', createdAt: '2023-01-15' },
-  { id: 'usr_002', name: 'Fashionista Vendor', email: 'vendor1@example.com', role: 'vendor', status: 'active', createdAt: '2023-02-20' },
-  { id: 'usr_003', name: 'Threads & Co', email: 'vendor2@example.com', role: 'vendor', status: 'inactive', createdAt: '2023-03-10' },
-  { id: 'usr_004', name: 'Priya Sharma', email: 'priya@example.com', role: 'customer', status: 'active', createdAt: '2023-04-05' },
-  { id: 'usr_005', name: 'Rahul Kumar', email: 'rahul@example.com', role: 'customer', status: 'active', createdAt: '2023-05-12' },
+  { id: 'usr_001', fullName: 'Admin User', email: 'admin@rolecraft.com', role: 'admin', createdAt: '2023-01-15' },
+  { id: 'usr_002', fullName: 'Fashionista Vendor', email: 'vendor1@example.com', role: 'vendor', createdAt: '2023-02-20' },
+  { id: 'usr_003', fullName: 'Threads & Co', email: 'vendor2@example.com', role: 'vendor', createdAt: '2023-03-10' },
+  { id: 'usr_004', fullName: 'Priya Sharma', email: 'priya@example.com', role: 'customer', createdAt: '2023-04-05' },
+  { id: 'usr_005', fullName: 'Rahul Kumar', email: 'rahul@example.com', role: 'customer', createdAt: '2023-05-12' },
 ];
 
 export const mockProducts: Product[] = [
@@ -54,10 +54,10 @@ export const mockCategories: Category[] = [
 
   // Kids' Subcategories
   { id: 'cat_020', name: 'T-Shirts', parentId: 'cat_003', group: 'Boys Clothing', productCount: 1, imageUrl: 'https://images.pexels.com/photos/1620760/pexels-photo-1620760.jpeg' },
-  { id: 'cat_021', name: 'Outerwear', parentId: 'cat_003', group: 'Boys Clothing', productCount: 1, imageUrl: 'https://images.pexels.com/photos/5929/food-shoelaces-tab-shoes.jpg' },
+  { id: 'cat_021', name: 'Outerwear', parentId: 'cat_003', group: 'Boys Clothing', productCount: 1, imageUrl: 'https://images.unsplash.com/photo-1544426211-53697eb2de20?q=80&w=1080&auto=format&fit=crop' },
   { id: 'cat_022', name: 'Dresses', parentId: 'cat_003', group: 'Girls Clothing', productCount: 0, imageUrl: 'https://images.pexels.com/photos/1648377/pexels-photo-1648377.jpeg' },
   { id: 'cat_023', name: 'Toys', parentId: 'cat_003', group: 'Toys & Games', productCount: 0, imageUrl: 'https://images.pexels.com/photos/3661202/pexels-photo-3661202.jpeg' },
-  { id: 'cat_024', name: 'Shoes', parentId: 'cat_003', group: 'Footwear', productCount: 0, imageUrl: 'https://images.pexels.com/photos/1619793/pexels-photo-1619793.jpeg' },
+  { id: 'cat_024', name: 'Shoes', parentId: 'cat_003', group: 'Footwear', productCount: 0, imageUrl: 'https://images.unsplash.com/photo-1514989940723-e8e51635b782?q=80&w=1080&auto=format&fit=crop' },
   { id: 'cat_025', name: 'Baby Care', parentId: 'cat_003', group: 'Baby Care', productCount: 0, imageUrl: 'https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg' },
   { id: 'cat_026', name: 'School Supplies', parentId: 'cat_003', group: 'School Supplies', productCount: 0, imageUrl: 'https://images.pexels.com/photos/4260477/pexels-photo-4260477.jpeg' },
   { id: 'cat_027', name: 'Party Wear', parentId: 'cat_003', group: 'Girls Clothing', productCount: 0, imageUrl: 'https://images.pexels.com/photos/10313331/pexels-photo-10313331.jpeg' },

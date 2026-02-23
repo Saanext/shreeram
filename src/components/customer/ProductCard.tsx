@@ -25,22 +25,22 @@ export function ProductCard({ product }: { product: Product }) {
   const handleMouseLeave = () => {
     setCurrentImage(product.imageUrls[0]);
   };
-  
+
   const getProductHint = (product: Product) => {
-    return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0,2).join(" ");
+    return `${product.category} ${product.name}`.toLowerCase().split(" ").slice(0, 2).join(" ");
   }
-  
+
   const handleAddToCart = () => {
     addToCart(product);
   }
-  
+
   const toggleDescription = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsExpanded(!isExpanded);
   };
 
   const isLongDescription = product.description.length > 100;
-  
+
   const productLink = product.subCategory
     ? `/category/${product.category.toLowerCase()}/${product.subCategory.toLowerCase()}`
     : `/category/${product.category.toLowerCase()}`;
@@ -50,60 +50,66 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <Card
-      className="flex flex-col h-full overflow-hidden transition-all hover:shadow-lg duration-300 ease-in-out group"
+      className="flex flex-col h-full overflow-hidden transition-all duration-300 ease-in-out group border-none shadow-none rounded-none bg-transparent"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <CardHeader className="p-0 border-b relative">
-         <Link href={productDetailLink} className="block overflow-hidden aspect-square">
-            <Image
-                src={currentImage}
-                alt={product.name}
-                width={600}
-                height={600}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                data-ai-hint={getProductHint(product)}
-            />
-         </Link>
-          {product.isOnSale && (
-            <Badge variant="destructive" className="absolute top-2 right-2">Sale</Badge>
-          )}
+      <CardHeader className="p-0 border-none relative overflow-hidden bg-gray-50">
+        <Link href={productDetailLink} className="block overflow-hidden aspect-[3/4]">
+          <Image
+            src={currentImage}
+            alt={product.name}
+            width={600}
+            height={800}
+            className="w-full h-full object-cover transition-transform duration-700 ease-in-out transform group-hover:scale-[1.03]"
+            data-ai-hint={getProductHint(product)}
+          />
+        </Link>
+        {product.isOnSale && (
+          <Badge className="absolute top-4 right-4 rounded-none bg-red-600 hover:bg-red-700 text-white font-semibold tracking-wider text-[10px] uppercase px-3 py-1">Sale</Badge>
+        )}
       </CardHeader>
-      <CardContent className="p-4 flex-grow flex flex-col">
+      <CardContent className="p-4 flex-grow flex flex-col items-center text-center">
         {product.subCategory ? (
-            <Link href={productLink}>
-                <Badge variant="secondary" className="mb-2 font-semibold w-fit hover:bg-primary/10 transition-colors">{product.subCategory}</Badge>
-            </Link>
+          <Link href={productLink}>
+            <span className="mb-2 text-xs font-semibold text-gray-500 uppercase tracking-widest hover:text-black transition-colors">{product.subCategory}</span>
+          </Link>
         ) : product.category && (
-            <Link href={productLink}>
-                <Badge variant="secondary" className="mb-2 font-semibold w-fit hover:bg-primary/10 transition-colors">{product.category}</Badge>
-            </Link>
+          <Link href={productLink}>
+            <span className="mb-2 text-xs font-semibold text-gray-500 uppercase tracking-widest hover:text-black transition-colors">{product.category}</span>
+          </Link>
         )}
         <Link href={productDetailLink}>
-          <CardTitle className="text-lg font-headline leading-tight hover:text-primary transition-colors">
+          <CardTitle className="text-base md:text-lg font-headline font-semibold uppercase tracking-wide leading-tight hover:text-gray-500 transition-colors mt-1">
             {product.name}
           </CardTitle>
         </Link>
-        <div className="flex-grow">
-          <p className={cn("text-muted-foreground text-sm mt-1 transition-all duration-300", isExpanded ? "max-h-full" : "max-h-10 overflow-hidden")}>
+        <div className="flex-grow mt-2">
+          <p className={cn("text-gray-500 text-sm font-light transition-all duration-300", isExpanded ? "max-h-full" : "max-h-10 overflow-hidden")}>
             {product.description}
           </p>
           {isLongDescription && (
-             <button onClick={toggleDescription} className="text-primary text-sm hover:underline mt-1 font-medium">
-                {isExpanded ? 'Read Less' : 'Read More'}
+            <button onClick={toggleDescription} className="text-black text-xs uppercase tracking-widest hover:underline mt-2 font-medium">
+              {isExpanded ? 'Read Less' : 'Read More'}
             </button>
           )}
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0 flex flex-wrap justify-between items-center gap-2">
-        <div className="flex items-baseline gap-2">
-            <p className="text-xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
-            {product.originalPrice && (
-                <p className="text-sm text-muted-foreground line-through">₹{product.originalPrice.toFixed(2)}</p>
-            )}
+      <CardFooter className="p-4 pt-0 flex flex-col items-center gap-4">
+        <div className="flex items-center gap-3">
+          <p className="text-lg font-medium text-black">₹{product.price.toFixed(2)}</p>
+          {product.originalPrice && (
+            <p className="text-sm text-gray-400 line-through">₹{product.originalPrice.toFixed(2)}</p>
+          )}
         </div>
-        <Button size="sm" disabled={product.stock === 0} onClick={handleAddToCart} className="w-full sm:w-auto">
-          <ShoppingCart className="mr-2 h-4 w-4" />
+        <Button
+          variant="outline"
+          size="sm"
+          disabled={product.stock === 0}
+          onClick={handleAddToCart}
+          className="w-full rounded-none border-black text-black hover:bg-black hover:text-white uppercase tracking-widest text-xs transition-colors py-5"
+        >
+          <ShoppingCart className="mr-2 h-3 w-3" />
           {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
         </Button>
       </CardFooter>

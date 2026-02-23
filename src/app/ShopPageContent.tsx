@@ -5,9 +5,12 @@ import { Button } from '@/components/ui/button';
 import { CustomerHeader } from '@/components/customer/CustomerHeader';
 import { ProductCard } from '@/components/customer/ProductCard';
 import { ArrowRight, Tag, Star, Frown, Truck, ShieldCheck, Headset } from 'lucide-react';
-import Image from 'next/image';
 import { ScrollAnimation } from '@/components/common/ScrollAnimation';
+import { TextReveal } from '@/components/common/TextReveal';
+import { Marquee } from '@/components/common/Marquee';
+import { ImageReveal } from '@/components/common/ImageReveal';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import * as React from 'react';
 import {
   Carousel,
@@ -158,7 +161,7 @@ export function ShopPageContent() {
           </section>
         ) : (
           <>
-            <section className="w-full relative">
+            <section className="w-full relative bg-white">
               <Carousel
                 plugins={[plugin.current]}
                 className="w-full"
@@ -169,59 +172,67 @@ export function ShopPageContent() {
                 <CarouselContent>
                   {heroSlides.map((slide, index) => (
                     <CarouselItem key={index}>
-                      <div className="relative w-full h-[60vh] md:h-[80vh] lg:h-[85vh]">
-                        <Image
-                          src={slide.src}
-                          data-ai-hint={slide.hint}
-                          alt="Hero Banner Image"
-                          fill
-                          className="object-cover"
-                          priority={index === 0}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-                        <div className="absolute inset-0 flex flex-col items-start justify-center text-left text-white p-8 md:p-16 lg:p-24 container mx-auto">
-                          <ScrollAnimation>
-                            <h1 className="font-headline text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl max-w-4xl drop-shadow-lg">
-                              {slide.title}
-                            </h1>
-                          </ScrollAnimation>
-                          <ScrollAnimation style={{ animationDelay: '0.2s' }}>
-                            <p className="max-w-[700px] text-lg md:text-2xl mt-6 text-gray-100 drop-shadow-md font-light">
-                              {slide.description}
-                            </p>
-                          </ScrollAnimation>
-                          <ScrollAnimation style={{ animationDelay: '0.4s' }}>
-                            <Button asChild size="lg" className="mt-10 group bg-white text-black hover:bg-gray-100 px-8 py-6 text-lg rounded-full shadow-xl transition-all hover:scale-105">
-                              <Link href={slide.buttonLink}>
-                                {slide.buttonText}
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                              </Link>
-                            </Button>
-                          </ScrollAnimation>
+                      <div className="relative w-full min-h-[70vh] md:h-[85vh] lg:h-[90vh] flex flex-col-reverse md:flex-row bg-white">
+                        {/* Text Content */}
+                        <div className="w-full md:w-1/2 lg:w-5/12 flex items-center justify-start md:justify-center p-8 sm:p-12 md:p-16 lg:p-24 z-10 bg-white">
+                          <div className="w-full max-w-xl overflow-hidden">
+                            <TextReveal
+                              text={slide.title}
+                              elementType="h1"
+                              className="font-headline text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter uppercase text-black leading-tight"
+                            />
+                            <div className="mt-4 lg:mt-6">
+                              <TextReveal
+                                text={slide.description}
+                                elementType="p"
+                                delay={0.4}
+                                staggerDelay={0.02}
+                                className="text-base sm:text-lg text-gray-600 font-light"
+                              />
+                            </div>
+                            <ScrollAnimation style={{ animationDelay: '0.8s' }}>
+                              <Button asChild size="lg" className="mt-8 lg:mt-10 rounded-none bg-black text-white hover:bg-gray-800 px-8 py-6 text-xs sm:text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
+                                <Link href={slide.buttonLink}>
+                                  {slide.buttonText}
+                                  <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                                </Link>
+                              </Button>
+                            </ScrollAnimation>
+                          </div>
                         </div>
+
+                        {/* Image Content */}
+                        <ImageReveal className="relative w-full md:w-1/2 lg:w-7/12 h-[45vh] md:h-full">
+                          <Image
+                            src={slide.src}
+                            data-ai-hint={slide.hint}
+                            alt="Hero Banner Image"
+                            fill
+                            className="object-cover"
+                            priority={index === 0}
+                          />
+                        </ImageReveal>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-8 text-white border-white/50 bg-black/20 hover:bg-black/40 hover:text-white h-12 w-12" />
-                <CarouselNext className="right-8 text-white border-white/50 bg-black/20 hover:bg-black/40 hover:text-white h-12 w-12" />
+                <CarouselPrevious className="hidden md:flex left-8 text-black border-black bg-white hover:bg-black hover:text-white h-12 w-12 rounded-none transition-colors" />
+                <CarouselNext className="hidden md:flex right-8 text-black border-black bg-white hover:bg-black hover:text-white h-12 w-12 rounded-none transition-colors" />
               </Carousel>
             </section>
 
-            <section id="on-sale" className="w-full py-16 md:py-24 bg-gradient-to-b from-background to-muted/30">
+            <Marquee text="NEW SEASON • LIMITED CAPSULE • EXCLUSIVE DROPS • FAST SHIPPING • PREMIUM QUALITY • " speed={25} />
+
+            <section id="on-sale" className="w-full py-20 md:py-32 bg-white">
               <div className="px-4 sm:px-6 lg:px-8 xl:px-12">
                 <ScrollAnimation>
-                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <div className="inline-block rounded-full bg-destructive/10 text-destructive px-4 py-1.5 text-sm font-semibold flex items-center gap-2 mb-2">
-                      <Tag className="h-4 w-4" />
+                  <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20 border-b border-gray-200 pb-12">
+                    <div className="inline-block border border-black text-black px-6 py-2 text-xs uppercase tracking-widest font-semibold">
                       Limited Time Deals
                     </div>
-                    <h2 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                      Grab Them While They're Hot
+                    <h2 className="font-headline text-4xl md:text-5xl uppercase tracking-widest font-bold">
+                      The Sale Edit
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                      Don't miss out on these special deals. Grab them before they're gone!
-                    </p>
                   </div>
                 </ScrollAnimation>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8">
@@ -234,7 +245,7 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <div className="bg-muted/30 border-y border-border/50">
+            <div className="bg-white border-y border-gray-200">
               <div className="px-4 sm:px-6 lg:px-8 xl:px-12 py-16 md:py-20">
                 <ScrollAnimation>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
@@ -263,50 +274,50 @@ export function ShopPageContent() {
               </div>
             </div>
 
-            <section className="w-full py-16 md:py-20">
+            <section className="w-full py-24 md:py-32 bg-white">
               <ScrollAnimation>
-                <div className="px-4 sm:px-6 lg:px-8 xl:px-12">
-                  <div className="p-2 rounded-2xl bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 shadow-xl transform hover:scale-[1.01] transition-transform duration-500">
-                    <div className="bg-background rounded-xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                      <div className="flex items-center gap-6">
-                        <div className="relative h-16 w-24 hidden sm:block shadow-md rotate-[-5deg] transform transition-transform hover:rotate-0">
-                          <Image
-                            src="https://picsum.photos/seed/creditcard/200/120"
-                            alt="Credit Card Offer"
-                            fill
-                            className="rounded-lg object-cover"
-                            data-ai-hint="credit card"
-                          />
-                        </div>
-                        <div className="h-12 w-px bg-border hidden sm:block" />
-                        <div>
-                          <h3 className="font-headline font-bold text-2xl md:text-3xl text-foreground">Flat 7.5% Cashback*</h3>
-                          <p className="text-base text-muted-foreground mt-1">On SRE AXIS BANK Credit Card via <span className="font-semibold text-primary">Cred</span></p>
-                        </div>
+                <div className="px-4 sm:px-6 lg:px-8 xl:px-12 max-w-6xl mx-auto">
+                  <div className="border border-gray-200 bg-white shadow-sm p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 group transition-shadow hover:shadow-md">
+                    <div className="flex items-start md:items-center gap-8 flex-col md:flex-row">
+                      <div className="relative h-24 w-36 shadow-lg rotate-[-2deg] transform transition-transform group-hover:rotate-0">
+                        <Image
+                          src="https://picsum.photos/seed/creditcard/400/250"
+                          alt="Credit Card Offer"
+                          fill
+                          className="rounded-sm object-cover grayscale opacity-90 transition-all group-hover:grayscale-0"
+                          data-ai-hint="black minimalist credit card"
+                        />
                       </div>
-                      <div className="flex items-center">
-                        <Button variant="outline" className="border-amber-400 text-amber-600 hover:bg-amber-50 hover:text-amber-700">Apply Now</Button>
-                        <p className="ml-4 text-xs text-muted-foreground/60">
-                          *T&C Apply
-                        </p>
+                      <div className="hidden md:block h-24 w-px bg-gray-200" />
+                      <div>
+                        <h3 className="font-headline text-xs uppercase tracking-widest text-gray-500 mb-2">Partner Offer</h3>
+                        <h4 className="font-headline font-bold text-3xl md:text-4xl text-black uppercase tracking-tight">Flat 7.5% Cashback</h4>
+                        <p className="text-gray-600 mt-2 font-light">On SRE AXIS BANK Credit Card via <span className="font-medium text-black">Cred</span></p>
                       </div>
+                    </div>
+                    <div className="flex flex-col items-start md:items-end w-full md:w-auto">
+                      <Button variant="outline" className="rounded-none border-black text-black hover:bg-black hover:text-white px-8 py-6 w-full md:w-auto tracking-widest uppercase transition-colors">
+                        Apply Now
+                      </Button>
+                      <p className="mt-4 text-xs text-gray-400">
+                        *Terms & Conditions Apply
+                      </p>
                     </div>
                   </div>
                 </div>
               </ScrollAnimation>
             </section>
 
-            <section id="products" className="w-full py-16 md:py-24 lg:py-28">
+            <section id="products" className="w-full py-20 md:py-32 bg-white">
               <div className="px-4 sm:px-6 lg:px-8 xl:px-12">
                 <ScrollAnimation>
-                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <div className="inline-block rounded-full bg-primary/10 text-primary px-4 py-1.5 text-sm font-semibold">New Arrivals</div>
-                    <h2 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                      Featured Products
+                  <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20 border-b border-gray-200 pb-12">
+                    <div className="inline-block border border-black text-black px-6 py-2 text-xs uppercase tracking-widest font-semibold">
+                      New Arrivals
+                    </div>
+                    <h2 className="font-headline text-4xl md:text-5xl uppercase tracking-widest font-bold">
+                      The Latest
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                      Check out our latest collection of products. Fresh styles, updated daily.
-                    </p>
                   </div>
                 </ScrollAnimation>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 md:gap-8">
@@ -319,20 +330,16 @@ export function ShopPageContent() {
               </div>
             </section>
 
-            <section id="best-sellers" className="w-full py-16 md:py-24 lg:py-28 bg-gradient-to-t from-background via-muted/30 to-background">
+            <section id="best-sellers" className="w-full py-20 md:py-32 bg-gray-50 border-t border-gray-200">
               <div className="px-4 sm:px-6 lg:px-8 xl:px-12">
                 <ScrollAnimation>
-                  <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
-                    <div className="inline-block rounded-full bg-orange-500/10 text-orange-600 px-4 py-1.5 text-sm font-semibold flex items-center gap-2">
-                      <Star className="h-4 w-4 fill-orange-500 text-orange-500" />
-                      Top Picks
+                  <div className="flex flex-col items-center justify-center space-y-6 text-center mb-20 border-b border-gray-300 pb-12">
+                    <div className="inline-block border border-black text-black px-6 py-2 text-xs uppercase tracking-widest font-semibold">
+                      Essentials
                     </div>
-                    <h2 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-                      Our Best Sellers
+                    <h2 className="font-headline text-4xl md:text-5xl uppercase tracking-widest font-bold">
+                      Modern Classics
                     </h2>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl">
-                      Discover our most popular products, loved by customers like you.
-                    </p>
                   </div>
                 </ScrollAnimation>
                 <Carousel
